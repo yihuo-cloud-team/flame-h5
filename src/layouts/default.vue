@@ -2,9 +2,10 @@
   <div class="default">
     <nuxt class="view-body" />
     <van-tabbar route v-model="active" :fixed="false" active-color="#55C7C7">
-      <van-tabbar-item class="icon-1" replace to="/" icon="good-job"></van-tabbar-item>
-      <van-tabbar-item class="icon-2" replace to="/idea/add" icon="add-square"></van-tabbar-item>
-      <van-tabbar-item class="icon-3" replace to="/user/info" icon="manager"></van-tabbar-item>
+      <van-tabbar-item replace to="/" icon="wap-home-o">首页</van-tabbar-item>
+      <van-tabbar-item replace to="/idea/add" icon="fire-o">动态</van-tabbar-item>
+      <van-tabbar-item replace to="/idea/add" icon="comment-o">XX</van-tabbar-item>
+      <van-tabbar-item replace to="/user/info" icon="manager">我的</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>

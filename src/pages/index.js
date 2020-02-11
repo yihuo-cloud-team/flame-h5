@@ -2,65 +2,61 @@ export default {
     name: 'list',
     data() {
         return {
+            userInfo: null,
+            screen1: 0,
+            screen2: 0,
+            screen3: 0,
+            option1: [
+                { text: '所有类型', value: 0 },
+                { text: '已完成', value: 1 },
+                { text: '未完成', value: 2 }
+            ],
+            option2: [
+                { text: '所有进度', value: 0 },
+                { text: '进行中', value: 1 },
+                { text: '已结束', value: 2 },
+            ],
+            option3: [
+                { text: '所有地区', value: 0 },
+                { text: '上海', value: 1 },
+                { text: '南京', value: 2 },
+            ],
             list: [],
             loading: false,
-            finished: false,
-            total: 0,
-            query: {
-                page: 1,
-                page_size: 5,
-            },
-            userInfo: null
+            finished: false
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
-            this.userInfo = JSON.parse(localStorage.userInfo);
-        },
-        async updateInit() {
-            this.query = {
-                page: 1,
-                page_size: 5,
-            };
-            this.total = 0;
-            this.list = [];
-            this.finished = false;
-            this.loading = false;
-            this.update();
-
+            // this.userInfo = JSON.parse(localStorage.userInfo);
         },
         // 用于更新一些数据
         async update() {
             if (this.finished) return;
             try {
-                this.loading = true;
-                const res = await this.$http.post('/idea/list', this.query);
-                if (res.code > 0) {
-                    this.total = res.total;
-                    this.list = [...this.list, ...res.data];
-                    this.query.page += 1;
-                }
-                if (this.list.length >= this.total) {
-                    this.finished = true;
-                }
-                this.loading = false;
+
+                // const res = await this.$http.post('/idea/list', this.query);
             } catch (error) {
-                this.loading = false;
+
             }
 
         },
-        async zan(item) {
-            let loading = this.$toast.loading({ message: '点赞中...' });
-            const res = await this.$http.post('/idea/up', { id: item.id });
-            item.isUp = res.isUp;
-            item.up = res.up;
-            loading.clear();
-        },
-        async del(item) {
-            const res = await this.$http.post('/idea/del', { id: item.id });
-            this.updateInit();
-        },
+        async onLoad() {
+            setTimeout(() => {
+                for (let i = 0; i < 10; i++) {
+                    this.list.push(this.list.length + 1);
+                }
+
+                // 加载状态结束
+                this.loading = false;
+
+                // 数据全部加载完成
+                if (this.list.length >= 40) {
+                    this.finished = true;
+                }
+            }, 2000);
+        }
     },
     // 计算属性
     computed: {},

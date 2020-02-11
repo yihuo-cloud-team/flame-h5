@@ -24,18 +24,19 @@ export default {
          */
         vCode() {
 
-            if (typeof this.$route.query['code'] == 'undefined') {
-                // 跳转
+            // if (typeof this.$route.query['code'] == 'undefined') {
+            //     // 跳转
 
-                const appid = 'wx754474ce7640bd0c';
-                const redirect_uri = encodeURIComponent(window.location.href);
-                window.location.replace(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`);
+            //     const appid = 'wx754474ce7640bd0c';
+            //     const redirect_uri = encodeURIComponent(window.location.href);
+            //     window.location.replace(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`);
 
-            } else {
-                // 登陆
-                const code = this.$route.query.code;
-                this.login(code);
-            }
+            // } else {
+            //     // 登陆
+            //     const code = this.$route.query.code;
+            //     this.login(code);
+            // }
+            this.$router.push('/')
 
         },
         // 用于更新一些数据
