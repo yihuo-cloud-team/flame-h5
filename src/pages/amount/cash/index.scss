@@ -63,5 +63,62 @@
         }
     }
 }
+.card {
+    font-size: 22px;
+    margin: 22px 22px;
+    .card-input {
+        width: 370px;
+        height: 30px;
+        border-radius: 5px;
+        color: rgba(136, 136, 136, 1);
+        font-size: 14px;
+        padding-left: 10px;
+        margin-top: 20px;
+        border: 1px solid rgba(255, 255, 255, 0);
+    }
+}
+.name {
+    font-size: 22px;
+    margin: 22px 22px;
+    .name-input {
+        width: 370px;
+        height: 30px;
+        border-radius: 5px;
+        color: rgba(136, 136, 136, 1);
+        font-size: 14px;
+        padding-left: 10px;
+        margin-top: 20px;
+        border: 1px solid rgba(255, 255, 255, 0);
+    }
+}
+
+.money {
+    font-size: 22px;
+    margin: 22px 22px;
+    .money-input {
+        width: 370px;
+        height: 30px;
+        border-radius: 5px;
+        color: rgba(136, 136, 136, 1);
+        font-size: 14px;
+        padding-left: 10px;
+        margin-top: 20px;
+        border: 1px solid rgba(255, 255, 255, 0);
+    }
+}
+
+.btn {
+    width: 370px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 60px;
+    margin-left: 22px;
+    border-radius: 4px;
+    background-color: #4289db;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0);
+}
 
 #cash /deep/ {}
