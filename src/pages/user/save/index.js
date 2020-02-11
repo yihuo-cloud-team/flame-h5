@@ -1,5 +1,6 @@
 export default {
     name: 'user',
+    layout:'sub',
     data() {
         return {
             userInfo: null,

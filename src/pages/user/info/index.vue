@@ -11,15 +11,15 @@
     <div class="user-member">会员到期时间：2020年3月31日</div>
     <div>
       <van-cell-group>
-        <van-cell title="用户信息" is-link />
+        <van-cell title="用户信息" to="/user/save" is-link />
         <van-cell title="会员充值中心" is-link />
         <van-cell title="我的订单" is-link />
         <van-cell title="发布任务" to="/task/edit" is-link />
-        <van-cell title="我的发布" is-link />
+        <van-cell title="我的发布" to="/task/release" is-link />
         <van-cell title="我申请的任务" is-link />
-        <van-cell title="我接到的任务" is-link />
+        <van-cell title="我接到的任务" to="/task/join" is-link />
         <van-cell title="平台行业排行榜" is-link />
-        <van-cell title="我的提现" is-link />
+        <van-cell title="我的提现" to="/amount/cash" is-link />
         <van-cell title="活动" is-link />
         <van-cell title="投诉与建议" is-link />
         <van-cell title="帮助说明" is-link />
