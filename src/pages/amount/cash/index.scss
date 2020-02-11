@@ -1,0 +1,67 @@
+@import "@/styles/variable.scss";
+#cash {
+    background-color: #F0F2F5;
+}
+.panel {
+    .panel-money {
+        color: #ffffff;
+        height: 117px;
+        background-color: #4289DB;
+        padding-left: 22px;
+        .money-text {
+            padding-top: 31px;
+            font-size: 12px;
+        }
+        .money-num {
+            margin-top: 15px;
+            font-size: 28px;
+        }
+    }
+    .panel-cash {
+        display: flex;
+        justify-content: space-between;
+        height: 60px;
+        background-color: #5D99E1;
+        .cash {
+            margin-left: 34px;
+            margin-top: 5px;
+            color: #ffffff;
+            .cash-num {
+                margin-top: 7px;
+                font-size: 12px;
+            }
+        }
+        .frozen {
+            
+            margin-right: 34px;
+            margin-top: 5px;
+            color: #ffffff;
+            .frozen-num {
+                margin-top: 7px;
+                font-size: 12px;
+            }
+        }
+    }
+}
+.account {
+    .account-type {
+        font-size: 22px;
+        margin:22px 22px ;
+    }
+    .account-box {
+        display: flex;
+        // justify-content: space-between;
+        .box1 {
+            width: 52px;
+            height: 37px;
+            font-size: 14px;
+            margin-left: 22px;
+            line-height: 30px;
+            background-color: #fff;
+            text-align: center;
+            border: 1px solid #cccccc;
+        }
+    }
+}
+
+#cash /deep/ {}
