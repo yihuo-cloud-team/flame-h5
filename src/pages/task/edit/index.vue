@@ -23,7 +23,7 @@
     <div class="price">
       <div class="title">任务价格</div>
       <div class="input">
-        <van-field v-model="taskname" placeholder="30字符以内" />
+        <van-field v-model="taskprice" placeholder="30字符以内" />
       </div>
     </div>
     <div class="info">
@@ -51,7 +51,7 @@
         <van-field v-model="address" placeholder="10字符以内" />
       </div>
     </div>
-    <div class="btn">下一步：托管资金</div>
+    <div class="btn" @click="submit">下一步：托管资金</div>
     <van-popup v-model="show" position="bottom">
       <van-area
         :area-list="areaList"

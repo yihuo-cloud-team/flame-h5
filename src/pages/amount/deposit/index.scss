@@ -1,0 +1,32 @@
+@import "@/styles/variable.scss";
+
+#deposit {
+  padding: 15px;
+
+  .title {
+    color: rgba(16, 16, 16, 1);
+    font-size: 21px;
+  }
+
+  .amount {
+    color: rgba(16, 16, 16, 1);
+    font-size: 21px;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    margin: auto;
+    width: 344px;
+    height: 51px;
+    border-radius: 4px;
+    background-color: rgba(66, 137, 219, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0);
+  }
+}
+
+#deposit /deep/ {}

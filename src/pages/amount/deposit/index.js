@@ -1,53 +1,27 @@
-import AreaList from '../../../lib/area'
 export default {
-    name: 'edit',
-    layout: 'sub',
+    name: 'deposit',
+    layout:'sub',
     data() {
-        return {
-            taskname: '',
-            activ: 1,
-            tasktype: '',
-            taskprice: '',
-            info: '',
-            show: false,
-            areaList: [],
-            selecarea: [],
-            address: ''
-
-        };
+        return {};
     },
     methods: {
         // 用于初始化一些数据
         init() {
-            this.areaList = AreaList
-
             this.update();
         },
         // 用于更新一些数据
         async update() {
             // const res = await this.$http.post('', {});
         },
-        selec(e) {
-            this.selecarea = e
-            this.show = false
-        },
-        async submit() {
-            if (!this.taskprice) {
-                this.$toast('请填写项目价格金额');
-                return false
-            }
-            this.$router.push(`/amount/deposit?quota=${this.taskprice}`)
+        async submit(){
+            this.$toast.success('提交成功');
+            setTimeout(() => {
+                this.$router.push('/user/info')
+            }, 2000);
         }
     },
     // 计算属性
-    computed: {
-        area() {
-            console.warn(this.selecarea.length);
-
-            if (this.selecarea.length < 1) return '省市区选择'
-            return `${this.selecarea[0].name} ${this.selecarea[1].name} ${this.selecarea[2].name}`
-        }
-    },
+    computed: {},
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用
