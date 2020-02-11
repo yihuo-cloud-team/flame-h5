@@ -14,7 +14,7 @@
         <van-cell title="用户信息" is-link />
         <van-cell title="会员充值中心" is-link />
         <van-cell title="我的订单" is-link />
-        <van-cell title="发布任务" is-link />
+        <van-cell title="发布任务" to="/task/edit" is-link />
         <van-cell title="我的发布" is-link />
         <van-cell title="我申请的任务" is-link />
         <van-cell title="我接到的任务" is-link />
