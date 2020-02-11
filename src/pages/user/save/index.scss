@@ -1,0 +1,54 @@
+@import "@/styles/variable.scss";
+#save {
+    background-color: #F6F6F6;
+}
+
+.user {
+    margin: 15px 15px;
+    .name-info {
+        display: flex;
+        .name {
+            font-size: 14px;
+        }
+        .hide {
+            margin-left: 20px;
+            font-size: 11px;
+        }
+    }
+    .input {
+        width: 375px;
+        height: 36px;
+        font-size: 14px;
+        margin-top: 15px;
+        padding-left:10px;
+    }
+    .button-holder {
+        margin-top: 15px;
+        display: flex;
+        .sex {
+            width: 38px;
+            height: 35px;
+            text-align: center;
+            line-height: 30px;
+            margin-left: 10px;
+            background-color: #fff;
+            border: 1px solid rgba(255,255,255,0);
+        }
+    }
+    
+}
+.sub {
+    margin-left: 15px;
+    margin-top: 15px;
+    line-height: 30px;
+    width: 375px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #4289db;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0);
+}
+
+#save /deep/ {}
