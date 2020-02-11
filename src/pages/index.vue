@@ -31,8 +31,8 @@
         </div>
       </div>
       <div class="trends-list erect">
-        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-          <div class="item" v-for="item in list" :key="item" :title="item">
+        <van-list v-model="loading" :finished="finished" style=" width: 100%;" finished-text="没有更多了" @load="onLoad">
+          <div class="item" @click="$router.push('/task/info')" v-for="item in list" :key="item" :title="item">
             <div class="panel">
               <img
                 src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4000386096,2288866861&fm=26&gp=0.jpg"

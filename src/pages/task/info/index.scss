@@ -1,0 +1,196 @@
+@import "@/styles/variable.scss";
+
+#info {
+  .head {
+    padding: 10px;
+    border-bottom: 1px solid rgba(221, 221, 221, 1);
+
+    .head-body {
+      background-color: #fff;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0);
+      padding: 15px 20px;
+
+      .title-box {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .title {
+          color: rgba(16, 16, 16, 1);
+          font-size: 18px;
+        }
+      }
+
+      .type {
+        color: rgba(105, 105, 105, 1);
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .cost {
+        color: rgba(105, 105, 105, 1);
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .partake {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+
+        .number {
+          color: rgba(105, 105, 105, 1);
+        }
+
+        .fabulous {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .body {
+    background-color: #fff;
+    padding: 30px;
+
+    .title {
+      color: rgba(51, 51, 51, 1);
+      font-size: 28px;
+    }
+
+    .text {
+      color: rgba(70, 75, 82, 1);
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .contact {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+
+      .phone {
+        color: rgba(70, 75, 82, 1);
+        margin-right: 10px;
+      }
+
+    }
+  }
+
+  .enlist-body {
+      padding-bottom: 50px;
+    .title {
+      padding: 17px 20px;
+      color: rgba(16, 16, 16, 1);
+      font-size: 20px;
+    }
+
+    .enlist-list {
+      .item {
+        background-color: #fff;
+        padding: 18px 15px;
+        margin-bottom: 7px;
+
+        .head {
+          padding: 0;
+          margin-bottom: 10px;
+          display: flex;
+          border: none;
+
+          .img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+          }
+
+          .info {
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            color: rgba(16, 16, 16, 1);
+
+            .name {
+              margin-bottom: 2px;
+            }
+          }
+
+          .btn-box {
+            flex: 1;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+
+            .btn {
+              border-radius: 4px;
+              color: rgba(16, 16, 16, 1);
+              font-size: 14px;
+              text-align: center;
+              border: 1px solid rgba(187, 187, 187, 1);
+              width: 80px;
+              height: 30px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+
+        }
+
+        .text {
+          padding-left: 55px;
+          color: rgba(16, 16, 16, 1);
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+
+    .help {
+      display: flex;
+      flex-direction: row-reverse;
+      margin-bottom: 15px;
+
+      .help-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        color: #fff;
+        background-color: rgba(70, 119, 193, 1);
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0);
+        display: flex;
+        align-items: center;
+      }
+
+    }
+
+    .btn {
+      margin: auto;
+      margin-bottom: 10px;
+      width: 345px;
+      height: 36px;
+      border-radius: 4px;
+      background-color: rgba(66, 137, 219, 1);
+      color: rgba(255, 255, 255, 1);
+      font-size: 14px;
+      box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+#info /deep/ {}
