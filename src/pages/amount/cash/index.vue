@@ -37,6 +37,7 @@
       <input class="money-input" type="text" placeholder="可提现金额9999.99">
     </div>
     <div class="btn">提交</div>
+    <div class="bottom-text" @click="$router.push('/amount/record')">提现记录</div>
   </div>
 </template>
 <script src="./index.js"></script>

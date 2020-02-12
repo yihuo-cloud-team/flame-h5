@@ -12,8 +12,8 @@
     <div>
       <van-cell-group>
         <van-cell title="用户信息" to="/user/save" is-link />
-        <van-cell title="会员充值中心" is-link />
-        <van-cell title="我的订单" is-link />
+        <van-cell title="会员充值中心" to="/amount/recharge" is-link />
+        <van-cell title="我的订单" to="/order/record" is-link />
         <van-cell title="发布任务" to="/task/edit" is-link />
         <van-cell title="我的发布" to="/task/release" is-link />
         <van-cell title="我申请的任务" is-link />
@@ -21,8 +21,8 @@
         <van-cell title="平台行业排行榜" is-link />
         <van-cell title="我的提现" to="/amount/cash" is-link />
         <van-cell title="活动" is-link />
-        <van-cell title="投诉与建议" is-link />
-        <van-cell title="帮助说明" is-link />
+        <van-cell title="投诉与建议" to="/user/mention" is-link />
+        <van-cell title="帮助说明" to="/user/help" is-link />
       </van-cell-group>
     </div>
     <!-- <div class="btn" @click="signOut">退出登录</div> -->

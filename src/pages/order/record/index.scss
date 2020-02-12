@@ -1,0 +1,39 @@
+@import "@/styles/variable.scss";
+
+#record {
+  .order {
+    display: flex;
+    padding: 15px;
+    background-color: #fff;
+    margin-bottom: 12px;
+
+    .order-left {
+      flex: 1;
+
+      .title {
+        font-size: 14px;
+        color: rgba(16, 16, 16, 1);
+        margin-bottom: 14px;
+      }
+
+      .type {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .text {
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .order-right {
+      padding: 40px 20px 0 0;
+      font-size: 20px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+#record /deep/ {}
