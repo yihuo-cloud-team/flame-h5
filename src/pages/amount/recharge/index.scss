@@ -1,0 +1,143 @@
+@import "@/styles/variable.scss";
+#recharge {
+    // background-color: #F0F2F5;
+}
+.member {
+    margin: 35px 20px;
+    .member-title {
+        font-size: 18px;
+    }
+    .m-box {
+        display: flex;
+        margin-top: 30px;
+        justify-content: space-between;
+        .m-box1 {
+            width:161px;
+            height:73px;
+            text-align: center;
+            background:rgba(252,242,217,1);
+            border:1px solid rgba(255,173,61,1);
+            opacity:1;
+            border-radius:5px;
+        }
+        .m-box2 {
+            width:162px;
+            height:73px;
+            text-align: center;
+            background:rgba(255,255,255,1);
+            border:1px solid rgba(218,220,223,1);
+            opacity:1;
+            border-radius:5px;
+        }
+    }
+}
+.m-day {
+    font-size:12px;
+    font-weight:400;
+    line-height:17px;
+    margin-top: 7px;
+    color:rgba(0,0,0,1);
+}
+.m-num {
+    font-size:15px;
+    font-weight:bold;
+    line-height:21px;
+    color:rgba(255,173,61,1);
+}
+.m-money {
+    font-size:10px;
+    font-weight:400;
+    line-height:14px;
+    margin-top: 7px;
+    color:rgba(102,102,102,1);
+}
+
+.buy {
+    .b-title {
+        margin-top: 30px;
+        margin-left: 20px;
+        margin-bottom: 30px;
+        font-size: 18px;
+    }
+    .b-box {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        .b-box1 {
+            margin-left: 20px;
+            width:99px;
+            height:58px;
+            margin-top: 15px;
+            background:rgba(252,242,217,1);
+            border:1px solid rgba(255,173,61,1);
+            opacity:1;
+            border-radius:5px;
+        }
+        .b-box2 {
+            width:99px;
+            height:58px;
+            margin-left: 20px;
+            margin-top: 15px;
+            background:rgba(255,255,255,1);
+            border:1px solid rgba(218,220,223,1);
+            opacity:1;
+            border-radius:5px;
+        }
+    }
+}
+.b-day {
+    font-size:15px;
+    font-weight:bold;
+    line-height:21px;
+    margin-top: 7px;
+    color:rgba(255,173,61,1);
+    opacity:1;
+}
+.b-money {
+    font-size:10px;
+    font-weight:400;
+    line-height:14px;
+    margin-top: 7px;
+    color:rgba(102,102,102,1);
+    opacity:1;
+}
+
+.tick {
+    margin: 30px 20px;
+    .t-title {
+        font-size: 18px;
+    }
+    .t-1 {
+        font-size:11px;
+        color:rgba(242,152,149,1);
+        opacity:1;
+    }
+}
+
+.footer {
+    margin-top: 30px;
+    .f-num {
+        margin-left: 39%;
+        display: flex;
+        .f-num-ci {
+            font-size:24px;
+            color:rgba(0,0,0,1);
+        }
+    }
+    .f-hua {
+        margin-top: 40px;
+    }
+}
+.btn {
+    width:261px;
+    height:40px;
+    text-align: center;
+    line-height: 40px;
+    background:linear-gradient(90deg,rgba(254,222,135,1) 0%,rgba(242,204,95,1) 100%);
+    opacity:1;
+    border-radius:20px;
+    margin-top: 30px;
+    margin-left: 80px;
+}
+
+#recharge /deep/ {}
