@@ -113,4 +113,8 @@
 
 }
 
-#list /deep/ {}
+#home /deep/ {
+  .van-hairline--top-bottom::after {
+    border: none;
+  }
+}

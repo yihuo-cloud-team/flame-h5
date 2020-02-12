@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <div class="search-box">搜索</div>
+    <div class="search-box" @click="$router.push('/search')">搜索</div>
     <div class="screen-box">
       <van-dropdown-menu>
         <van-dropdown-item v-model="screen1" :options="option1" />
@@ -11,7 +11,7 @@
     <div class="trends-box">
       <div class="title">项目动态</div>
       <div class="trends-list">
-        <div class="item" v-for="i in 5" :key="i">
+        <div class="item" v-for="i in 5" @click="$router.push('/task/info')" :key="i">
           <div class="panel">
             <img
               src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4000386096,2288866861&fm=26&gp=0.jpg"

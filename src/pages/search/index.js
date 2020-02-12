@@ -1,0 +1,86 @@
+export default {
+    name: 'search',
+    layout: 'sub',
+    data() {
+        return {
+            name: '',
+            value1: 0,
+            value2: 0,
+            value3: 0,
+            option1: [
+                { text: '所有类型', value: 0 },
+                { text: '已完成', value: 1 },
+                { text: '未完成', value: 2 }
+            ],
+            option2: [
+                { text: '所有进度', value: 0 },
+                { text: '进行中', value: 1 },
+                { text: '已结束', value: 2 },
+            ],
+            option3: [
+                { text: '所有地区', value: 0 },
+                { text: '上海', value: 1 },
+                { text: '南京', value: 2 },
+            ],
+            list: [],
+            loading: false,
+            finished: false
+        };
+    },
+    methods: {
+        // 用于初始化一些数据
+        init() {
+            this.update();
+        },
+        // 用于更新一些数据
+        async update() {
+            // const res = await this.$http.post('', {});
+        },
+        async onLoad() {
+            setTimeout(() => {
+                for (let i = 0; i < 10; i++) {
+                    this.list.push(this.list.length + 1);
+                }
+
+                // 加载状态结束
+                this.loading = false;
+
+                // 数据全部加载完成
+                if (this.list.length >= 40) {
+                    this.finished = true;
+                }
+            }, 2000);
+        }
+    },
+    // 计算属性
+    computed: {},
+    // 包含 Vue 实例可用过滤器的哈希表。
+    filters: {},
+    // 在实例创建完成后被立即调用
+    created() { },
+    // 在挂载开始之前被调用：相关的 render 函数首次被调用。
+    beforeMount() { },
+    // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
+    mounted() {
+        this.init();
+        this.$nextTick(() => { });
+    },
+    // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
+    beforeUpdate() { },
+    // keep-alive 组件激活时调用。
+    activated() { },
+    // keep-alive 组件停用时调用。
+    deactivated() { },
+    // 实例销毁之前调用。在这一步，实例仍然完全可用。
+    beforeDestroy() { },
+    //Vue 实例销毁后调用。
+    destroyed() { },
+    // 当捕获一个来自子孙组件的错误时被调用。
+    errorCaptured() { },
+    // 包含 Vue 实例可用指令的哈希表。
+    directives: {},
+    // 一个对象，键是需要观察的表达式，值是对应回调函数。
+    watch: {},
+    // 组件列表
+    components: {},
+};
