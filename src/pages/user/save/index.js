@@ -1,13 +1,22 @@
 export default {
     name: 'user',
-    layout:'sub',
+    layout: 'sub',
     data() {
         return {
             userInfo: null,
-            checked:true,
-            radio:'',
-            sex:"",
-            param: '1'
+            checked: true,
+            name: '',
+            skill: '',
+            phone: '',
+            radio: '',
+            sex: 1,
+            param: '1',
+            show: false,
+            tiem: '',
+            tiemtext: '请选择日期',
+            minDate: new Date(1950, 0, 1),
+            maxDate: new Date(2025, 10, 1),
+            currentDate: new Date()
         };
     },
     methods: {
@@ -23,10 +32,26 @@ export default {
         signOut() {
             localStorage.clear();
             this.$router.replace("/login");
+        },
+        formatter(type, val) {
+            if (type === 'year') {
+                return `${val}年`;
+            } else if (type === 'month') {
+                return `${val}月`
+            } else {
+                return `${val}日`
+            }
+        },
+        getTiem(e) {
+            let Tiem = `${e.getFullYear()}-${(e.getMonth() + 1) < 10 ? '0' + (e.getMonth() + 1) : (e.getMonth() + 1)}-${e.getDate()}`
+            this.tiem = Tiem
+            this.tiemtext = `${e.getFullYear()}年${(e.getMonth() + 1) < 10 ? '0' + (e.getMonth() + 1) : (e.getMonth() + 1)}月${e.getDate()}日`
+            this.show = !this.show
         }
     },
     // 计算属性
-    computed: {},
+    computed: {
+    },
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用

@@ -3,6 +3,9 @@ export default {
     layout:'sub',
     data() {
         return {
+            number: '',
+            name: '',
+            quota: '',
             query:{
                 page:1,
                 page_size:10,

@@ -25,16 +25,22 @@
       </div>
     </div>
     <div class="card">
-      <div>卡号</div>
-      <input class="card-input" type="text" placeholder="微信号、支付宝账户、银行卡账户">
+      <div style="margin-bottom: 20px;">卡号</div>
+      <div class="card-input">
+        <van-field v-model="number" style="padding: 5px 10px;" placeholder="微信号、支付宝账户、银行卡账户" />
+      </div>
     </div>
-    <div class="name">
-      <div>真实姓名</div>
-      <input class="name-input" type="text" placeholder="请填写真实姓名，以免打错款">
+    <div class="card">
+      <div style="margin-bottom: 20px;">真实姓名</div>
+      <div class="card-input">
+        <van-field v-model="name" style="padding: 5px 10px;" placeholder="请填写真实姓名，以免打错款" />
+      </div>
     </div>
-    <div class="money">
-      <div>提现金额</div>
-      <input class="money-input" type="text" placeholder="可提现金额9999.99">
+    <div class="card">
+      <div style="margin-bottom: 20px;">提现金额</div>
+      <div class="card-input">
+        <van-field v-model="quota" style="padding: 5px 10px;" placeholder="可提现金额9999.99" />
+      </div>
     </div>
     <div class="btn">提交</div>
     <div class="bottom-text" @click="$router.push('/amount/record')">提现记录</div>

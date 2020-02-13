@@ -2,6 +2,7 @@
 
 #cash {
   background-color: #F0F2F5;
+  height: 100vh;
 }
 
 .panel {
@@ -68,7 +69,9 @@
       height: 37px;
       font-size: 14px;
       margin-left: 22px;
-      line-height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: #fff;
       text-align: center;
       border: 1px solid #cccccc;
@@ -81,32 +84,15 @@
   margin: 22px 22px;
 
   .card-input {
-    width: 370px;
-    height: 30px;
     border-radius: 5px;
     color: rgba(136, 136, 136, 1);
     font-size: 14px;
-    padding-left: 10px;
-    margin-top: 20px;
     border: 1px solid rgba(255, 255, 255, 0);
+    overflow: hidden;
   }
 }
 
-.name {
-  font-size: 22px;
-  margin: 22px 22px;
 
-  .name-input {
-    width: 370px;
-    height: 30px;
-    border-radius: 5px;
-    color: rgba(136, 136, 136, 1);
-    font-size: 14px;
-    padding-left: 10px;
-    margin-top: 20px;
-    border: 1px solid rgba(255, 255, 255, 0);
-  }
-}
 
 .money {
   font-size: 22px;
