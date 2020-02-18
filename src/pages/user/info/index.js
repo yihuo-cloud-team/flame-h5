@@ -12,6 +12,7 @@ export default {
         },
         // 用于更新一些数据
         async update() {
+            console.warn(SON.parse(localStorage.userInfo));
             // this.userInfo = JSON.parse(localStorage.userInfo);
         },
 
