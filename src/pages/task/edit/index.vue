@@ -3,27 +3,33 @@
     <div class="name">
       <div class="title">任务名称</div>
       <div class="input">
-        <van-field v-model="taskname" placeholder="30字符以内" />
+        <van-field v-model="form.name"  placeholder="30字符以内" />
       </div>
     </div>
     <div class="task-type">
       <div class="title">任务类别</div>
       <div class="option">
-        <div :class="['item',{'activ': activ == 1}]" @click="activ=1">翻译</div>
-        <div :class="['item',{'activ': activ == 2}]" @click="activ=2">软件</div>
-        <div :class="['item',{'activ': activ == 3}]" @click="activ=3">设计</div>
-        <div :class="['item',{'activ': activ == 4}]" @click="activ=4">其他</div>
+        <div :class="['item',{'activ': form.task_type == 0}]" @click="form.task_type=0">翻译</div>
+        <div :class="['item',{'activ': form.task_type == 1}]" @click="form.task_type=1">软件</div>
+        <div :class="['item',{'activ': form.task_type == 2}]" @click="form.task_type=2">设计</div>
+        <div :class="['item',{'activ': form.task_type == 3}]" @click="form.task_type=3">其他</div>
       </div>
       <transition name="fade">
-        <div class="input" v-if="activ == 4">
-          <van-field v-model="tasktype" placeholder="10字符以内" />
+        <div class="input" v-if="form.task_type == 3">
+          <van-field   placeholder="10字符以内" />
         </div>
       </transition>
     </div>
     <div class="price">
       <div class="title">任务价格</div>
       <div class="input">
-        <van-field v-model="taskprice" placeholder="30字符以内" />
+        <van-field v-model="form.price" placeholder="30字符以内" />
+      </div>
+    </div>
+    <div class="address">
+      <div class="title">任务周期(天)</div>
+      <div class="input">
+        <van-field type="number" v-model="form.cycle" placeholder="10字符以内" />
       </div>
     </div>
     <div class="info">
@@ -31,11 +37,11 @@
       <div class="input">
         <van-field
           style="padding: 10px;"
-          v-model="info"
           rows="4"
           autosize
-          type="textarea"
+          v-model="form.info"
           maxlength="300"
+          type="textarea"
           placeholder="请尽量详细描述您的项目，以吸引更多人报名"
           show-word-limit
         />
@@ -43,16 +49,23 @@
     </div>
     <div class="region">
       <div class="title">所在地</div>
-      <div class="input" @click="show = !show">{{area}}</div>
+      <div class="input" @click="show = !show"  >{{area}}</div>
     </div>
     <div class="address">
       <div class="title">详细地址</div>
       <div class="input">
-        <van-field v-model="address" placeholder="10字符以内" />
+        <van-field v-model="form.address" placeholder="10字符以内" />
       </div>
     </div>
+    <div class="address">
+      <div class="title">联系方式</div>
+      <div class="input">
+        <van-field v-model="form.contact" placeholder="手机号码" />
+      </div>
+    </div>
+    
     <div class="btn" @click="submit">下一步：托管资金</div>
-    <van-popup v-model="show" position="bottom">
+    <van-popup  v-model="show" position="bottom">
       <van-area
         :area-list="areaList"
         :value="selecarea.length > 1?selecarea[2].code:'110101'"

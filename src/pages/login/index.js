@@ -27,7 +27,7 @@ export default {
             if (typeof this.$route.query['code'] == 'undefined') {
                 // 跳转
 
-                const appid = 'wx017babfc5096532f';
+                const appid = 'wxddefe74894f7ff42';
                 const redirect_uri = encodeURIComponent(window.location.href);
                 window.location.replace(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`);
 
@@ -39,17 +39,25 @@ export default {
         },
         // 用于更新一些数据
         async login(code) {
-            const res = await this.$http.post('/h5/auth/login', { code: code });
-            if (res.code >= 1) {
+            const res1 = await this.$http.post('/auth/openid', {
+                code: code
+              });
+              const res = await this.$http.post('/auth/login',
+                res1.data
+              );
+              if (res.code >= 1) {
                 localStorage.jwt = res.jwt;
                 localStorage.userInfo = JSON.stringify(res.data);
-                this.userInfo = res.data;
-            }
-
+                this.userInfo = res.data; 
+                console.log(localStorage.location);
+                // this.$router.push(`/goodsList${localStorage.location}`);
+                this.$router.push('/');
+              }
+ 
         },
-        async submit() {
-            this.$router.push('/')
-        }
+        // async submit() {
+        //     this.$router.push('/')
+        // }
     },
     // 计算属性
     computed: {},

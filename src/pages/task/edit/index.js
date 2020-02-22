@@ -4,45 +4,52 @@ export default {
     layout: 'sub',
     data() {
         return {
-            taskname: '',
-            activ: 1,
-            tasktype: '',
-            taskprice: '',
-            info: '',
-            show: false,
-            areaList: [],
-            selecarea: [],
-            address: ''
-
+            form:{
+                name:"",//任务名称
+                task_type:"",//任务类型
+                price:"",//任务价格
+                info:"",//任务详情
+                p:"",//省
+                c:"",//市
+                a:"",//区
+                contact:"",//联系方式
+                cycle:"",//任务周期
+                address:"",//详细地址
+            },
+            areaList:[],
+            selecarea:[],
+            show:false
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
             this.areaList = AreaList
-
             this.update();
         },
         // 用于更新一些数据
         async update() {
             // const res = await this.$http.post('', {});
         },
-        selec(e) {
+        selec(e) { 
             this.selecarea = e
-            this.show = false
+            this.form.p = e[0].code
+            this.form.c = e[1].code
+            this.form.a = e[2].code
+            this.show=false
         },
         async submit() {
-            if (!this.taskprice) {
-                this.$toast('请填写项目价格金额');
-                return false
+          
+              const res = await this.$http.post('/task/save', this.form);
+            if(res.code>=0){
+                
             }
-            this.$router.push(`/amount/deposit?quota=${this.taskprice}`)
+            // this.$router.push(`/amount/deposit?quota=${this.taskprice}`)
         }
     },
     // 计算属性
     computed: {
         area() {
-            console.warn(this.selecarea.length);
 
             if (this.selecarea.length < 1) return '省市区选择'
             return `${this.selecarea[0].name} ${this.selecarea[1].name} ${this.selecarea[2].name}`
@@ -56,8 +63,10 @@ export default {
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
-        this.init();
-        this.$nextTick(() => { });
+      
+        this.$nextTick(() => { 
+            this.init();
+        });
     },
     // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
     beforeUpdate() { },
