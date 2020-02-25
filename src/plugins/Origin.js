@@ -72,3 +72,5 @@ Vue.prototype.$isPower = function (..._) {
 Vue.prototype.$back = function (go = -1) {
   this.$router.go(go);
 }
+
+
