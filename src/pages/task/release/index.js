@@ -5,40 +5,59 @@ export default {
         return {
             list: [],
             loading: false,
-            finished: false
+            finished: false,
+            query:{
+                page:1,
+                page_size:10
+            }
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
-            // this.userInfo = JSON.parse(localStorage.userInfo);
+            this.update()
         },
         // 用于更新一些数据
         async update() {
-            if (this.finished) return;
-            try {
-
-                // const res = await this.$http.post('/idea/list', this.query);
-            } catch (error) {
-
+            const res = await this.$http.post('/task/my/list', this.query);
+            if(res.code>=0){
+                res.data.map((el) => {
+                    el.add_time = this.dateDiff(el.add_time * 1000);
+                  })
+                  this.list = res.data
             }
-
         },
         async onLoad() {
-            setTimeout(() => {
-                for (let i = 0; i < 10; i++) {
-                    this.list.push(this.list.length + 1);
-                }
-
-                // 加载状态结束
-                this.loading = false;
-
-                // 数据全部加载完成
-                if (this.list.length >= 40) {
-                    this.finished = true;
-                }
-            }, 2000);
-        }
+         
+        },
+        dateDiff(hisTime, nowTime) {
+            var now = nowTime ? nowTime : new Date().getTime(),
+              diffValue = now - hisTime,
+              result = '',
+              minute = 1000 * 60,
+              hour = minute * 60,
+              day = hour * 24,
+              halfamonth = day * 15,
+              month = day * 30,
+              year = month * 12,
+      
+              _year = diffValue / year,
+              _month = diffValue / month,
+              _week = diffValue / (7 * day),
+              _day = diffValue / day,
+              _hour = diffValue / hour,
+              _min = diffValue / minute;
+      
+            if (_year >= 1) result = parseInt(_year) + "年前";
+            else if (_month >= 1) result = parseInt(_month) + "个月前";
+            else if (_week >= 1) result = parseInt(_week) + "周前";
+            else if (_day >= 1) result = parseInt(_day) + "天前";
+            else if (_hour >= 1) result = parseInt(_hour) + "个小时前";
+            else if (_min >= 1) result = parseInt(_min) + "分钟前";
+            else result = "刚刚";
+            return result;
+      
+          }
     },
     // 计算属性
     computed: {},

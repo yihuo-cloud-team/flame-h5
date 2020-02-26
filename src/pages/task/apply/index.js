@@ -1,5 +1,5 @@
 export default {
-    name: 'list',
+    name: 'apply',
     layout: 'sub',
     data() {
         return {
@@ -16,19 +16,12 @@ export default {
     methods: {
         // 用于初始化一些数据
         init() {
-            // this.userInfo = JSON.parse(localStorage.userInfo);
             this.update();
         },
         // 用于更新一些数据
         async update() {
-            const res = await this.$http.post('/task/get/list', this.query);
-            if(res.code>=0){
-                this.list = res.data;
-            }
+       const res = await this.$http.post('/task/join/list', this.query);
         },
-        async onLoad() {
-           
-        }
     },
     // 计算属性
     computed: {},

@@ -29,20 +29,44 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
+
+            if(this.$route.query.id){
+                const res = await this.$http.post('/task/info', {
+                    task_id: this.$route.query.id
+                  });
+                  if (res.code >= 0) {
+                    this.form.name = res.data.name;   
+                    this.form.task_type = res.data.task_type;   
+                    this.form.price = res.data.price;   
+                    this.form.info = res.data.info;   
+                    this.form.p = res.data.p;   
+                    this.form.c = res.data.c;   
+                    this.form.a = res.data.a;   
+                    this.form.contact = res.data.contact;   
+                    this.form.cycle = res.data.cycle;   
+                    this.form.address = res.data.address;   
+                    this.form.id = this.$route.query.id;
+                    // this.selecarea[0].name=res.data.p;
+                    // this.selecarea[1].name=res.data.a;
+                    // this.selecarea[2].name=res.data.c;
+                  }
+            }
+        
         },
         selec(e) { 
-            this.selecarea = e
-            this.form.p = e[0].code
-            this.form.c = e[1].code
-            this.form.a = e[2].code
-            this.show=false
+            this.selecarea = e;
+            this.form.p = e[0].code;
+            this.form.c = e[1].code;
+            this.form.a = e[2].code;
+            this.show=false;
         },
         async submit() {
-          
-              const res = await this.$http.post('/task/save', this.form);
+            const res = await this.$http.post('/task/save', this.form);
             if(res.code>=0){
-                
+                this.$toast('操作成功');
+                this.$router.go(-1);
+            }else{
+                this.$toast(res.msg);
             }
             // this.$router.push(`/amount/deposit?quota=${this.taskprice}`)
         }
@@ -83,7 +107,11 @@ export default {
     // 包含 Vue 实例可用指令的哈希表。
     directives: {},
     // 一个对象，键是需要观察的表达式，值是对应回调函数。
-    watch: {},
+    watch: {
+      
+    },
     // 组件列表
-    components: {},
+    components: {
+      
+    },
 };

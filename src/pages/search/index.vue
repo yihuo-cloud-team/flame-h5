@@ -1,6 +1,9 @@
 <template>
   <div id="search">
     <div class="search-box">
+      <div class="icon">
+        <van-icon  @click="zhuangtai=true" name="location" size="20" />
+      </div>
       <div class="input">
         <van-field style="width: 100%;" v-model="name" placeholder="搜索" />
       </div>
@@ -10,7 +13,6 @@
       <van-dropdown-menu>
         <van-dropdown-item v-model="value1" :options="option1" />
         <van-dropdown-item v-model="value2" :options="option2" />
-        <van-dropdown-item v-model="value3" :options="option3" />
       </van-dropdown-menu>
     </div>
     <div class="trends-list erect">
@@ -49,6 +51,9 @@
         </div>
       </van-list>
     </div>
+    <van-popup v-model="zhuangtai" position="bottom">
+      <van-area :area-list="areaList" @confirm="ok" @cancel="quxiao" value="110101" />
+    </van-popup>
   </div>
 </template>
 <script src="./index.js"></script>

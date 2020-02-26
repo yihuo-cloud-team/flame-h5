@@ -9,16 +9,12 @@
     <div class="task-type">
       <div class="title">任务类别</div>
       <div class="option">
-        <div :class="['item',{'activ': form.task_type == 0}]" @click="form.task_type=0">翻译</div>
-        <div :class="['item',{'activ': form.task_type == 1}]" @click="form.task_type=1">软件</div>
-        <div :class="['item',{'activ': form.task_type == 2}]" @click="form.task_type=2">设计</div>
-        <div :class="['item',{'activ': form.task_type == 3}]" @click="form.task_type=3">其他</div>
+        <div :class="['item',{'activ': form.task_type == 1}]" @click="form.task_type=1">翻译</div>
+        <div :class="['item',{'activ': form.task_type == 2}]" @click="form.task_type=2">软件</div>
+        <div :class="['item',{'activ': form.task_type == 3}]" @click="form.task_type=3">设计</div>
+        <div :class="['item',{'activ': form.task_type == 4}]" @click="form.task_type=4">其他</div>
       </div>
-      <transition name="fade">
-        <div class="input" v-if="form.task_type == 3">
-          <van-field   placeholder="10字符以内" />
-        </div>
-      </transition>
+      
     </div>
     <div class="price">
       <div class="title">任务价格</div>
