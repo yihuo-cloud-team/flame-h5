@@ -48,6 +48,7 @@ export default {
               if (res.code >= 1) {
                 localStorage.jwt = res.jwt;
                 localStorage.userInfo = JSON.stringify(res.data);
+
                 this.userInfo = res.data; 
                 console.log(localStorage.location);
                 // this.$router.push(`/goodsList${localStorage.location}`);

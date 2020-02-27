@@ -17,7 +17,7 @@ export default {
     },
     // 用于更新一些数据
     async update() {
-      const res = await this.$http.post('/task/info', {
+      const res = await this.$http.post('/task/info/ai', {
         task_id: this.$route.query.task_id
       });
       if (res.code >= 0) {
@@ -27,12 +27,14 @@ export default {
     async onLoad() {
 
     },
+    //开发者确认完成
     confirm1(e) {
       this.$dialog.confirm({
         message: '确认完成',
       }).then(async () => {
-        const res = await this.$http.post('/task/codeSuccess', {
-          task_id: e
+        const res = await this.$http.post('/task/updateState', {
+          task_id: e.id,
+          task_state:5
         });
         if (res.code >= 0) {
           this.$toast("操作成功");
@@ -45,12 +47,13 @@ export default {
       })
 
     },
+    //发布者确认
     confirm2(e) {
       this.$dialog.confirm({
         message: '确认完成',
       }).then(async () => {
-        const res = await this.$http.post('/task/codeSuccess', {
-          task_id: e
+        const res = await this.$http.post('/task/bossSuccess', {
+          task_id: e.id,
         });
         if (res.code >= 0) {
           this.$toast("操作成功");
@@ -62,12 +65,14 @@ export default {
 
       })
     },
+    //发布者中止任务
     quxiao(e) {
       this.$dialog.confirm({
         message: '确认中止',
       }).then(async () => {
-        const res = await this.$http.post('/task/stop', {
-          task_id: e
+        const res = await this.$http.post('/task/updateState', {
+          task_id: e.id,
+          task_state:3,
         });
         if (res.code >= 0) {
           this.$toast("操作成功");
@@ -79,6 +84,7 @@ export default {
 
       })
     },
+       //选择开发者
     async select(item) {
       console.log(item)
       const res = await this.$http.post('/task/chose', {
@@ -92,9 +98,9 @@ export default {
         this.$toast(res.msg);
       }
     },
-
+    //上架
     async save1(e) {
-      const res = await this.$http.post('/task/save', {
+      const res = await this.$http.post('/task/updateState', {
         is_up: 1,
         id: e.id
       });
@@ -105,8 +111,9 @@ export default {
         this.$toast(res.msg);
       }
     },
+    //下架
     async save2(e) {
-      const res = await this.$http.post('/task/save', {
+      const res = await this.$http.post('/task/updateState', {
         is_up: 0,
         id: e.id
       });

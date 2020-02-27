@@ -6,6 +6,7 @@
           <div class="title">{{info.task_name}}</div>
           <div class="state">
             <van-tag plain type="success" size="medium" v-if="info.task_state==0">招募中</van-tag>
+            <van-tag plain type="success" size="medium" v-if="info.task_state==1">待支付</van-tag>
             <van-tag plain type="success" size="medium" v-if="info.task_state==2">进行中</van-tag>
             <van-tag plain type="success" size="medium" v-if="info.task_state==3">中止</van-tag>
             <van-tag plain type="success" size="medium" v-if="info.task_state==4">完成</van-tag>
@@ -74,45 +75,84 @@
           <van-icon size="18px" style="margin-right: 10px;" name="question-o" />帮助
         </div>
       </div>
-      <van-button :disabled="false" v-if="info.state==0 && info.is_owner==1">发布</van-button>
-      <van-button
-        v-if="info.state==1 && info.is_owner==1 && info.is_up==0 &&info.task_state==0"
-        @click="save1(info)"
-      >发布</van-button>
-      <van-button
-        v-if="info.state==1 && info.is_owner==1 && info.is_up==1  && info.task_state==0"
-        @click="save2(info)"
-      >暂停</van-button>
-      <van-button
-        v-if="info.state==2 && info.is_owner==1"
-        @click="$router.push(`/task/edit?id=${info.id}`)"
-      >重新发布</van-button>
-      <!-- <van-button v-if="info.state==2 && info.is_owner==1">编辑</van-button> -->
-      <van-button
-        @click="$router.push(`/enroll?id=${info.id}`)"
-        v-if="info.state==1 && info.is_owner==0 && info.is_join==0"
-      >参与项目</van-button>
-      <van-button
-        @click="$router.push(`/enroll?id=${info.id}`)"
-        v-if="info.state==1 && info.is_owner==0 && info.is_join==1"
-      >修改描述</van-button>
-      <van-button
-        v-if="info.state==1 && info.is_owner==1 && info.is_up==1 &&info.task_state==2"
-        @click="quxiao(inid.id)"
-      >中止</van-button>
-      <van-button
-        v-if="info.state==1 && info.is_owner==0 && info.is_up==1 &&info.task_state==2"
-        @click="confirm1(info.id)"
-      >完成待确认</van-button>
-      <van-button
-        v-if="info.state==1 && info.is_owner==1 && info.is_up==1 &&info.task_state==5"
-        @click="confirm2(info.id)"
-      >确认完成</van-button>
-      <van-button
-        v-if="info.state==1  && info.is_up==1 &&info.task_state==4"
-        :disabled="false"
-      >任务已完成</van-button>
-    </div>
+      <!-- 等于1是自己发布的 -->
+      <template v-if="info.is_owner==1">
+        <!-- 审核状态 -->
+        <template v-if="info.task_state==1">
+          <van-button>待支付</van-button>
+        </template>
+        <template v-else>
+          <!-- 支付完成进入待审核状态 -->
+          <template v-if="info.state==0">
+            <van-button disabled>待审核</van-button>
+          </template>
+          <!-- 审核通过 -->
+          <template v-if="info.state==1">
+            <!--  任务状态为0 招募中 -->
+            <template v-if="info.task_state==0">
+              <template v-if="info.is_up==0">
+                <van-button @click="save1(info)">上架</van-button>
+              </template>
+              <template v-if="info.is_up==1">
+                <van-button @click="save2(info)">下架</van-button>
+              </template>
+            </template>
+            <!--  任务状态为2 进行中-->
+            <template v-if="info.task_state==2">
+              <van-button disabled>任务进行中</van-button>
+              <span @click="quxiao(info)">终止任务</span>
+            </template>
+            <!--  任务状态为3 任务中止-->
+            <template v-if="info.task_state==2">
+              <van-button disabled>任务中止</van-button>
+            </template>
+            <!-- 任务状态为5 完成待确认 -->
+            <template v-if="info.task_state==5">
+              <van-button @click="confirm2(info)">确认完成</van-button>
+            </template>
+          </template>
+          <!-- 审核被驳回 -->
+          <template v-if="info.state==2">
+            <van-button @click="$router.push(`/task/edit?id=${info.id}`)">重新发布</van-button>
+          </template>
+        </template>
+      </template>
+
+      <!-- 等于0是别人发布的 -->
+      <template v-if="info.is_owner==0">
+        <!-- 审核状态 -->
+        <template v-if="info.state==1">
+          <!-- 任务状态为0 -->
+          <template v-if="task_state==0">
+            <template v-if="info.is_up==0">
+              <van-button disabled>任务已下架</van-button>
+            </template>
+            <template v-if="info.is_up==1">
+              <template v-if="info.is_join==0">
+                <van-button @click="$router.push(`/enroll?id=${info.id}`)">参与项目</van-button>
+              </template>
+              <template v-if="info.is_join==1">
+                <van-button disabled>已申请</van-button>
+              </template>
+            </template>
+          </template>
+          <template v-if="task_state==2">
+            <template v-if="info.is_join==0">
+              <van-button disabled>您已此错此次任务</van-button>
+            </template>
+            <template v-if="info.is_join==1">
+              <van-button disabled>您的申请没有通过</van-button>
+            </template>
+            <template v-if="info.is_join==2">
+              <van-button @click="confirm1(info)">确认完成</van-button>
+            </template>
+          </template>
+          <templte v-if="info.task_state==4">
+            <van-button disabled>任务已完成</van-button>
+          </templte>
+        </template>
+      </template>
+    </div>  
   </div>
 </template>
 <script src="./index.js"></script>

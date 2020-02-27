@@ -3,12 +3,12 @@
     <div class="user-info">
       <div class="info-image">
         <!-- <img class="img" :src="$getUrl(userInfo.wx_head)" /> -->
-        <img class="img" src="http://img3.imgtn.bdimg.com/it/u=378824344,1185609431&fm=26&gp=0.jpg" />
+        <!-- <img class="img" :src="userInfo.head_img" /> -->
       </div>
       <!-- <div class="user-name">{{userInfo.wx_name}}</div> -->
-      <div class="user-name">用户名</div>
+      <!-- <div class="user-name">{{userInfo.name}}</div> -->
     </div>
-    <div class="user-member">会员到期时间：2020年3月31日</div>
+    <!-- <div class="user-member">会员到期时间：2020年3月31日</div> -->
     <div>
       <van-cell-group>
         <van-cell title="用户信息" to="/user/save" is-link />
