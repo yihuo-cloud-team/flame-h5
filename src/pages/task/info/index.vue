@@ -2,14 +2,34 @@
   <div id="info">
     <div class="head">
       <div class="head-body">
+        <div>NO.{{info.task_num}}</div>
         <div class="title-box">
           <div class="title">{{info.task_name}}</div>
           <div class="state">
-            <van-tag plain type="success" size="medium" v-if="info.task_state==0">招募中</van-tag>
-            <van-tag plain type="success" size="medium" v-if="info.task_state==1">待支付</van-tag>
-            <van-tag plain type="success" size="medium" v-if="info.task_state==2">进行中</van-tag>
-            <van-tag plain type="success" size="medium" v-if="info.task_state==3">中止</van-tag>
-            <van-tag plain type="success" size="medium" v-if="info.task_state==4">完成</van-tag>
+            <template v-if="info.task_state==1">
+              <van-tag plain type="success" size="medium">待支付</van-tag>
+            </template>
+            <template v-else>
+              <template v-if="info.state==0">
+                <van-tag plain type="success" size="medium">等待审核</van-tag>
+              </template>
+              <template v-if="info.state==1">
+                <template v-if="info.is_up==0">
+                  <van-tag plain type="success" size="medium">已下架</van-tag>
+                </template>
+                <template v-if="info.is_up==1">
+                  <van-tag plain type="success" size="medium" v-if="info.task_state==0">招募中</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="info.task_state==2">进行中</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="info.task_state==3">中止</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="info.task_state==4">完成</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="info.task_state==5">待验收</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="info.task_state==6">失败</van-tag>
+                </template>
+              </template>
+              <template v-if="info.state==2">
+                <van-tag plain type="success" size="medium">审核失败</van-tag>
+              </template>
+            </template>
           </div>
         </div>
         <div class="type" v-if="info.task_type==0">翻译</div>
@@ -27,13 +47,16 @@
             <van-icon name="good-job-o" style="margin-right: 5px;" size="16px" />赞 999
           </div>
         </div>
+        <div v-if="info.state==2">
+          <div style="color:red;font-size:14px;margin-top:10px">失败原因:{{info.remarks}}</div>
+        </div>
       </div>
     </div>
     <div class="body">
       <div class="title" style="margin-bottom: 25px;">任务信息</div>
       <div class="text">{{info.info}}</div>
-      <div class="title" style="margin-bottom: 25px;">备注</div>
-      <div class="text">{{info.remarks}}</div>
+      <!-- <div class="title" style="margin-bottom: 25px;">备注</div>
+      <div class="text">{{info.remarks}}</div>-->
       <div class="title" style="margin-bottom: 6px;">联系方式</div>
       <div class="contact">
         <div class="phone">{{info.name}}:{{info.contact}}</div>
@@ -41,6 +64,7 @@
     </div>
     <div class="enlist-body" v-if="info.is_owner==1">
       <div class="title">已报名</div>
+      <div class="title" v-if>开发者</div>
       <div class="enlist-list">
         <van-list
           v-model="loading"
@@ -49,19 +73,21 @@
           style=" width: 100%;"
           @load="onLoad"
         >
-          <div class="item" v-for="item in info.joinData" :key="item" :title="item">
+          <div class="item" v-for="(item,index) in info.joinData" :key="index" :title="item">
             <div class="head">
-              <img
-                class="img"
-                src="https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4016333918,4269266815&fm=26&gp=0.jpg"
-                alt
-              />
+              <img class="img" :src="item.head_img" alt />
               <div class="info">
                 <div class="name">{{item.name}}</div>
                 <div class="time">{{item.add_time}}报名</div>
               </div>
               <div class="btn-box">
-                <div class="btn" v-if="info.join_user==0" @click="select(item.id)">选他</div>
+                <template v-if="info.is_up==1">
+                  <template v-if="info.is_owner==1">
+                    <template v-if="info.task_state==0">
+                      <div class="btn" v-if="info.join_user==0" @click="select(item.user_id)">选他</div>
+                    </template>
+                  </template>
+                </template>
               </div>
             </div>
             <div class="text">{{item.text}}</div>
@@ -79,7 +105,9 @@
       <template v-if="info.is_owner==1">
         <!-- 审核状态 -->
         <template v-if="info.task_state==1">
-          <van-button>待支付</van-button>
+          <van-button
+            @click.stop="$router.push(`/amount/deposit?task_order=${info.task_order}&&price=${info.price}`)"
+          >待支付</van-button>
         </template>
         <template v-else>
           <!-- 支付完成进入待审核状态 -->
@@ -100,11 +128,17 @@
             <!--  任务状态为2 进行中-->
             <template v-if="info.task_state==2">
               <van-button disabled>任务进行中</van-button>
-              <span @click="quxiao(info)">终止任务</span>
+              <div class="box">
+                <span class="left"></span>
+                <span class="right" @click="quxiao(info)">终止任务</span>
+              </div>
             </template>
             <!--  任务状态为3 任务中止-->
-            <template v-if="info.task_state==2">
+            <template v-if="info.task_state==3">
               <van-button disabled>任务中止</van-button>
+            </template>
+            <template v-if="info.task_state==4">
+              <van-button disabled>任务完成</van-button>
             </template>
             <!-- 任务状态为5 完成待确认 -->
             <template v-if="info.task_state==5">
@@ -123,7 +157,7 @@
         <!-- 审核状态 -->
         <template v-if="info.state==1">
           <!-- 任务状态为0 -->
-          <template v-if="task_state==0">
+          <template v-if="info.task_state==0">
             <template v-if="info.is_up==0">
               <van-button disabled>任务已下架</van-button>
             </template>
@@ -136,9 +170,9 @@
               </template>
             </template>
           </template>
-          <template v-if="task_state==2">
+          <template v-if="info.task_state==2  ">
             <template v-if="info.is_join==0">
-              <van-button disabled>您已此错此次任务</van-button>
+              <van-button disabled>您已错过此次任务</van-button>
             </template>
             <template v-if="info.is_join==1">
               <van-button disabled>您的申请没有通过</van-button>
@@ -147,12 +181,18 @@
               <van-button @click="confirm1(info)">确认完成</van-button>
             </template>
           </template>
-          <templte v-if="info.task_state==4">
+          <template v-if="info.task_state==3">
+            <van-button disabled>任务中止</van-button>
+          </template>
+          <template v-if="info.task_state==4">
             <van-button disabled>任务已完成</van-button>
-          </templte>
+          </template>
+          <template v-if="info.task_state==5">
+            <van-button disabled>已完成待验收</van-button>
+          </template>
         </template>
       </template>
-    </div>  
+    </div>
   </div>
 </template>
 <script src="./index.js"></script>

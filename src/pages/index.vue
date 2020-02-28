@@ -8,22 +8,18 @@
         <div
           class="item"
           v-for="(i,index) in moveList"
-       @click="$router.push(`/task/info?task_id=${item.id}`)"
+          @click="$router.push(`/task/info?task_id=${i.id}`)"
           :key="index"
         >
-          <div class="panel">
-            <img
-              src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4000386096,2288866861&fm=26&gp=0.jpg"
-              class="img"
-            />
+          <div class="panel" >
+            <img :src="$getUrl(i.img)" class="img" />
             <div class="panel-body">
               <div class="title">{{i.task_name}}</div>
               <div class="text">
                 <div class="money">￥{{i.price}}</div>
                 <div class="state">
                   <van-tag plain type="success" size="medium" v-if="i.task_state==0">招募中</van-tag>
-                  <van-tag plain type="success" size="medium" v-if="i.task_state==2">进行中</van-tag>
-                  <van-tag plain type="success" size="medium" v-if="i.task_state==3">中止</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="i.task_state==2">开发中</van-tag>
                   <van-tag plain type="success" size="medium" v-if="i.task_state==4">完成</van-tag>
                 </div>
               </div>
@@ -47,9 +43,9 @@
             :key="index"
             :title="item"
           >
-            <div class="panel">
+            <div class="panel" >
               <img
-                src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4000386096,2288866861&fm=26&gp=0.jpg"
+                :src="$getUrl(item.img)"
                 class="img"
               />
               <div class="panel-body">
@@ -57,8 +53,7 @@
                   <div class="title">{{item.task_name}}</div>
                   <div class="state">
                     <van-tag plain type="success" size="medium" v-if="item.task_state==0">招募中</van-tag>
-                    <van-tag plain type="success" size="medium" v-if="item.task_state==2">进行中</van-tag>
-                    <van-tag plain type="success" size="medium" v-if="item.task_state==3">中止</van-tag>
+                    <van-tag plain type="success" size="medium" v-if="item.task_state==2">开发中</van-tag>
                     <van-tag plain type="success" size="medium" v-if="item.task_state==4">完成</van-tag>
                   </div>
                 </div>

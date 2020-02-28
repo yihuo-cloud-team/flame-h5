@@ -25,7 +25,7 @@ export default {
       }
     },
     async onLoad() {
-
+      
     },
     //开发者确认完成
     confirm1(e) {
@@ -33,7 +33,7 @@ export default {
         message: '确认完成',
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
-          task_id: e.id,
+          id: e.id,
           task_state:5
         });
         if (res.code >= 0) {
@@ -71,7 +71,7 @@ export default {
         message: '确认中止',
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
-          task_id: e.id,
+          id: e.id,
           task_state:3,
         });
         if (res.code >= 0) {

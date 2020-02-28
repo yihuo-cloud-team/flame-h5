@@ -1,6 +1,6 @@
 @import "@/styles/variable.scss";
 
-#edit {
+#add {
   padding: 10px 15px;
 
   .input {
@@ -120,6 +120,7 @@
   }
 
   .btn {
+
     height: 46px;
     border-radius: 4px;
     margin: 0 auto;
@@ -147,4 +148,4 @@
   opacity: 0;
 }
 
-#edit /deep/ {}
+#add /deep/ {}

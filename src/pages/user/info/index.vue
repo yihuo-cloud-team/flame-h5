@@ -2,19 +2,17 @@
   <div id="user">
     <div class="user-info">
       <div class="info-image">
-        <!-- <img class="img" :src="$getUrl(userInfo.wx_head)" /> -->
-        <!-- <img class="img" :src="userInfo.head_img" /> -->
+        <img class="img" :src="userInfo.head_img" />
       </div>
-      <!-- <div class="user-name">{{userInfo.wx_name}}</div> -->
-      <!-- <div class="user-name">{{userInfo.name}}</div> -->
+      <div class="user-name">{{userInfo.name}}</div>
     </div>
-    <!-- <div class="user-member">会员到期时间：2020年3月31日</div> -->
+
     <div>
       <van-cell-group>
         <van-cell title="用户信息" to="/user/save" is-link />
         <!-- <van-cell title="会员充值中心" to="/amount/recharge" is-link /> -->
         <!-- <van-cell title="我的订单" to="/order/record" is-link /> -->
-        <van-cell title="发布任务" to="/task/edit" is-link />
+        <van-cell title="发布任务" to="/task/add" is-link />
         <van-cell title="我的发布" to="/task/release" is-link />
         <van-cell title="我申请的任务" to="/task/apply" is-link  />
         <van-cell title="我接到的任务" to="/task/join" is-link />
@@ -25,7 +23,7 @@
         <van-cell title="帮助说明" to="/user/help" is-link />
       </van-cell-group>
     </div>
-    <!-- <div class="btn" @click="signOut">退出登录</div> -->
+    <div class="btn" @click="signOut">退出登录</div>
   </div>
 </template>
 <script src="./index.js"></script>

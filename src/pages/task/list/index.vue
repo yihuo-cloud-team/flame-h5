@@ -9,9 +9,9 @@
         @load="onLoad()"
       >
         <div class="item" v-for="(item,index) in list" @click="$router.push('/task/info')" :key="index" :title="item">
-          <div class="panel">
+          <div class="panel" v-if="item.task_state==0">
             <img
-              src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4000386096,2288866861&fm=26&gp=0.jpg"
+            :src="$getUrl(item.img)"
               class="img"
             />
               <div class="panel-body">

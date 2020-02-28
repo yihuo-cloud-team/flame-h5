@@ -1,11 +1,11 @@
 import AreaList from '../../../lib/area'
 export default {
-    name: 'edit',
+    name: 'add',
     layout: 'sub',
     data() {
         return {
             form:{
-                name:"",//任务名称
+                task_name:"",//任务名称
                 task_type:"",//任务类型
                 price:"",//任务价格
                 info:"",//任务详情
@@ -15,7 +15,7 @@ export default {
                 contact:"",//联系方式
                 cycle:"",//任务周期
                 address:"",//详细地址
-                img:"",//图片
+                img:""
             },
             areaList:[],
             selecarea:[],
@@ -31,19 +31,7 @@ export default {
         // 用于更新一些数据
         async update() {
 
-            if(this.$route.query.id){
-                const res = await this.$http.post('/task/info', {
-                    task_id: this.$route.query.id
-                  });
-                  if (res.code >= 0) {
-                    this.form =  res.data;
-                    this.form.id = this.$route.query.id;
-                    // this.selecarea[0].name=res.data.p;
-                    // this.selecarea[1].name=res.data.a;
-                    // this.selecarea[2].name=res.data.c;
-                  }
-            }
-        
+          
         },
         selec(e) { 
             this.selecarea = e;
@@ -56,11 +44,11 @@ export default {
             const res = await this.$http.post('/task/save', this.form);
             if(res.code>=0){
                 this.$toast('操作成功');
-                this.$router.go(-1);
+              this.$router.replace(`/amount/deposit?price=${this.form.price}&&task_order=${res.data.task_order}`)
             }else{
                 this.$toast(res.msg);
             }
-            // this.$router.push(`/amount/deposit?quota=${this.taskprice}`)
+            
         }
     },
     // 计算属性

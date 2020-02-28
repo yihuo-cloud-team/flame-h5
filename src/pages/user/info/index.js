@@ -2,7 +2,7 @@ export default {
     name: 'user',
     data() {
         return {
-            userInfo: null
+            userInfo: {}
         };
     },
     methods: {
@@ -31,8 +31,10 @@ export default {
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
-        this.init();
-        this.$nextTick(() => { });
+     
+        this.$nextTick(() => {
+            this.init();
+         });
     },
     // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
     beforeUpdate() { },

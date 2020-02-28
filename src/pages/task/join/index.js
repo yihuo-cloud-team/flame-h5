@@ -32,10 +32,10 @@ export default {
         })
         this.loading = false;
         this.list = [...this.list, ...res.data];
-      } else {
+      } else {      
         this.finished = true;
-
       }
+   
     },
     async onLoad() {
         this.page = ++this.page;
