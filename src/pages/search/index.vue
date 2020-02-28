@@ -1,18 +1,19 @@
 <template>
   <div id="search">
     <div class="search-box">
-      <div class="icon">
-        <van-icon  @click="zhuangtai=true" name="location" size="20" />
+      <div class="icon" @click="show=true">
+        <van-icon name="location" size="20" />
+        {{district}}
       </div>
       <div class="input">
-        <van-field style="width: 100%;" v-model="name" placeholder="搜索" />
+        <van-field style="width: 100%;" v-model="query.search" placeholder="搜索" />
       </div>
-      <div class="btn">确认</div>
+      <div class="btn" @click="update">确认</div>
     </div>
     <div class="state-box">
       <van-dropdown-menu>
-        <van-dropdown-item v-model="value1" :options="option1" />
-        <van-dropdown-item v-model="value2" :options="option2" />
+        <van-dropdown-item v-model="query.task_type" :options="option1" @change="update" />
+        <van-dropdown-item v-model="query.task_state" :options="option2" @change="update" />
       </van-dropdown-menu>
     </div>
     <div class="trends-list erect">
@@ -26,33 +27,32 @@
         <div
           class="item"
           @click="$router.push('/task/info')"
-          v-for="item in list"
-          :key="item"
-          :title="item"
+          v-for="(item,index) in list"
+          :key="index"
         >
           <div class="panel">
-            <img
-              src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4000386096,2288866861&fm=26&gp=0.jpg"
-              class="img"
-            />
+            <img :src="$getUrl(item.img)" class="img" />
             <div class="panel-body">
               <div class="title-box">
-                <div class="title">办公室网页开发</div>
+                <div class="title">{{item.task_name}}</div>
                 <div class="state">
-                  <van-tag plain type="success" size="medium">招募中</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="item.task_state==0">招募中</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="item.task_state==2">进行中</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="item.task_state==3">中止</van-tag>
+                  <van-tag plain type="success" size="medium" v-if="item.task_state==4">完成</van-tag>
                 </div>
               </div>
               <div class="text">
-                <div class="money">￥13,000</div>
+                <div class="money">￥{{item.price}}</div>
               </div>
-              <div class="subtitle">1小时前发布 | 20人报名</div>
+              <div class="subtitle">{{$handleTime(item.add_time)}}发布 | {{item.join_user}}人报名</div>
             </div>
           </div>
         </div>
       </van-list>
     </div>
-    <van-popup v-model="zhuangtai" position="bottom">
-      <van-area :area-list="areaList" @confirm="ok" @cancel="quxiao" value="110101" />
+    <van-popup v-model="show" position="bottom">
+      <van-area :area-list="areaList" @confirm="confirm" @cancel="cancel" :value="Areaval" />
     </van-popup>
   </div>
 </template>
