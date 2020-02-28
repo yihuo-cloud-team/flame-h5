@@ -63,8 +63,8 @@
       </div>
     </div>
     <div class="enlist-body" v-if="info.is_owner==1">
-      <div class="title">已报名</div>
-      <div class="title" v-if>开发者</div>
+      <div class="title" >已报名</div>
+      <!-- <div class="title" >开发者</div> -->
       <div class="enlist-list">
         <van-list
           v-model="loading"
@@ -73,7 +73,7 @@
           style=" width: 100%;"
           @load="onLoad"
         >
-          <div class="item" v-for="(item,index) in info.joinData" :key="index" :title="item">
+          <div class="item" v-for="(item,index) in list" :key="index" :title="item">
             <div class="head">
               <img class="img" :src="item.head_img" alt />
               <div class="info">

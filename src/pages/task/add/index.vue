@@ -28,7 +28,7 @@
     <div class="price">
       <div class="title">任务价格</div>
       <div class="input">
-        <van-field v-model="form.price" placeholder="30字符以内" />
+        <van-field  type="number" v-model="form.price" placeholder="30字符以内" />
       </div>
     </div>
     <div class="address">

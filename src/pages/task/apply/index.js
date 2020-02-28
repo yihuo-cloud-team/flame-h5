@@ -26,9 +26,6 @@ export default {
         page_size: 10
       });
       if (res.code > 0) {
-        res.data.map((el) => {
-          el.add_time = this.dateDiff(el.add_time * 1000);
-        })
         this.loading = false;
         this.list = [...this.list, ...res.data];
       } else {

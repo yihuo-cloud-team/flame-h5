@@ -7,16 +7,21 @@ export default {
       list: [],
       loading: false,
       finished: false,
-      info: {}
+      info: {},
+      list:[],
+      page:1,
+      page_size:10
     };
   },
   methods: {
     // 用于初始化一些数据
     init() {
       this.update();
+      this.apply();
     },
     // 用于更新一些数据
     async update() {
+
       const res = await this.$http.post('/task/info/ai', {
         task_id: this.$route.query.task_id
       });
@@ -25,8 +30,25 @@ export default {
       }
     },
     async onLoad() {
+      this.page = ++this.page;
+      this.apply();
+    },
+    async apply(){
+      this.loading = true;
+      const res = await this.$http.post('/task/applyList', {
+        task_id: this.$route.query.task_id,
+        page:this.page,
+        page_size:10
+      });
+      if(res.code>0){
+        this.loading=false;
+        this.list = [...this.list, ...res.data];
+      } else {
+        this.finished = true;
+      }
       
     },
+
     //开发者确认完成
     confirm1(e) {
       this.$dialog.confirm({

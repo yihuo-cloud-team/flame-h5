@@ -82,6 +82,7 @@ export default {
             this.finished = true;
           }
         } else {
+          
           this.finished = true;
         }
       } catch (error) {

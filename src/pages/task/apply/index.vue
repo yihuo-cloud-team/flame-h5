@@ -40,7 +40,7 @@
                 <div class="text">
                   <div class="money">￥{{item.price}}</div>
                 </div>
-                <div class="subtitle">{{item.add_time}} | {{item.join_num}}人报名</div>
+                <div class="subtitle">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</div>
               </div>
             </div>
           </div>

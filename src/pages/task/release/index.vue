@@ -51,7 +51,7 @@
                 <div class="text">
                   <div class="money">￥{{item.price}}</div>
                 </div>
-                <div class="subtitle">{{item.add_time}} | {{item.join_num}}人报名</div>
+                <div class="subtitle">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</div>
                 <template v-if="item.state==2">
                   <div style="color:red;font-size:12px">您发布的任务没有通过，请修改后重新发布</div>
                 </template>

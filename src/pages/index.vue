@@ -23,7 +23,7 @@
                   <van-tag plain type="success" size="medium" v-if="i.task_state==4">完成</van-tag>
                 </div>
               </div>
-              <div class="subtitle">{{i.add_time}} | {{i.join_num}}人报名</div>
+              <div class="subtitle">{{$handleTime(i.add_time)}} | {{i.join_num}}人报名</div>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
                 <div class="text">
                   <div class="money">￥{{item.price}}</div>
                 </div>
-                <div class="subtitle">{{item.add_time}} | {{item.join_num}}人报名</div>
+                <div class="subtitle">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</div>
               </div>
             </div>
           </div>
