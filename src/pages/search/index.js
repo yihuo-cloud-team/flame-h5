@@ -52,7 +52,7 @@ export default {
       ],
       list: [],
       loading: false,
-      finished: false,
+      finished: true,
       show: false,
       Areaval: '110101',
       AreaArr: [],
@@ -77,17 +77,23 @@ export default {
       try {
         let res = await this.$http.post('/task/list', this.query)
         if (res.code > 0) {
-          this.list = res.data
+          this.list = [...this.list, ...res.data]
+          this.query.page = this.query.page + 1
+          this.loading = false;
+          this.finished = false;
           if (res.total < 10) {
             this.finished = true;
           }
         } else {
-          
           this.finished = true;
         }
       } catch (error) {
-
       }
+    },
+    search() {
+      this.query.page = 1
+      this.list = []
+      this.update()
     },
     getAddress() {
       let mapObj = new AMap.Map('iCenter');
@@ -98,7 +104,7 @@ export default {
         geolocation.getCurrentPosition((status, result) => {
           if (status == 'complete') {
             this.Areaval = result.addressComponent.adcode
-            this.query.a = result.addressComponent.adcode
+            // this.query.a = result.addressComponent.adcode
             this.district = result.addressComponent.district
             this.update();
           } else {
