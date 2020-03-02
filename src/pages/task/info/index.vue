@@ -63,8 +63,7 @@
       </div>
     </div>
     <div class="enlist-body" v-if="info.is_owner==1">
-      <div class="title" >已报名</div>
-      <!-- <div class="title" >开发者</div> -->
+      <div class="title" >申请列表</div>
       <div class="enlist-list">
         <van-list
           v-model="loading"
@@ -87,6 +86,9 @@
                       <div class="btn" v-if="info.join_user==0" @click="select(item.user_id)">选他</div>
                     </template>
                   </template>
+                </template>
+                <template v-if="info.join_user!=0">
+                   <div class="btn" v-if="index==0">开发者</div>
                 </template>
               </div>
             </div>

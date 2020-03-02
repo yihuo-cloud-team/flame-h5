@@ -54,78 +54,63 @@
   }
 }
 
-.account {
-  .account-type {
-    font-size: 22px;
-    margin: 22px 22px;
+
+.tixian{
+  padding: 15px;
+  .title{
+      padding: 10px 0;
   }
-
-  .account-box {
-    display: flex;
-
-    // justify-content: space-between;
-    .box1 {
-      width: 52px;
-      height: 37px;
-      font-size: 14px;
-      margin-left: 22px;
+  .checkb {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #fff;
-      text-align: center;
-      border: 1px solid #cccccc;
+      flex-wrap: wrap;
+      min-height: 40px;
+      justify-content: flex-start;
+
+
+      .box {
+        flex: 1;
+        width: 45px;
+        margin: 0px 10px;
+        display: inline-block;
+        font-size: 13px;
+        border-radius: 4px;
+        line-height: 28px;
+        text-align: center;
+        margin-right: 5px;
+        background-color: #eee;
+        color: black;
+
+        &.active {
+          background-color: #FFC281;
+          color: white;
+        }
+      }
+
     }
+  .baocun{
+      color: white;
+      background-color: #fec900;
+      z-index: 99999;
+      margin-top: 20px;
+      bottom: 0;
+      padding: 13px 0;
+      text-align: center;
+      margin-bottom: 5px;
   }
-}
-
-.card {
-  font-size: 22px;
-  margin: 22px 22px;
-
-  .card-input {
-    border-radius: 5px;
-    color: rgba(136, 136, 136, 1);
-    font-size: 14px;
-    border: 1px solid rgba(255, 255, 255, 0);
-    overflow: hidden;
+  .box{
+      display: flex;
+      justify-content: flex-end;
+      .btn{
+          font-size: 13px;
+      }
   }
+ 
 }
 
 
 
-.money {
-  font-size: 22px;
-  margin: 22px 22px;
 
-  .money-input {
-    width: 370px;
-    height: 30px;
-    border-radius: 5px;
-    color: rgba(136, 136, 136, 1);
-    font-size: 14px;
-    padding-left: 10px;
-    margin-top: 20px;
-    border: 1px solid rgba(255, 255, 255, 0);
-  }
-}
 
-.btn {
-  width: 370px;
-  height: 40px;
-  line-height: 40px;
-  margin: 60px auto 0 auto;
-  border-radius: 4px;
-  background-color: #4289db;
-  color: white;
-  font-size: 14px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0);
-}
 
-.bottom-text {
-  text-align: center;
-  padding: 10px 0 20px 0;
-}
 
 #cash /deep/ {}

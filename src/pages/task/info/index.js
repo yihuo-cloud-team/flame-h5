@@ -8,9 +8,9 @@ export default {
       loading: false,
       finished: false,
       info: {},
-      list:[],
-      page:1,
-      page_size:10
+      list: [],
+      page: 1,
+      page_size: 10
     };
   },
   methods: {
@@ -33,20 +33,20 @@ export default {
       this.page = ++this.page;
       this.apply();
     },
-    async apply(){
+    async apply() {
       this.loading = true;
       const res = await this.$http.post('/task/applyList', {
         task_id: this.$route.query.task_id,
-        page:this.page,
-        page_size:10
+        page: this.page,
+        page_size: this.page_size
       });
-      if(res.code>0){
-        this.loading=false;
+      if (res.code > 0) {
+        this.loading = false;
         this.list = [...this.list, ...res.data];
       } else {
         this.finished = true;
       }
-      
+
     },
 
     //开发者确认完成
@@ -56,7 +56,7 @@ export default {
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
           id: e.id,
-          task_state:5
+          task_state: 5
         });
         if (res.code >= 0) {
           this.$toast("操作成功");
@@ -94,7 +94,7 @@ export default {
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
           id: e.id,
-          task_state:3,
+          task_state: 3,
         });
         if (res.code >= 0) {
           this.$toast("操作成功");
@@ -106,45 +106,67 @@ export default {
 
       })
     },
-       //选择开发者
+    //选择开发者
     async select(item) {
-      console.log(item)
-      const res = await this.$http.post('/task/chose', {
-        join_user: item,
-        task_id: this.$route.query.task_id
-      });
-      if (res.code >= 0) {
-        this.$toast('选择成功');
-        this.update();
-      } else {
-        this.$toast(res.msg);
-      }
+      this.$dialog.confirm({
+        message: '确认选择',
+      }).then(async () => {
+        const res = await this.$http.post('/task/chose', {
+          join_user: item,
+          task_id: this.$route.query.task_id
+        });
+        if (res.code >= 0) {
+          this.$toast('选择成功');
+          this.page = 1;
+          this.list = [];
+          this.update();
+          this.apply();
+        } else {
+          this.$toast(res.msg);
+        }
+      }).catch(() => {
+
+      })
     },
     //上架
     async save1(e) {
-      const res = await this.$http.post('/task/updateState', {
-        is_up: 1,
-        id: e.id
-      });
-      if (res.code >= 0) {
-        this.$toast('操作成功');
-        this.update();
-      } else {
-        this.$toast(res.msg);
-      }
+      this.$dialog.confirm({
+        message: '确认选择',
+      }).then(async () => {
+        const res = await this.$http.post('/task/updateState', {
+          is_up: 1,
+          id: e.id
+        });
+        if (res.code >= 0) {
+          this.$toast('操作成功');
+
+          this.update();
+        } else {
+          this.$toast(res.msg);
+        }
+      }).catch(() => {
+
+      })
     },
     //下架
     async save2(e) {
-      const res = await this.$http.post('/task/updateState', {
-        is_up: 0,
-        id: e.id
-      });
-      if (res.code >= 0) {
-        this.$toast('操作成功');
-        this.update();
-      } else {
-        this.$toast(res.msg);
-      }
+      this.$dialog.confirm({
+        message: '确认选择',
+      }).then(async () => {
+        const res = await this.$http.post('/task/updateState', {
+          is_up: 0,
+          id: e.id
+        });
+        if (res.code >= 0) {
+          this.$toast('操作成功');
+          this.update();
+        } else {
+          this.$toast(res.msg);
+        }
+      }).catch(() => {
+
+      })
+
     }
   },
   // 计算属性
