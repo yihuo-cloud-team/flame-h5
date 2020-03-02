@@ -8,7 +8,7 @@
       <div class="input">
         <van-field style="width: 100%;" v-model="query.search" placeholder="搜索" />
       </div>
-      <div class="btn" @click="update">确认</div>
+      <div class="btn" @click="search">确认</div>
     </div>
     <div class="state-box">
       <van-dropdown-menu>
@@ -22,7 +22,8 @@
         :finished="finished"
         style=" width: 100%;"
         finished-text="没有更多了"
-        @load="onLoad"
+        @load="update"
+        offset="50"
       >
         <div
           class="item"
