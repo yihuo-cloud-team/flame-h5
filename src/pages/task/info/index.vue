@@ -53,17 +53,16 @@
       </div>
     </div>
     <div class="body">
-      <div class="title" style="margin-bottom: 25px;">任务信息</div>
+      <div class="title" style="margin-bottom: 6px;">任务信息</div>
       <div class="text">{{info.info}}</div>
-      <!-- <div class="title" style="margin-bottom: 25px;">备注</div>
-      <div class="text">{{info.remarks}}</div>-->
+
       <div class="title" style="margin-bottom: 6px;">联系方式</div>
       <div class="contact">
         <div class="phone">{{info.name}}:{{info.contact}}</div>
       </div>
     </div>
-    <div class="enlist-body" v-if="info.is_owner==1">
-      <div class="title" >申请列表</div>
+    <div class="enlist-body">
+      <div class="title">申请列表</div>
       <div class="enlist-list">
         <van-list
           v-model="loading"
@@ -88,7 +87,7 @@
                   </template>
                 </template>
                 <template v-if="info.join_user!=0">
-                   <div class="btn" v-if="index==0">开发者</div>
+                  <div class="btn" v-if="index==0">开发者</div>
                 </template>
               </div>
             </div>

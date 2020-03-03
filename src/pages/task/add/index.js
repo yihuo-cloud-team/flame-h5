@@ -90,7 +90,6 @@ export default {
   // 计算属性
   computed: {
     area() {
-
       if (this.selecarea.length < 1) return '省市区选择'
       return `${this.selecarea[0].name} ${this.selecarea[1].name} ${this.selecarea[2].name}`
     }

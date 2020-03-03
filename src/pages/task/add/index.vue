@@ -3,7 +3,7 @@
     <div class="name">
       <div class="title">任务名称</div>
       <div class="input">
-        <van-field v-model="form.task_name" placeholder="30字符以内" />
+        <van-field maxlength="30" v-model="form.task_name" placeholder="30字符以内" />
       </div>
     </div>
   
@@ -28,13 +28,13 @@
     <div class="price">
       <div class="title">任务价格</div>
       <div class="input">
-        <van-field  type="number" v-model="form.price" placeholder="30字符以内" />
+        <van-field  type="number" maxlength="30" v-model="form.price" placeholder="20字符以内" />
       </div>
     </div>
     <div class="address">
       <div class="title">任务周期(天)</div>
       <div class="input">
-        <van-field type="number" v-model="form.cycle" placeholder="10字符以内" />
+        <van-field type="number" maxlength="30" v-model="form.cycle" placeholder="10字符以内" />
       </div>
     </div>
     <div class="info">
@@ -59,7 +59,7 @@
     <div class="address">
       <div class="title">详细地址</div>
       <div class="input">
-        <van-field v-model="form.address" placeholder="10字符以内" />
+        <van-field maxlength="10" v-model="form.address" placeholder="10字符以内" />
       </div>
     </div>
     <div class="address">

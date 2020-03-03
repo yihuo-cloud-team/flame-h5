@@ -54,7 +54,7 @@
     </div>
     <div class="region">
       <div class="title">所在地</div>
-      <div class="input" @click="show = !show"  >{{area}}</div>
+      <div class="input" @click="show = !show"  >{{area}}</div> 
     </div>
     <div class="address">
       <div class="title">详细地址</div>

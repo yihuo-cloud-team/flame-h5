@@ -1,10 +1,8 @@
 export default {
-    name: 'mention',
-    layout: 'sub',
+    name: 'ranking',
+    layout:"sub",
     data() {
-        return {
-            message: ''
-        };
+        return {};
     },
     methods: {
         // 用于初始化一些数据
@@ -13,22 +11,11 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
-        },
-        async submit(){
-            
-            if(this.message.replace(/(^\s*)|(\s*$)/g, "")==''){
-                this.$toast('输入内容不得为空');
-                return false;
+            const res = await this.$http.post('/top/list', {});
+            if(res.code>=0){
+                this.info = res.data;
             }
-            const res = await this.$http.post('/suggest/save', {text:this.message});
-                if(res.code>=0){
-                    this.$toast('发表成功');
-                    this.$router.go(-1);
-                }else{
-                    this.$toast(res.msg);
-                }
-        }
+        },
     },
     // 计算属性
     computed: {},

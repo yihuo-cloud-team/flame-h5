@@ -20,7 +20,8 @@ export default {
       this.loading = true;
       const res = await this.$http.post('/task/move/list', {
         page: this.page,
-        page_size: 10
+        page_size: 10,
+        task_state:0
       });
       if (res.code > 0) {
         this.loading = false;

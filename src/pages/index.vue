@@ -1,6 +1,9 @@
 <template>
   <div id="home">
-    <div class="search-box" @click="$router.push('/search')">搜索</div>
+    <div class="search-box" @click="$router.push('/search')">
+    <van-icon name="search" size="18"></van-icon>
+    搜索
+    </div>
 
     <div class="trends-box">
       <div class="title1">项目动态</div>

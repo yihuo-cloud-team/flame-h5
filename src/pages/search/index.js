@@ -26,7 +26,7 @@ export default {
       },
       {
         text: '其他',
-        value: 2
+        value: 4
       }
       ],
       option2: [{
@@ -41,10 +41,7 @@ export default {
         text: '进行中',
         value: 2
       },
-      {
-        text: '中止',
-        value: 3
-      },
+     
       {
         text: '完成',
         value: 4
@@ -125,7 +122,7 @@ export default {
       this.show = false
     },
     async onLoad() {
-
+      this.update();
     }
   },
   // 计算属性

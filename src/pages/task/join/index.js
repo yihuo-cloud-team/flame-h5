@@ -24,7 +24,8 @@ export default {
       this.loading = true
       const res = await this.$http.post('/task/get/list', {
         page: this.page,
-        page_size: 10
+        page_size: 10,
+     
       });
       if (res.code > 0) {
     
