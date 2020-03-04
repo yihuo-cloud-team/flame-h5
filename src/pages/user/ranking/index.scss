@@ -1,9 +1,93 @@
 @import "@/styles/variable.scss";
 
 #ranking {
+  padding: 0px 15px;
   height: 100vh;
   display: flex;
   flex-direction: column;
+
+  .select {
+    font-size: 14px;
+    display: flex;
+    padding: 17px 0px;
+
+    span {
+      padding: 0 0 3px 0;
+    }
+
+    .span {
+      color: #4289DB;
+    }
+
+    .span1 {
+      color: #333;
+    }
+
+    .left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .active {
+        width: 50px;
+        border-radius: 14px;
+        height: 3px;
+
+        background-color: #4289DB;
+
+      }
+
+      .active1 {
+        height: 3px;
+
+        background-color: #F0F2F5;
+      }
+    }
+
+  }
+
+  .select1 {
+    display: flex;
+    padding: 18px;
+    background-color: #ffffff;
+
+
+    .left {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      span {
+        padding: 0 0 3px 0;
+      }
+
+      .span {
+        color: #4289DB;
+      }
+
+      .span1 {
+        color: #333;
+      }
+
+      .active {
+        border-radius: 14px;
+        width: 50px;
+        height: 3px;
+
+        background-color: #4289DB;
+      }
+
+      .active1 {
+
+        height: 3px;
+        background-color: #F0F2F5;
+      }
+    }
+
+  }
 
   .top {
     background-color: white;
@@ -26,16 +110,24 @@
         align-items: center;
 
         .box-num {
-          font-size: 22px;
+          font-size: 30px;
           margin-bottom: 5px;
-          font-weight: bold;
+
         }
 
         .box-wancheng {
+          font-size: 14px;
+          color: rgba(119, 119, 119, $alpha: 1.0);
           margin-bottom: 8px;
         }
 
-        .box-ranking {}
+        .box-ranking {
+          font-size: 10px;
+          border-radius: 4px;
+          padding: 0px 2px;
+          color: #4289DB;
+          border: 1px solid #4289DB;
+        }
       }
     }
   }
@@ -48,7 +140,7 @@
 
     .list {
       background-color: white;
-      padding: 26px 13px;
+      padding: 0px 13px;
       align-items: center;
       justify-content: center;
 
@@ -56,15 +148,24 @@
         flex: 1;
         display: flex;
         align-items: center;
-      
+
         padding: 5px;
 
 
         .left {
+          width: 20px;
+          display: flex;
+          justify-content: center;
           margin-right: 10px;
+
+          img {
+            width: 20px;
+            height: 25px;
+          }
         }
 
         .img {
+
           margin-right: 10px;
           width: 50px;
           height: 50px;
@@ -72,21 +173,25 @@
           background-color: #dddddd;
         }
 
-        .right{
+        .right {
           flex: 1;
-          .right-top{
+
+          .right-top {
             font-size: 14px;
             margin-bottom: 5px;
           }
-          .right-bottom{
+
+          .right-bottom {
             display: flex;
             flex-direction: row;
-            .zuo{
+
+            .zuo {
               flex: 1;
               font-size: 11px;
               color: #777777;
             }
-            .you{
+
+            .you {
               flex: 1;
               font-size: 11px;
               color: #777777;
@@ -94,7 +199,7 @@
           }
         }
 
-      
+
       }
     }
   }

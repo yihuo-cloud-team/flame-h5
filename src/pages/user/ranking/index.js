@@ -16,13 +16,14 @@ export default {
       query: {
         type: 1,
         page: 1,
-        page_size: 3
+        page_size: 10
       }
     };
   },
   methods: {
     // 用于初始化一些数据
     init() {
+        console.log(this.active)
         this.top();
       this.update();
      
@@ -41,14 +42,38 @@ export default {
         this.query.page = this.query.page + 1
           this.loading = false;
           this.finished = false;
-          if (res.total < 3) {
+          if (res.total < 10) {
             this.finished = true;
           }
       }else{
           this.finished =true;
       }
     },
-    select() {
+    select1(){
+        this.active = 0;
+        this.list = [];
+        this.query.page = 1;
+      if (this.active == 0) {
+        if (this.active1 == 0) {
+            this.query.type = 1;
+       
+            this.update();
+        } else {
+            this.query.type= 2;
+            this.update();
+        }
+      } else {
+        if (this.active1 == 0) {
+            this.query.type = 3;
+            this.update();
+        } else {
+            this.query.type = 4;
+            this.update();
+        }
+      }
+    },
+    select2(){
+        this.active = 1;
         this.list = [];
         this.query.page = 1;
       if (this.active == 0) {
@@ -71,7 +96,78 @@ export default {
         }
       }
     },
-    
+    // select() {
+ 
+    //     this.list = [];
+    //     this.query.page = 1;
+    //   if (this.active == 0) {
+    //     if (this.active1 == 0) {
+    //         this.query.type = 1;
+       
+    //         this.update();
+    //     } else {
+    //         console.log(this.active1)
+    //         this.query.type= 2;
+    //         this.update();
+    //     }
+    //   } else {
+    //     if (this.active1 == 0) {
+    //         this.query.type = 3;
+    //         this.update();
+    //     } else {
+    //         this.query.type = 4;
+    //         this.update();
+    //     }
+    //   }
+    // },
+    select3(){
+        this.active1= 0;
+        this.list =[];
+        this.query.page = 1;
+        if (this.active == 0) {
+            if (this.active1 == 0) {
+                this.query.type = 1;
+           
+                this.update();
+            } else {
+                console.log(this.active1)
+                this.query.type= 2;
+                this.update();
+            }
+          } else {
+            if (this.active1 == 0) {
+                this.query.type = 3;
+                this.update();
+            } else {
+                this.query.type = 4;
+                this.update();
+            }
+          }
+    },
+    select4(){
+        this.active1= 1;
+        this.list =[];
+        this.query.page = 1;
+        if (this.active == 0) {
+            if (this.active1 == 0) {
+                this.query.type = 1;
+           
+                this.update();
+            } else {
+                console.log(this.active1)
+                this.query.type= 2;
+                this.update();
+            }
+          } else {
+            if (this.active1 == 0) {
+                this.query.type = 3;
+                this.update();
+            } else {
+                this.query.type = 4;
+                this.update();
+            }
+          }
+    },
     onLoad() {
         this.update();
     },
