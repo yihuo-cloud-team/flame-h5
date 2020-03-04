@@ -37,8 +37,9 @@ export default {
    
     },
     async onLoad() {
-        this.page = ++this.page;
+      
         this.update();
+        this.page = ++this.page;
       },
     
   },

@@ -13,7 +13,7 @@ export default {
         phone: "",
         birthday: "",
         skill: "",
-        gender: "",
+        gender: 1,
         name_show: 1,
         phone_show: 1,
         birthday_show: 1,
@@ -30,12 +30,16 @@ export default {
     // 用于更新一些数据
     async update() {
 
-      let res = await this.$http.post('/user/info', {});
+      let res = await this.$http.post('/user/save_info', {});
 
       if (res.code >= 0) {
      
         this.form = res.data;
-        this.tiemtext = res.data.birthday
+        if( res.data.birthday ==null){
+          this.tiemtext = '请选择日期'
+         return false
+        }
+        this.tiemtext = res.data.birthday;
       }
     },
 
