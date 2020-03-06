@@ -3,7 +3,7 @@
     <div class="panel">
       <div class="panel-money">
         <div class="money-text">余额（元）</div>
-        <div class="money-num">{{info.money}}</div>
+        <div class="money-num">{{info.user_money}}</div>
       </div>
       <div class="panel-cash">
         <div class="cash">

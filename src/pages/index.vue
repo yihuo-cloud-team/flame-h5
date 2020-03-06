@@ -1,8 +1,7 @@
 <template>
   <div id="home">
     <div class="search-box" @click="$router.push('/search')">
-    <van-icon name="search" size="18"></van-icon>
-    搜索
+      <van-icon name="search" size="18"></van-icon>搜索
     </div>
 
     <div class="trends-box">
@@ -14,7 +13,7 @@
           @click="$router.push(`/task/info?task_id=${i.id}`)"
           :key="index"
         >
-          <div class="panel" >
+          <div class="panel">
             <img :src="$getUrl(i.img)" class="img" />
             <div class="panel-body">
               <div class="title">{{i.task_name}}</div>
@@ -31,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="trends-list erect">
+      <div class="trends-list1 erect">
         <van-list
           v-model="loading"
           :finished="finished"
@@ -46,11 +45,8 @@
             :key="index"
             :title="item"
           >
-            <div class="panel" >
-              <img
-                :src="$getUrl(item.img)"
-                class="img"
-              />
+            <div class="panel">
+              <img :src="$getUrl(item.img)" class="img" />
               <div class="panel-body">
                 <div class="title-box">
                   <div class="title">{{item.task_name}}</div>

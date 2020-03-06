@@ -13,29 +13,26 @@ export default {
   methods: {
     // 用于初始化一些数据
     init() {
-      this.update();
+      
     },
     // 用于更新一些数据
     async update() {
+      if(this.finished) return;
       this.loading = true;
       const res = await this.$http.post('/task/move/list', {
         page: this.page,
-        page_size: 10,
-        task_state:0
+        page_size: this.page_size,
       });
       if (res.code > 0) {
-        this.loading = false;
-       
         this.list = [...this.list, ...res.data];
-      } else {
+      } 
+      if(this.list.length>=res.total){
         this.finished = true;
       }
+      this.loading = false;
 
     },
-    onLoad() {
-      this.page = ++this.page;
-      this.update();
-    },
+ 
    
   },
   // 计算属性

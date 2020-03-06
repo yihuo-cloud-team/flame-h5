@@ -2,13 +2,7 @@
   <div id="list">
     <div class="trends-box">
       <div class="trends-list erect">
-        <van-list
-          v-model="loading"
-          :finished="finished"
-          style=" width: 100%;"
-          finished-text="没有更多了"
-          @load="onLoad"
-        >
+        <van-list v-model="loading" :finished="finished" style=" width: 100%;" @load="update">
           <div
             class="item"
             @click="$router.push(`/task/info?task_id=${item.id}`)"
@@ -29,10 +23,7 @@
                       <template v-if="item.is_up==1">
                         <van-tag plain type="success" size="medium" v-if="item.task_state==0">招募中</van-tag>
                         <van-tag plain type="success" size="medium" v-if="item.task_state==2">进行中</van-tag>
-                        <van-tag plain type="success" size="medium" v-if="item.task_state==3">中止</van-tag>
                         <van-tag plain type="success" size="medium" v-if="item.task_state==4">完成</van-tag>
-                        <van-tag plain type="success" size="medium" v-if="item.task_state==5">待验收</van-tag>
-                        <van-tag plain type="success" size="medium" v-if="item.task_state==6">失败</van-tag>
                       </template>
                     </template>
                   </div>
@@ -45,7 +36,9 @@
             </div>
           </div>
         </van-list>
+          <div class="btn" @click="$router.push('/search')" v-if="finished">首页搜索更多内容</div>
       </div>
+    
     </div>
   </div>
 </template>

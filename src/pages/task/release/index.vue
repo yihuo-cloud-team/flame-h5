@@ -7,7 +7,7 @@
           :finished="finished"
           style=" width: 100%;"
           finished-text="没有更多了"
-          @load="onLoad"
+          @load="update"
         >
           <div
             class="item"
@@ -53,7 +53,7 @@
                 </div>
                 <div class="subtitle">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</div>
                 <template v-if="item.state==2">
-                  <div style="color:red;font-size:12px">您发布的任务没有通过，请修改后重新发布</div>
+                  <div style="color:red;font-size:12px">{{item.remarks}}</div>
                 </template>
               </div>
             </div>

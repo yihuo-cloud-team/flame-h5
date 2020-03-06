@@ -29,12 +29,9 @@ export default {
         this.info = res.data;
       }
     },
-    async onLoad() {
-     
-      this.apply();
-      this.page = ++this.page;
-    },
+
     async apply() {
+      if (this.finished) return;
       this.loading = true;
       const res = await this.$http.post('/task/applyList', {
         task_id: this.$route.query.task_id,
@@ -44,10 +41,12 @@ export default {
       if (res.code > 0) {
         this.loading = false;
         this.list = [...this.list, ...res.data];
-      } else {
+      }
+      if (this.list.length >= res.total) {
         this.finished = true;
       }
-
+      this.loading = false;
+      this.page++;
     },
 
     //开发者确认完成

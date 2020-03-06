@@ -16,28 +16,30 @@ export default {
   methods: {
     // 用于初始化一些数据
     init() {
-      this.update();
+   
     },
     // 用于更新一些数据
+ 
     async update() {
+      if(this.finished) return;
       this.loading = true
       const res = await this.$http.post('/task/join/list', {
         page: this.page,
-        page_size: 10
+        page_size: this.page_size
       });
       if (res.code > 0) {
-        this.loading = false;
+    
+    
         this.list = [...this.list, ...res.data];
-      } else {
+      } 
+      if(this.list.length>=res.total){
         this.finished = true;
-
       }
-
+      this.loading = false;
+      this.page++;
+   
     },
-    async onLoad() {
-      this.page = ++this.page;
-      this.update();
-    },
+  
     dateDiff(hisTime, nowTime) {
       var now = nowTime ? nowTime : new Date().getTime(),
         diffValue = now - hisTime,
