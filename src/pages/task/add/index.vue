@@ -75,7 +75,7 @@
         :area-list="areaList"
         :value="selecarea.length > 1?selecarea[2].code:'110101'"
         @cancel="show = !show"
-        @confirm="selec"
+        @confirm="select"
       />
     </van-popup>
   </div>

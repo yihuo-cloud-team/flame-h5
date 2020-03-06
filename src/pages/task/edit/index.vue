@@ -69,7 +69,7 @@
       </div>
     </div>
     
-    <div class="btn" @click="submit">下一步：托管资金</div>
+    <div class="btn" @click="submit">重新发布</div>
     <van-popup  v-model="show" position="bottom">
       <van-area
         :area-list="areaList"

@@ -59,7 +59,7 @@ export default {
       } else {
         this.$toast(res.msg);
       }
-      // this.$router.push(`/amount/deposit?quota=${this.taskprice}`)
+
     }
   },
   // 计算属性

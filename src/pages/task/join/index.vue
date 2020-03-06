@@ -29,6 +29,7 @@
                     <van-tag plain type="success" size="medium" v-if="item.task_state==2">进行中</van-tag>
                     <van-tag plain type="success" size="medium" v-if="item.task_state==3">中止</van-tag>
                     <van-tag plain type="success" size="medium" v-if="item.task_state==4">完成</van-tag>
+                    <van-tag plain type="success" size="medium" v-if="item.task_state==5">待验收</van-tag>
                   </div>
                 </div>
                 <div class="text">

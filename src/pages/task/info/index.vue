@@ -87,7 +87,7 @@
                   </template>
                 </template>
                 <template v-if="info.join_user!=0">
-                  <div class="btn" v-if="index==0">开发者</div>
+                  <div  v-if="index==0">开发者</div>
                 </template>
               </div>
             </div>

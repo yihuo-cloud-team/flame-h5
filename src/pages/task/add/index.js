@@ -33,8 +33,9 @@ export default {
 
 
     },
-    selec(e) {
+    select(e) {
       this.selecarea = e;
+  
       this.form.p = e[0].code;
       this.form.c = e[1].code;
       this.form.a = e[2].code;
@@ -80,7 +81,7 @@ export default {
       const res = await this.$http.post('/task/save', this.form);
       if (res.code >= 0) {
         this.$toast('操作成功');
-        this.$router.replace(`/amount/deposit?price=${this.form.price}&&task_order=${res.data.task_order}`)
+        // this.$router.replace(`/amount/deposit?price=${this.form.price}&&task_order=${res.data.task_order}`)
       } else {
         this.$toast(res.msg);
       }

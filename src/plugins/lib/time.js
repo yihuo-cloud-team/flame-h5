@@ -8,6 +8,7 @@ export default class time {
     //var createTime = _createTime.substr(0, _createTime.lastIndexOf(" ")) //不能包含毫秒，如果有毫秒，进行截取
     var nowTime = Date.parse(new Date()) / 1000;
     var result = ((nowTime - parseInt(_createTime)) / 60).toFixed(0); //分钟数
+
     if (result < 0) {
       result = Math.abs(720 + result);
     }
@@ -17,9 +18,12 @@ export default class time {
     }
     //如需显示“月”，“年” 在此处添加if...else
     if (result >= 10080) {
+      
       resultStr = this.formatDate(_createTime)
     } else if (result >= 1440) {
-      result = parseInt(result / 60 * 24); //天
+  
+      result = parseInt(result / 60 / 24); //天
+      
       resultStr = result + "天前"
     } else if (result >= 60) {
       result = parseInt(result / 60); //小时

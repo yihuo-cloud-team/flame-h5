@@ -30,8 +30,9 @@ export default {
       }
     },
     async onLoad() {
-      this.page = ++this.page;
+     
       this.apply();
+      this.page = ++this.page;
     },
     async apply() {
       this.loading = true;
@@ -109,7 +110,7 @@ export default {
     //选择开发者
     async select(item) {
       this.$dialog.confirm({
-        message: '确认选择',
+        message: '确认选择他',
       }).then(async () => {
         const res = await this.$http.post('/task/chose', {
           join_user: item,
@@ -131,7 +132,7 @@ export default {
     //上架
     async save1(e) {
       this.$dialog.confirm({
-        message: '确认选择',
+        message: '是否上架',
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
           is_up: 1,
@@ -151,7 +152,7 @@ export default {
     //下架
     async save2(e) {
       this.$dialog.confirm({
-        message: '确认选择',
+        message: '是否下架',
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
           is_up: 0,
