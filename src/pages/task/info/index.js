@@ -9,7 +9,7 @@ export default {
       finished: false,
       info: {},
       list: [],
-      page: 1,
+      page: 0,
       page_size: 10
     };
   },
@@ -17,7 +17,7 @@ export default {
     // 用于初始化一些数据
     init() {
       this.update();
-      this.apply();
+      // this.apply();
     },
     // 用于更新一些数据
     async update() {

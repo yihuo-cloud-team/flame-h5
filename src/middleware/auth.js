@@ -1,11 +1,15 @@
 import Http from '../plugins/Http'
+import jwt from './jwt'
 
 export default function (context) {
+    localStorage.jwt = jwt.jwt;
+    localStorage.userInfo = JSON.stringify(jwt.userInfo);
+
     if (typeof localStorage.jwt == 'undefined') {
         // 未登录
-            if (context.route.name != 'login') {
-                context.app.router.replace('/login');
-            }
+        if (context.route.name != 'login') {
+            context.app.router.replace('/login');
+        }
 
     } else {
 

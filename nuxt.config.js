@@ -1,6 +1,7 @@
 function getLocalIP() {
     const os = require('os');
     const osType = os.type(); //系统类型
+    console.warn('osType:', osType);
 
     const netInfo = os.networkInterfaces(); //网络信息
 
@@ -48,10 +49,10 @@ module.exports = {
     ],
     server: {
         // port: 80,
-        // host: getLocalIP(),
+        host: getLocalIP(),
         // // default: 80
         // // default: localhost
-        port: 8080,
-        host: '192.168.2.1',
+        // port: 8080,
+        // host: '192.168.2.1',
     },
 }   
