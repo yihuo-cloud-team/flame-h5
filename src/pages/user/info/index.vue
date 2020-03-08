@@ -18,7 +18,7 @@
         <van-cell title="我接到的任务" to="/task/join" is-link />
         <van-cell title="平台行业排行榜" is-link to="/user/ranking" />
         <van-cell title="我的提现" to="/amount/cash" is-link />
-        <van-cell title="活动" is-link />
+        <van-cell title="活动" is-link to="/paper/list" />
         <van-cell title="投诉与建议" to="/user/mention" is-link />
         <van-cell title="帮助说明" to="/user/help" is-link />
       </van-cell-group>

@@ -1,0 +1,43 @@
+@import "@/styles/variable.scss";
+#list {
+    height: 100vh;
+    background-color: #F0F2F5;
+    .list{
+        padding: 20px;
+
+        .item{
+            border-radius: 4px;
+            background-color: white;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            overflow: hidden;
+            .top{
+                img{
+                    width: 100%;
+                    
+                    background-color: black;
+                    height: 200px;
+                }
+            }
+            .bottom{
+                .item-title{
+                    font-size: 16px;
+                    color: #000;
+                    padding: 10px 15px 5px;
+                }
+                .item-time{
+                    padding: 0 15px 5px;
+                    font-size: 11px;
+                    color: rgba(0,0,0,1);
+                }
+                .item-info{
+                    font-size: 13px;
+                    color: #777;
+                    padding: 0 15px;
+                }
+            }
+        }
+    }
+}
+
+#list /deep/ {}

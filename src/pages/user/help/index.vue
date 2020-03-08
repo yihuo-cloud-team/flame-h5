@@ -1,6 +1,8 @@
 <template>
   <div id="help">
-    帮助文档
+    <van-cell-group>
+      <van-cell v-for="(item,index) in 10" :key="index" title="单元格" @click="$router.push(`/paper/info?id=${item.id}`)" is-link />
+    </van-cell-group>
   </div>
 </template>
 <script src="./index.js"></script>
