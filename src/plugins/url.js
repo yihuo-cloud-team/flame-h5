@@ -7,9 +7,9 @@ let Url = {
   // serverUrl: 'http://192.168.0.153:12189/client',//李传浩的本地
   // serverUrl: 'http://192.168.0.122:82/admin',//吴杰
   // uploadUrl: '',
-  uploadUrl: 'https://api.flame.yihuo-cloud.cn',
+  uploadUrl: 'https://api.yihuo-cloud.com',
   // imageUrl: '',
-  imageUrl: 'https://api.flame.yihuo-cloud.cn',
+  imageUrl: 'https://api.yihuo-cloud.com',
 }
 
 Vue.prototype.$Url = Url;

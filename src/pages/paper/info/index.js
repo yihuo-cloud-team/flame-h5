@@ -2,7 +2,9 @@ export default {
     name: 'info',
     layout:'sub',
     data() {
-        return {};
+        return {
+            info:{}
+        };
     },
     methods: {
         // 用于初始化一些数据
@@ -11,7 +13,12 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
+            const res = await this.$http.post('/paper/info', {
+                id:this.$route.query.id
+            });
+            if(res.code>=0){
+                this.info = res.data
+            }
         },
     },
     // 计算属性
