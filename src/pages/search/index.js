@@ -122,7 +122,7 @@ export default {
       this.show = false
     },
     async onLoad() {
-      this.update();
+      // this.update();
     }
   },
   // 计算属性
