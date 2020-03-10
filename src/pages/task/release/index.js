@@ -25,8 +25,6 @@ export default {
         page_size: this.page_size
       });
       if (res.code > 0) {
-    
-    
         this.list = [...this.list, ...res.data];
       } 
       if(this.list.length>=res.total){

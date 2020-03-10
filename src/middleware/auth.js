@@ -2,8 +2,8 @@ import Http from '../plugins/Http'
 import jwt from './jwt'
 
 export default function (context) {
-    localStorage.jwt = jwt.jwt;
-    localStorage.userInfo = JSON.stringify(jwt.userInfo);
+    // localStorage.jwt = jwt.jwt;
+    // localStorage.userInfo = JSON.stringify(jwt.userInfo);
 
     if (typeof localStorage.jwt == 'undefined') {
         // 未登录

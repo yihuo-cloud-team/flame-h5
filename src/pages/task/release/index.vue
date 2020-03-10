@@ -43,7 +43,7 @@
                         </template>
                       </template>
                       <template v-if="item.state==2">
-                         <van-tag plain type="success" size="medium">审核失败</van-tag>
+                        <van-tag plain type="success" size="medium">审核失败</van-tag>
                       </template>
                     </template>
                   </div>
