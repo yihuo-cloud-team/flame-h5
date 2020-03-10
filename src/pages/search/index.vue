@@ -6,7 +6,7 @@
         {{district}}
       </div>
       <div class="input">
-        <van-field style="width: 100%;" v-model="query.search" placeholder="搜索" />
+        <van-field style="width: 100%;" v-model="query.search" :placeholder="info" />
       </div>
       <div class="btn" @click="search">筛选</div>
     </div>

@@ -7,7 +7,7 @@ export default {
       loading: false,
       finished: false,
       moveList: [],
-
+      info:{},
 
       page: 1,
       page_size: 10
@@ -16,8 +16,31 @@ export default {
   },
   methods: {
     // 用于初始化一些数据
-    init() {
+     init() {
       this.dongtai();
+      this.httpConfig();
+    },
+    async httpConfig() {
+      let res = await this.$http.post('/config/list', this.query);
+      if(res.code>=0){
+          res.data.map((el)=>{
+        
+            if(el.key.indexOf('searchInfo')!=-1 ){
+                this.info = el.value;     
+            }
+      
+          })
+      }
+    },
+    async dongtai() {
+      const res = await this.$http.post('/task/move/list', {
+        page: this.page,
+        page_size: 3,
+      });
+      if (res.code >= 0) {
+        
+        this.moveList = res.data
+      }
     },
     // 用于更新一些数据
     async update() {
@@ -39,15 +62,7 @@ export default {
 
     },
     //动态列表
-    async dongtai() {
-      const res = await this.$http.post('/task/move/list', {
-        page: this.page,
-        page_size: 3,
-      });
-      if (res.code >= 0) {
-        this.moveList = res.data
-      }
-    },
+  
 
     // dateDiff(hisTime, nowTime) {
     //   var now = nowTime ? nowTime : new Date().getTime(),

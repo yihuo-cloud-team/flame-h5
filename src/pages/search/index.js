@@ -74,7 +74,12 @@ export default {
 
       let res = await this.$http.post('/config/list', this.query);
       if(res.code>=0){
-        this.info =res.data
+          res.data.map((el)=>{
+           console.log(el)
+            if(el.key.indexOf('searchInfo')!=-1 ){
+                this.info = el.value     
+            }
+          })
       }
     },
     // 用于更新一些数据
