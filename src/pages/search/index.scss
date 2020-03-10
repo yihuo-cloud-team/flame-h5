@@ -43,15 +43,15 @@
 
   .trends-list {
     // display: flex;
-
+  
 
     .item {
       padding-right: 5px;
-
+      padding: 10px 0;
       .panel {
         background-color: #fff;
-        border-radius: 5px;
-        padding: 10px;
+  
+        padding: 10px 0;
         border: 1px solid rgba(255, 255, 255, 0);
 
         .img {

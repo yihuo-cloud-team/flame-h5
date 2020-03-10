@@ -9,43 +9,43 @@ export default {
     return {
       areaList: areaList,
       option1: [{
-        text: '全部类别',
-        value: ''
-      },
-      {
-        text: '翻译',
-        value: 1
-      },
-      {
-        text: '软件',
-        value: 2
-      },
-      {
-        text: '设计',
-        value: 3
-      },
-      {
-        text: '其他',
-        value: 4
-      }
+          text: '全部类别',
+          value: ''
+        },
+        {
+          text: '翻译',
+          value: 1
+        },
+        {
+          text: '软件',
+          value: 2
+        },
+        {
+          text: '设计',
+          value: 3
+        },
+        {
+          text: '其他',
+          value: 4
+        }
       ],
       option2: [{
-        text: '所有进度',
-        value: ''
-      },
-      {
-        text: '招募中',
-        value: 0
-      },
-      {
-        text: '进行中',
-        value: 2
-      },
-     
-      {
-        text: '完成',
-        value: 4
-      }
+          text: '所有进度',
+          value: ''
+        },
+        {
+          text: '招募中',
+          value: 0
+        },
+        {
+          text: '进行中',
+          value: 2
+        },
+
+        {
+          text: '完成',
+          value: 4
+        }
       ],
       list: [],
       loading: false,
@@ -67,7 +67,15 @@ export default {
   methods: {
     // 用于初始化一些数据
     init() {
-      this.getAddress()
+      this.getAddress();
+      this.httpConfig();
+    },
+    async httpConfig() {
+
+      let res = await this.$http.post('/config/list', this.query);
+      if(res.code>=0){
+        this.info =res.data
+      }
     },
     // 用于更新一些数据
     async update() {
@@ -84,8 +92,7 @@ export default {
         } else {
           this.finished = true;
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     },
     search() {
       this.query.page = 1
@@ -96,7 +103,7 @@ export default {
       let mapObj = new AMap.Map('iCenter');
       mapObj.plugin('AMap.Geolocation', () => {
         let geolocation = new AMap.Geolocation({
-          enableHighAccuracy: true,//是否使用高精度定位，默认:true
+          enableHighAccuracy: true, //是否使用高精度定位，默认:true
         });
         geolocation.getCurrentPosition((status, result) => {
           if (status == 'complete') {
@@ -126,13 +133,15 @@ export default {
     }
   },
   // 计算属性
-  computed: {},
+  computed: {
+    
+  },
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {},
   // 在实例创建完成后被立即调用
-  created() { },
+  created() {},
   // 在挂载开始之前被调用：相关的 render 函数首次被调用。
-  beforeMount() { },
+  beforeMount() {},
   // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
   mounted() {
 
@@ -141,17 +150,17 @@ export default {
     });
   },
   // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
-  beforeUpdate() { },
+  beforeUpdate() {},
   // keep-alive 组件激活时调用。
-  activated() { },
+  activated() {},
   // keep-alive 组件停用时调用。
-  deactivated() { },
+  deactivated() {},
   // 实例销毁之前调用。在这一步，实例仍然完全可用。
-  beforeDestroy() { },
+  beforeDestroy() {},
   //Vue 实例销毁后调用。
-  destroyed() { },
+  destroyed() {},
   // 当捕获一个来自子孙组件的错误时被调用。
-  errorCaptured() { },
+  errorCaptured() {},
   // 包含 Vue 实例可用指令的哈希表。
   directives: {},
   // 一个对象，键是需要观察的表达式，值是对应回调函数。
