@@ -2,7 +2,7 @@
   <div id="list">
     <div class="list">
       <div class="item" @click="$router.push(`/paper/info?id=${item.id}`)" v-for="(item,index) in list" :key="index" >
-        <div class="top">
+        <div class="top" v-if="item.first_img!=''">
           <img
             :src="$getUrl(item.first_img)"
             alt

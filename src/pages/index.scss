@@ -45,16 +45,13 @@
       overflow-x: auto;
       margin-bottom: 25px;
 
-      .item:nth-child(1) {
-        padding-left: 0px;
-      }
+      
 
       .item {
-        padding-left: 5px;
+        padding-left: 10px;
 
         .panel {
           background-color: #fff;
-          border-radius: 5px;
           padding: 10px;
           border: 1px solid rgba(255, 255, 255, 0);
 
@@ -139,7 +136,6 @@
 
       .panel {
         background-color: #fff;
-        border-radius: 3px;
         padding: 10px 0;
         // border: 1px solid rgba(255, 255, 255, 0);
 
