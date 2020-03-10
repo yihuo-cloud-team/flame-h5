@@ -23,7 +23,7 @@
           :finished="finished"
           style=" width: 100%;"
           finished-text="没有更多了"
-          @load="onLoad"
+          @load="update"
         >
           <div
             class="item"

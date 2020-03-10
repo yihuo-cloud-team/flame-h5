@@ -115,14 +115,14 @@ export default {
       this.AreaArr = e
       this.district = e[2].name
       this.query.a = e[2].code
-      this.update()
+      this.search()
       this.show = false
     },
     cancel() {
       this.show = false
     },
     async onLoad() {
-      this.update();
+      // this.update();
     }
   },
   // 计算属性
