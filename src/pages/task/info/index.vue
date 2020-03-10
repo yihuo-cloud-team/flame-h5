@@ -74,6 +74,7 @@
               <div class="info">
                 <div class="name">{{item.name}}</div>
                 <div class="time">{{item.add_time}}报名</div>
+                <div class="text">{{item.text}}</div>
               </div>
               <div class="btn-box">
                 <template v-if="info.is_up==1">
@@ -88,15 +89,15 @@
                 </template>
               </div>
             </div>
-            <div class="text">{{item.text}}</div>
           </div>
         </van-list>
       </div>
     </div>
-    <div class="fixed">
+    <van-divider dashed v-if="list.length<=0">暂无申请人</van-divider>
+    <div class="fixed" @click="$router.push('/user/help')">
       <div class="help">
         <div class="help-btn">
-          <van-icon size="18px" style="margin-right: 10px;" name="question-o" />帮助
+          <van-icon size="18px"  style="margin-right: 10px;" name="question-o" />帮助
         </div>
       </div>
 
@@ -107,29 +108,41 @@
         <!-- 审核状态 -->
         <template v-if="info.task_state==1">
           <van-button
-         class="border-radius" color='#4289DB' size="large"
+            class="border-radius"
+            color="#4289DB"
+            size="large"
             @click.stop="$router.push(`/amount/deposit?task_order=${info.task_order}&&price=${info.price}`)"
           >待支付</van-button>
         </template>
         <template v-else>
           <!-- 支付完成进入待审核状态 -->
           <template v-if="info.state==0">
-            <van-button class="border-radius" color='#4289DB' size="large" disabled>待审核</van-button>
+            <van-button class="border-radius" color="#4289DB" size="large" disabled>待审核</van-button>
           </template>
           <!-- 审核通过 -->
           <template v-if="info.state==1">
             <!--  任务状态为0 招募中 -->
             <template v-if="info.task_state==0">
               <template v-if="info.is_up==0">
-                <van-button class="border-radius" color='#4289DB' size="large" @click="save1(info)">上架</van-button>
+                <van-button
+                  class="border-radius"
+                  color="#4289DB"
+                  size="large"
+                  @click="save1(info)"
+                >上架</van-button>
               </template>
               <template v-if="info.is_up==1">
-                <van-button class="border-radius" color='#4289DB' size="large" @click="save2(info)">下架</van-button>
+                <van-button
+                  class="border-radius"
+                  color="#4289DB"
+                  size="large"
+                  @click="save2(info)"
+                >下架</van-button>
               </template>
             </template>
             <!--  任务状态为2 进行中-->
             <template v-if="info.task_state==2">
-              <van-button  class="border-radius" color='#4289DB' size="large" disabled>任务进行中</van-button>
+              <van-button class="border-radius" color="#4289DB" size="large" disabled>任务进行中</van-button>
               <div class="box">
                 <span class="left"></span>
                 <span class="right" @click="quxiao(info)">终止任务</span>
@@ -137,19 +150,29 @@
             </template>
             <!--  任务状态为3 任务中止-->
             <template v-if="info.task_state==3">
-              <van-button class="border-radius" color='#4289DB' size="large" disabled>任务中止</van-button>
+              <van-button class="border-radius" color="#4289DB" size="large" disabled>任务中止</van-button>
             </template>
             <template v-if="info.task_state==4">
-              <van-button class="border-radius" color='#4289DB' size="large" disabled>任务完成</van-button>
+              <van-button class="border-radius" color="#4289DB" size="large" disabled>任务完成</van-button>
             </template>
             <!-- 任务状态为5 完成待确认 -->
             <template v-if="info.task_state==5">
-              <van-button class="border-radius" color='#4289DB' size="large" @click="confirm2(info)">确认完成</van-button>
+              <van-button
+                class="border-radius"
+                color="#4289DB"
+                size="large"
+                @click="confirm2(info)"
+              >确认完成</van-button>
             </template>
           </template>
           <!-- 审核被驳回 -->
           <template v-if="info.state==2">
-            <van-button class="border-radius" color='#4289DB' size="large" @click="$router.push(`/task/edit?id=${info.id}`)">重新编辑</van-button>
+            <van-button
+              class="border-radius"
+              color="#4289DB"
+              size="large"
+              @click="$router.push(`/task/edit?id=${info.id}`)"
+            >重新编辑</van-button>
           </template>
         </template>
       </template>
@@ -161,36 +184,46 @@
           <!-- 任务状态为0 -->
           <template v-if="info.task_state==0">
             <template v-if="info.is_up==0">
-              <van-button class="border-radius" color='#4289DB' size="large" disabled>任务已下架</van-button>
+              <van-button class="border-radius" color="#4289DB" size="large" disabled>任务已下架</van-button>
             </template>
             <template v-if="info.is_up==1">
               <template v-if="info.is_join==0">
-                <van-button class="border-radius" color='#4289DB' size="large" @click="$router.push(`/enroll?id=${info.id}`)">参与项目</van-button>
+                <van-button
+                  class="border-radius"
+                  color="#4289DB"
+                  size="large"
+                  @click="$router.push(`/enroll?id=${info.id}`)"
+                >参与项目</van-button>
               </template>
               <template v-if="info.is_join==1">
-                <van-button class="border-radius" color='#4289DB' size="large" disabled>已申请</van-button>
+                <van-button class="border-radius" color="#4289DB" size="large" disabled>已申请</van-button>
               </template>
             </template>
           </template>
           <template v-if="info.task_state==2  ">
             <template v-if="info.is_join==0">
-              <van-button class="border-radius" color='#4289DB' size="large" disabled>您已错过此次任务</van-button>
+              <van-button class="border-radius" color="#4289DB" size="large" disabled>您已错过此次任务</van-button>
             </template>
             <template v-if="info.is_join==1">
-              <van-button class="border-radius" color='#4289DB' size="large" disabled>您的申请没有通过</van-button>
+              <van-button class="border-radius" color="#4289DB" size="large" disabled>您的申请没有通过</van-button>
             </template>
             <template v-if="info.is_join==2">
-              <van-button class="border-radius" color='#4289DB' size="large" @click="confirm1(info)">确认完成</van-button>
+              <van-button
+                class="border-radius"
+                color="#4289DB"
+                size="large"
+                @click="confirm1(info)"
+              >确认完成</van-button>
             </template>
           </template>
           <template v-if="info.task_state==3">
-            <van-button class="border-radius" color='#4289DB' size="large" disabled>任务中止</van-button>
+            <van-button class="border-radius" color="#4289DB" size="large" disabled>任务中止</van-button>
           </template>
           <template v-if="info.task_state==4">
-            <van-button class="border-radius" color='#4289DB' size="large" disabled>任务已完成</van-button>
+            <van-button class="border-radius" color="#4289DB" size="large" disabled>任务已完成</van-button>
           </template>
           <template v-if="info.task_state==5">
-            <van-button class="border-radius" color='#4289DB' size="large" disabled>已完成待验收</van-button>
+            <van-button class="border-radius" color="#4289DB" size="large" disabled>已完成待验收</van-button>
           </template>
         </template>
       </template>

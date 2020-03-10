@@ -81,7 +81,7 @@ export default {
       const res = await this.$http.post('/task/save', this.form);
       if (res.code >= 0) {
         this.$toast('操作成功');
-        // this.$router.replace(`/amount/deposit?price=${this.form.price}&&task_order=${res.data.task_order}`)
+        this.$router.replace(`/amount/deposit?price=${this.form.price}&&task_order=${res.data.task_order}`)
       } else {
         this.$toast(res.msg);
       }

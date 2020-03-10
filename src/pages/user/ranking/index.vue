@@ -80,7 +80,7 @@
               <div class="left" v-else-if="index==2">
                 <img src="/images/3.png" alt />
               </div>
-              <div class="left" v-else>{{index+1}}</div>
+              <div class="left" v-else><i>{{index+1}}</i></div>
 
               <img class="img" :src="item.head_img" alt />
               <div class="right">

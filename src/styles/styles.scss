@@ -102,3 +102,20 @@ body {
         background-color: #008982;
     }
 }
+.paper-content {
+    word-break: break-all !important;
+    word-wrap: break-word !important;
+  
+    * {
+      word-break: break-all !important;
+      word-wrap: break-word !important;
+  
+      img {
+        max-width: 100% !important
+      }
+    }
+  
+    img {
+      max-width: 100% !important
+    }
+  }
