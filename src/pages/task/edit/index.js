@@ -18,7 +18,6 @@ export default {
         img: "", //图片
       },
       areaList: [],
-      selecarea: [],
       show: false
     };
   },
@@ -37,15 +36,11 @@ export default {
         if (res.code >= 0) {
           this.form = res.data;
           this.form.id = this.$route.query.id;
-          this.selecarea.push(res.data.p, res.data.c, res.data.a)
-
         }
       }
 
     },
     selec(e) {
-      this.selecarea = []
-      this.selecarea.push(e[0].code, e[1].code, e[2].code);
       this.form.p = e[0].code;
       this.form.c = e[1].code;
       this.form.a = e[2].code;
@@ -64,12 +59,7 @@ export default {
   },
   // 计算属性
   computed: {
-    area() {
-      if (this.selecarea.length < 1) return '省市区选择';
-
-      const Area = this.areaList;
-      return Area.province_list[this.selecarea[0]] + Area.city_list[this.selecarea[1]] + Area.county_list[this.selecarea[2]]
-    }
+   
   },
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {},

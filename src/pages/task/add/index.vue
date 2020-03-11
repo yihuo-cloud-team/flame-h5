@@ -6,7 +6,7 @@
         <van-field maxlength="30" v-model="form.task_name" placeholder="30字符以内" />
       </div>
     </div>
-  
+
     <div class="tupian">
       <div class="title">任务图片</div>
       <div class="store-image">
@@ -14,7 +14,6 @@
           <img class="img" :src="$getUrl(form.img)" />
         </ol-upload>
       </div>
-   
     </div>
     <div class="task-type">
       <div class="title">任务类别</div>
@@ -28,7 +27,7 @@
     <div class="price">
       <div class="title">任务价格</div>
       <div class="input">
-        <van-field  type="number" maxlength="30" v-model="form.price" placeholder="20字符以内" />
+        <van-field type="number" maxlength="30" v-model="form.price" placeholder="20字符以内" />
       </div>
     </div>
     <div class="address">
@@ -54,7 +53,12 @@
     </div>
     <div class="region">
       <div class="title">所在地</div>
-      <div class="input" @click="show = !show">{{area}}</div>
+      <div class="input" v-if="form.p==''" @click="show = !show">省市区选择</div>
+      <div
+        class="input"
+        v-if="form.p!=''"
+        @click="show = !show"
+      >{{form.p | areaToStr}}{{form.c | areaToStr}}{{form.a | areaToStr}}</div>
     </div>
     <div class="address">
       <div class="title">详细地址</div>
@@ -71,12 +75,7 @@
 
     <div class="btn" @click="submit">下一步：托管资金</div>
     <van-popup v-model="show" position="bottom">
-      <van-area
-        :area-list="areaList"
-        :value="selecarea.length > 1?selecarea[2].code:'110101'"
-        @cancel="show = !show"
-        @confirm="select"
-      />
+      <van-area :area-list="areaList" value="110101" @cancel="show = !show" @confirm="select" />
     </van-popup>
   </div>
 </template>

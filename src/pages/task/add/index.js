@@ -18,7 +18,7 @@ export default {
         img: ""
       },
       areaList: [],
-      selecarea: [],
+
       show: false
     };
   },
@@ -34,8 +34,6 @@ export default {
 
     },
     select(e) {
-      this.selecarea = e;
-  
       this.form.p = e[0].code;
       this.form.c = e[1].code;
       this.form.a = e[2].code;
@@ -90,10 +88,7 @@ export default {
   },
   // 计算属性
   computed: {
-    area() {
-      if (this.selecarea.length < 1) return '省市区选择'
-      return `${this.selecarea[0].name} ${this.selecarea[1].name} ${this.selecarea[2].name}`
-    }
+
   },
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {},
