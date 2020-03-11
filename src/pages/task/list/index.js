@@ -30,7 +30,7 @@ export default {
         this.finished = true;
       }
       this.loading = false;
-
+      this.page++;
     },
  
    

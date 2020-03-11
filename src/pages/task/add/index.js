@@ -72,6 +72,10 @@ export default {
         this.$toast('请填写详细地址');
         return false;
       };
+      if (this.form.contact.length != 11) {
+        this.$toast('请输入正确的手机号');
+        return false;
+      };
       if (this.form.contact == '') {
         this.$toast('请填写联系方式');
         return false;

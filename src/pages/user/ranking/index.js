@@ -6,7 +6,7 @@ export default {
       active: 0, //外层选项卡
       active1: 0, //内层选项卡
       loading: false,
-      finished: true,
+      finished: false,
       list: [],
       finish_num: {}, //完成任务数量
       finish_money: {}, //完成获利金额
@@ -23,10 +23,7 @@ export default {
   methods: {
     // 用于初始化一些数据
     init() {
-        console.log(this.active)
         this.top();
-      this.update();
-     
     },
     // 用于更新一些数据
     async update() {
@@ -35,28 +32,27 @@ export default {
       //2 已完成任务收入排序
       //3 已发布任务数量排序
       //4 已发布任务金额排序
+      if(this.finished) return;
       this.loading =true;
       const res = await this.$http.post('/top/list', this.query);
       if (res.code > 0) {
-        this.list = [...this.list,...res.data];
-        this.query.page = this.query.page + 1
-          this.loading = false;
-          this.finished = false;
-          if (res.total < 10) {
-            this.finished = true;
-          }
-      }else{
-          this.finished =true;
+        this.list = [...this.list, ...res.data];
+      } 
+      if(this.list.length>=res.total){
+        this.finished = true;
       }
+      this.loading = false;
+      this.query.page++;
     },
     select1(){
         this.active = 0;
         this.list = [];
+        this.finished = false;
         this.query.page = 1;
       if (this.active == 0) {
         if (this.active1 == 0) {
+          console.log(1)
             this.query.type = 1;
-       
             this.update();
         } else {
             this.query.type= 2;
@@ -76,6 +72,7 @@ export default {
         this.active = 1;
         this.list = [];
         this.query.page = 1;
+        this.finished = false;
       if (this.active == 0) {
         if (this.active1 == 0) {
             this.query.type = 1;
@@ -124,6 +121,7 @@ export default {
         this.active1= 0;
         this.list =[];
         this.query.page = 1;
+        this.finished = false;
         if (this.active == 0) {
             if (this.active1 == 0) {
                 this.query.type = 1;
@@ -147,6 +145,7 @@ export default {
     select4(){
         this.active1= 1;
         this.list =[];
+        this.finished = false;
         this.query.page = 1;
         if (this.active == 0) {
             if (this.active1 == 0) {

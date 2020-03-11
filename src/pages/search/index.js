@@ -53,7 +53,7 @@ export default {
       show: false,
       Areaval: '110101',
       AreaArr: [],
-      district: '朝阳区',
+      district: '暂无定位',
       query: {
         search: '',
         page: 1,
@@ -61,7 +61,8 @@ export default {
         task_type: '',
         task_state: '',
         a: ''
-      }
+      },
+      info:{}
     };
   },
   methods: {
@@ -75,7 +76,7 @@ export default {
       let res = await this.$http.post('/config/list', this.query);
       if(res.code>=0){
           res.data.map((el)=>{
-           console.log(el)
+     
             if(el.key.indexOf('searchInfo')!=-1 ){
                 this.info = el.value     
             }
@@ -115,6 +116,7 @@ export default {
             this.Areaval = result.addressComponent.adcode
             // this.query.a = result.addressComponent.adcode
             this.district = result.addressComponent.district
+            
             this.update();
           } else {
             console.warn(status, '定位失败');
@@ -124,18 +126,16 @@ export default {
       })
     },
     confirm(e) {
-      this.AreaArr = e
-      this.district = e[2].name
-      this.query.a = e[2].code
-      this.search()
-      this.show = false
+      this.AreaArr = e;
+      this.district = e[2].name;
+      this.query.a = e[2].code;
+      this.search();
+      this.show = false;
     },
     cancel() {
-      this.show = false
+      this.show = false;
     },
-    async onLoad() {
-      // this.update();
-    }
+
   },
   // 计算属性
   computed: {

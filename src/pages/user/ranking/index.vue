@@ -67,7 +67,7 @@
     </div>
     <div class="bottom">
       <div class="list-box">
-        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="update">
           <div class="list">
             <div class="item" v-for="(item,index) in list" :key="index">
               <!-- <div class="left">{{index+1}}</div> -->
