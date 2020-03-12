@@ -5,7 +5,7 @@
     </div>
 
     <div class="trends-box">
-      <div class="title1">项目动态</div>
+      <div class="title1" v-if="moveList.length>0">项目动态</div>
       <div class="trends-list">
         <div
           class="item"
@@ -35,7 +35,7 @@
           v-model="loading"
           :finished="finished"
           style=" width: 100%;"
-          finished-text="没有更多了"
+  
           @load="update"
         >
           <div
@@ -64,8 +64,11 @@
             </div>
           </div>
         </van-list>
+    
       </div>
     </div>
+    <van-divider  v-if="finished">没有更多了</van-divider>
+
   </div>
 </template>
 <script src="./index.js"></script>

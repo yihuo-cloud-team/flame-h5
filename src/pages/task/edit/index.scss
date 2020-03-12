@@ -14,8 +14,7 @@
     .store-image {
       display: flex;
       justify-content: center;
-  
-  
+      align-items: flex-end;
       .img {
         display: block;
         width: 120px;
@@ -24,7 +23,9 @@
         background-color: #dddddd;
       }
   
-  
+      .tag{
+        margin-left: 10px;
+      }
   
     }
   

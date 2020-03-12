@@ -2,8 +2,13 @@
   <div id="cash">
     <div class="panel">
       <div class="panel-money">
-        <div class="money-text">余额（元）</div>
-        <div class="money-num">{{info.user_money}}</div>
+        <div class="left">
+          <div class="money-text">余额（元）</div>
+          <div class="money-num">{{info.user_money}}</div>
+        </div>
+        <div class="right">
+          <div @click="tixian" class="text">提现记录</div>
+        </div>
       </div>
       <div class="panel-cash">
         <div class="cash">
@@ -43,7 +48,7 @@
       </van-cell-group>
       <div class="baocun" @click="submit">发起提现</div>
       <div class="box">
-        <div class="btn" @click="tixian">提现记录</div>
+        <div class="btn" @click="$router.push('/amount/record')">收支记录</div>
       </div>
     </div>
   </div>

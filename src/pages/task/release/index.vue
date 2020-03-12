@@ -2,13 +2,7 @@
   <div id="release">
     <div class="trends-box">
       <div class="trends-list erect">
-        <van-list
-          v-model="loading"
-          :finished="finished"
-          style=" width: 100%;"
-          finished-text="没有更多了"
-          @load="update"
-        >
+        <van-list v-model="loading" :finished="finished" style=" width: 100%;" @load="update">
           <div
             class="item"
             @click="$router.push(`/task/info?task_id=${item.id}`)"
@@ -60,6 +54,7 @@
           </div>
         </van-list>
       </div>
+      <van-divider v-if="finished">没有更多了</van-divider>
     </div>
   </div>
 </template>

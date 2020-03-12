@@ -6,7 +6,7 @@
           v-model="loading"
           :finished="finished"
           style=" width: 100%;"
-          finished-text="没有更多了"
+
           @load="update"
         >
           <div
@@ -41,6 +41,7 @@
           </div>
         </van-list>
       </div>
+         <van-divider  v-if="finished">没有更多了</van-divider>
     </div>
   </div>
 </template>

@@ -7,20 +7,36 @@
 
 .panel {
   .panel-money {
+    display: flex;
     color: #ffffff;
     height: 117px;
     background-color: #4289DB;
     padding-left: 22px;
-
-    .money-text {
-      padding-top: 31px;
-      font-size: 12px;
+  
+    .left{
+      flex: 1;
+      .money-text {
+        padding-top: 31px;
+        font-size: 12px;
+      }
+  
+      .money-num {
+        margin-top: 15px;
+        font-size: 28px;
+      }
     }
-
-    .money-num {
-      margin-top: 15px;
-      font-size: 28px;
+    .right{
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+   
+      padding-right: 20px;
+      .text{
+        font-size: 14px;
+      }
     }
+  
   }
 
   .panel-cash {
@@ -89,7 +105,7 @@
     }
   .baocun{
       color: white;
-      background-color: #fec900;
+      background-color: #4289DB;
       z-index: 99999;
       margin-top: 20px;
       bottom: 0;

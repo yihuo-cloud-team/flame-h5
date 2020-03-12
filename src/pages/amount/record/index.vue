@@ -16,7 +16,12 @@
       </van-popup>
       <div class="left">
         <van-dropdown-menu>
-          <van-dropdown-item v-model="form.type" :disabled="shows" @change="select" :options="option1" />
+          <van-dropdown-item
+            v-model="form.type"
+            :disabled="shows"
+            @change="select"
+            :options="option1"
+          />
         </van-dropdown-menu>
       </div>
     </div>
@@ -33,7 +38,8 @@
         <div class="top">
           <div class="top-left" v-if="item.type==1">收入</div>
           <div class="top-left" v-if="item.type==2">支出</div>
-          <div class="top-center">{{item.money}}</div>
+          <div class="top-center" v-if="item.type==1">+{{item.money}}</div>
+          <div class="top-center" style="color:#4289DB" v-if="item.type==2">-{{item.money}}</div>
           <div class="top-right">{{item.add_time}}</div>
         </div>
         <div class="center" v-if="item.state==1">状态:成功</div>

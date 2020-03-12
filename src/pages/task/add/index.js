@@ -1,4 +1,5 @@
 import AreaList from '../../../lib/area'
+
 export default {
   name: 'add',
   layout: 'sub',
@@ -6,7 +7,7 @@ export default {
     return {
       form: {
         task_name: "", //任务名称
-        task_type: "", //任务类型
+        task_type: "1", //任务类型
         price: "", //任务价格
         info: "", //任务详情
         p: "", //省
@@ -18,7 +19,6 @@ export default {
         img: ""
       },
       areaList: [],
-
       show: false
     };
   },
@@ -40,6 +40,7 @@ export default {
       this.show = false;
     },
     async submit() {
+
       if (this.form.task_name == '') {
         this.$toast('请填写任务名称');
         return false;
@@ -52,10 +53,26 @@ export default {
         this.$toast('请选择任务类别');
         return false;
       };
+
       if (this.form.price == '') {
+
         this.$toast('请填写任务价格');
         return false;
       };
+      if (typeof this.form.price == 'string') {
+        this.$toast('请输入数字');
+        return false;
+      }
+
+      if (this.form.cycle == '') {
+
+        this.$toast('请填写任务天数');
+        return false;
+      };
+      if (typeof this.form.cycle == 'string') {
+        this.$toast('请输入数字');
+        return false;
+      }
       if (this.form.p == '') {
         this.$toast('请填写任务期限');
         return false;
@@ -72,10 +89,7 @@ export default {
         this.$toast('请填写详细地址');
         return false;
       };
-      if (this.form.contact.length != 11) {
-        this.$toast('请输入正确的手机号');
-        return false;
-      };
+
       if (this.form.contact == '') {
         this.$toast('请填写联系方式');
         return false;
@@ -88,6 +102,17 @@ export default {
         this.$toast(res.msg);
       }
 
+    },
+    change(){
+      if(this.form.task_type==1){
+        this.form.img = '/public/files/20200312/202003121052218141.png'
+      }else if(this.form.task_type==2){
+        this.form.img = '/public/files/20200312/202003121052556594.png'
+      }else if(this.form.task_type==3){
+        this.form.img = '/public/files/20200312/202003121053157995.png'
+      }else{
+        this.form.img = '/public/files/20200312/202003121053316381.png'
+      }
     }
   },
   // 计算属性
