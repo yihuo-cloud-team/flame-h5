@@ -47,7 +47,7 @@
                 </div>
                 <div class="subtitle">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</div>
                 <template v-if="item.state==2">
-                  <div style="color:red;font-size:12px">驳回原因:{{item.remarks}}</div>
+                  <div style="color:red;font-size:12px">驳回原因：{{item.remarks}}</div>
                 </template>
               </div>
             </div>

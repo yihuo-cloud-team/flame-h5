@@ -1,7 +1,7 @@
 <template>
   <div class="default">
     <nuxt class="view-body" />
-    <van-tabbar route v-model="active" :fixed="false" active-color="#55C7C7">
+    <van-tabbar route v-model="active" :fixed="false" active-color="#4289DB">
       <van-tabbar-item replace to="/" icon="wap-home-o">首页</van-tabbar-item>
       <van-tabbar-item replace to="/task/list" icon="fire-o">动态</van-tabbar-item>
       <!-- <van-tabbar-item replace to="/idea/add" icon="comment-o">XX</van-tabbar-item> -->

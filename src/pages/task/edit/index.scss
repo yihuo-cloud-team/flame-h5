@@ -10,6 +10,14 @@
     border: 1px solid rgba(187, 187, 187, 1);
     overflow: hidden;
   }
+  .input1 {
+    border-radius: 5px;
+    padding: 10px 16px;
+    color: rgba(136, 136, 136, 1);
+    font-size: 14px;
+    border: 1px solid rgba(187, 187, 187, 1);
+    overflow: hidden;
+  }
   .tupian{
     .store-image {
       display: flex;
@@ -18,11 +26,15 @@
       .img {
         display: block;
         width: 120px;
-        height: 100px;
+        height: 60px;
 
         background-color: #dddddd;
       }
-  
+      .img1 {
+        display: block;
+        width: 120px;
+        background-color: #dddddd;
+      }
       .tag{
         margin-left: 10px;
       }

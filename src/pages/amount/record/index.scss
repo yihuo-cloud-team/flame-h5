@@ -82,19 +82,35 @@
   
           margin-bottom: 5px;
         }
+        .bottom-box{
+          display: flex;
+          .left{
+            flex: 1;
+            .center {
   
-        .center {
-  
-          font-size: 14px;
-          color: #7d7e80;
-          margin-bottom: 5px;
+              font-size: 14px;
+              color: #7d7e80;
+              margin-bottom: 5px;
+            }
+            
+            .bottom {
+      
+              font-size: 14px;
+              color: #7d7e80;
+            }
+          }
+          .right{
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+       
+            font-size: 14px;
+            color: #7d7e80;
+          }
+       
+          
         }
-  
-        .bottom {
-  
-          font-size: 14px;
-          color: #7d7e80;
-        }
+      
       }
     }
   }

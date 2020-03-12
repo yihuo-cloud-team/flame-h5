@@ -15,12 +15,18 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-  
+   
+     
       .img {
         display: block;
         width: 120px;
-        height: 100px;
-
+        height: 60px;
+        background-color: #dddddd;
+      }
+      .img1{
+        display: block;
+        width: 120px;
+        
         background-color: #dddddd;
       }
       .tag{

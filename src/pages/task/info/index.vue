@@ -51,7 +51,7 @@
           </div>
         </div>
         <div v-if="info.state==2">
-          <div style="color:red;font-size:14px;margin-top:10px">驳回原因:{{info.remarks}}</div>
+          <div style="color:red;font-size:14px;margin-top:10px">驳回原因：{{info.remarks}}</div>
         </div>
       </div>
     </div>

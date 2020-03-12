@@ -14,7 +14,7 @@
         background-color: #fff;
         padding:  10px 0;
         border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
-
+     
         .img {
           width: 130px;
           height: 70px;
@@ -43,8 +43,11 @@
           }
         }
       }
+      
     }
-
+    .item:nth-last-child(2) .panel{
+      border: none;
+    } 
     &.erect {
       border-radius: 5px;
       border: 1px solid rgba(255, 255, 255, 0);

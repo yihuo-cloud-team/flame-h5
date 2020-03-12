@@ -11,7 +11,7 @@
       <div class="title">任务图片</div>
       <div class="store-image">
         <ol-upload style="border-radius:100%;" v-model="form.img">
-          <img class="img" :src="$getUrl(form.img)" />
+          <img :class="form.img==''?'img':'img1'" :src="$getUrl(form.img)" />
         </ol-upload>
         <van-tag class="tag" @click="change" color="rgba(66, 137, 220, 1)" plain>默认图片</van-tag>
       </div>
@@ -28,13 +28,13 @@
     <div class="price">
       <div class="title">任务价格</div>
       <div class="input">
-        <van-field  maxlength="30" v-model.number="form.price" placeholder="请输入数字" />
+        <van-field maxlength="30" type="number" v-model.number="form.price" placeholder="请输入数字" />
       </div>
     </div>
     <div class="address">
       <div class="title">任务周期(天)</div>
       <div class="input">
-        <van-field  maxlength="30" v-model.number="form.cycle" placeholder="请输入数字" />
+        <van-field maxlength="30" type="number" v-model.number="form.cycle" placeholder="请输入数字" />
       </div>
     </div>
     <div class="info">
@@ -68,9 +68,12 @@
       </div>
     </div>
     <div class="address">
-      <div class="title">联系方式<span style="font-size:14px">(手机/微信/QQ...)</span></div>
+      <div class="title">
+        联系方式
+        <span style="font-size:14px">(手机/微信/QQ等)</span>
+      </div>
       <div class="input">
-        <van-field v-model="form.contact" placeholder="手机、微信、QQ..." />
+        <van-field v-model="form.contact" placeholder="手机、微信、QQ等" />
       </div>
     </div>
 

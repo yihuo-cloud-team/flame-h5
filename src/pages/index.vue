@@ -1,7 +1,8 @@
 <template>
   <div id="home">
     <div class="search-box" @click="$router.push('/search')">
-      <van-icon name="search" size="18"></van-icon>{{info}}
+      <van-icon name="search" size="18"></van-icon>
+      {{info}}
     </div>
 
     <div class="trends-box">
@@ -30,20 +31,10 @@
           </div>
         </div>
       </div>
+      <div class="title1" v-if="list.length>0">任务列表</div>
       <div class="trends-list1 erect">
-        <van-list
-          v-model="loading"
-          :finished="finished"
-          style=" width: 100%;"
-  
-          @load="update"
-        >
-          <div
-            class="item"
-            @click="$router.push(`/task/info?task_id=${item.id}`)"
-            v-for="(item,index) in list"
-            :key="index"
-            :title="item"
+        <van-list v-model="loading" :finished="finished" style=" width: 100%;" @load="update">
+          <div @click="$router.push(`/task/info?task_id=${item.id}`)" v-for="(item,index) in list" class="item"  :key="index" :title="item"
           >
             <div class="panel">
               <img :src="$getUrl(item.img)" class="img" />
@@ -64,11 +55,9 @@
             </div>
           </div>
         </van-list>
-    
       </div>
     </div>
-    <van-divider  v-if="finished">没有更多了</van-divider>
-
+    <van-divider v-if="finished">没有更多了</van-divider>
   </div>
 </template>
 <script src="./index.js"></script>

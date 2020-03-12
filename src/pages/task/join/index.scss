@@ -43,7 +43,9 @@
         }
       }
     }
-
+    .item:nth-last-child(2) .panel{
+      border: none;
+    }
     &.erect {
       border-radius: 5px;
       border: 1px solid rgba(255, 255, 255, 0);

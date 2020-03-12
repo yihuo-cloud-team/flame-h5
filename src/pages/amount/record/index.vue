@@ -38,14 +38,20 @@
         <div class="top">
           <div class="top-left" v-if="item.type==1">收入</div>
           <div class="top-left" v-if="item.type==2">支出</div>
-          <div class="top-center" v-if="item.type==1">+{{item.money}}</div>
-          <div class="top-center" style="color:#4289DB" v-if="item.type==2">-{{item.money}}</div>
-          <div class="top-right">{{item.add_time}}</div>
+          <div class="top-center" style="color:#4289DB" v-if="item.type==1">+{{item.money}}</div>
+          <div class="top-center" v-if="item.type==2">-{{item.money}}</div>
         </div>
-        <div class="center" v-if="item.state==1">状态:成功</div>
-        <div class="center" v-if="item.state==0">状态:待审核</div>
-        <div class="center" v-if="item.state==2">状态:失败</div>
-        <div class="bottom" v-if="item.text">备注:{{item.text}}</div>
+        <div class="bottom-box">
+          <div class="left">
+            <div class="center" v-if="item.state==1">状态:成功</div>
+            <div class="center" v-if="item.state==0">状态:待审核</div>
+            <div class="center" v-if="item.state==2">状态:失败</div>
+            <div class="bottom" v-if="item.text">备注:{{item.text}}</div>
+          </div>
+          <div class="right">
+            <div class="top-right">{{item.add_time}}</div>
+          </div>
+        </div>
       </div>
     </van-list>
   </div>

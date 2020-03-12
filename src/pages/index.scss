@@ -45,10 +45,12 @@
       overflow-x: auto;
       margin-bottom: 25px;
 
-      
+
 
       .item {
         padding-left: 10px;
+
+        .item:nth-last-child(1) {}
 
         .panel {
           background-color: #fff;
@@ -85,6 +87,7 @@
             }
           }
         }
+
       }
 
       &.erect {
@@ -129,7 +132,7 @@
     display: flex;
     overflow-x: auto;
     margin: 10px;
-  
+
 
     .item {
       padding: 0 10px;
@@ -139,7 +142,8 @@
         background-color: #fff;
         padding: 10px 0;
         // border: 1px solid rgba(255, 255, 255, 0);
-
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+        
         .img {
           width: 130px;
           height: 70px;
@@ -170,7 +174,9 @@
         }
       }
     }
-
+    .item:nth-last-child(2) .panel{
+      border: none;
+    }
     &.erect {
       border-radius: 5px;
       border: 1px solid rgba(255, 255, 255, 0);
@@ -178,7 +184,7 @@
 
       .panel {
         display: flex;
-        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+
 
         .img {
           margin: 0;

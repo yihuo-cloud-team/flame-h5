@@ -36,9 +36,9 @@
             </div>
           </div>
         </van-list>
-          <div class="btn" @click="$router.push('/search')" v-if="finished">首页搜索更多内容</div>
+        
       </div>
-    
+      <div class="btn" @click="$router.push('/search')" v-if="finished">首页搜索更多内容</div>
     </div>
   </div>
 </template>
