@@ -21,9 +21,10 @@
         <van-cell title="活动" is-link to="/paper/list" />
         <van-cell title="投诉与建议" to="/user/mention" is-link />
         <van-cell title="帮助说明" to="/user/help" is-link />
+        <van-cell title="退出登录"  @click="signOut" is-link />
       </van-cell-group>
     </div>
-    <!-- <div class="btn" @click="signOut">退出登录</div> -->
+  
   </div>
 </template>
 <script src="./index.js"></script>

@@ -94,9 +94,9 @@
       </div>
     </div>
     <van-divider dashed v-if="list.length<=0">暂无申请人</van-divider>
-    <div class="fixed" @click="$router.push('/user/help')">
+    <div class="fixed">
       <div class="help">
-        <div class="help-btn">
+        <div class="help-btn"  @click="$router.push('/user/help')">
           <van-icon size="18px"  style="margin-right: 10px;" name="question-o" />帮助
         </div>
       </div>
