@@ -64,10 +64,12 @@
         }
 
         .panel-body {
+          flex: 1;
           .title-box {
             display: flex;
 
             .title {
+              flex: 1;
               margin-right: 3px;
             }
           }

@@ -62,6 +62,7 @@
         }
 
         .panel-body {
+          
           .title {
             color: rgba(16, 16, 16, 1);
             font-size: 14px;
@@ -105,10 +106,12 @@
         }
 
         .panel-body {
+          flex: 1;
           .title-box {
             display: flex;
 
             .title {
+              flex: 1;
               margin-right: 3px;
             }
           }
