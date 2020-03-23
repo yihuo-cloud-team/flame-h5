@@ -183,8 +183,9 @@
       background-color: #fff;
 
       .panel {
+        flex: 1;
         display: flex;
-
+        
 
         .img {
           margin: 0;
@@ -194,7 +195,7 @@
         }
 
         .panel-body {
-
+          flex: 1;
           .title-box {
             display: flex;
             align-items: center;
