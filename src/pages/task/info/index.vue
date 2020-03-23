@@ -74,19 +74,19 @@
               <div class="info">
                 <div class="name">{{item.name}}</div>
                 <div class="time">{{item.add_time}}报名</div>
-                <div>
+                <div v-if="userinfo.id == info.user_id">
                   <div class="enlist-label">性别：</div>
                   <span>{{item.gender | sex}}</span>
                 </div>
-                <div>
+                <div v-if="userinfo.id == info.user_id">
                   <div class="enlist-label">联系方式：</div>
                   <span>{{item.phone}}</span>
                 </div>
-                <div>
+                <div v-if="userinfo.id == info.user_id">
                   <div class="enlist-label">出生日期：</div>
                   <span>{{item.birthday}}</span>
                 </div>
-                <div>
+                <div v-if="userinfo.id == info.user_id">
                   <div class="enlist-label">专业技能：</div>
                   <span>{{item.skill}}</span>
                 </div>

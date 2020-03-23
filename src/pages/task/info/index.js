@@ -3,6 +3,7 @@ export default {
   layout: 'sub',
   data() {
     return {
+      userinfo: {},
       state: false,
       list: [],
       loading: false,
@@ -21,7 +22,7 @@ export default {
     },
     // 用于更新一些数据
     async update() {
-
+      this.userinfo = JSON.parse(localStorage.userInfo)
       const res = await this.$http.post('/task/info/ai', {
         task_id: this.$route.query.task_id
       });
