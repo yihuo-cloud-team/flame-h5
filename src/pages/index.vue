@@ -56,8 +56,8 @@
           </div>
         </van-list>
       </div>
+       <van-divider v-if="finished">没有更多了</van-divider>
     </div>
-    <van-divider v-if="finished">没有更多了</van-divider>
   </div>
 </template>
 <script src="./index.js"></script>

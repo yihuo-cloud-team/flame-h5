@@ -19,6 +19,7 @@
         .title {
           color: rgba(16, 16, 16, 1);
           font-size: 18px;
+          flex: 1;
         }
       }
 
@@ -27,6 +28,7 @@
         flex-direction: row;
         align-items: center;
         margin-bottom: 10px;
+
         .left {
           border-radius: 3px;
           background-color: #8796A8;
@@ -35,6 +37,7 @@
           padding: 3px 4px;
           margin-right: 6px;
         }
+
         .type {
           color: rgba(105, 105, 105, 1);
           font-size: 14px;
@@ -42,7 +45,7 @@
         }
       }
 
-    
+
 
       .cost {
         color: rgba(105, 105, 105, 1);
@@ -134,14 +137,21 @@
               margin-bottom: 2px;
               font-weight: 700;
             }
-            .time{
+
+            .time {
               color: #8d8da2;
               font-size: 11px;
             }
+
             .text {
               padding-top: 10px;
               color: rgba(16, 16, 16, 1);
               font-size: 14px;
+            }
+
+            .enlist-label {
+              font-weight: bold;
+              display: inline-block;
             }
           }
 
@@ -149,7 +159,7 @@
             flex: 1;
             display: flex;
             flex-direction: row-reverse;
-  
+
 
             .btn {
               border-radius: 4px;
@@ -167,7 +177,7 @@
 
         }
 
-       
+
       }
     }
   }
@@ -175,12 +185,11 @@
   .fixed {
     position: fixed;
     bottom: 90px;
-    left: 0;
     right: 0;
     display: flex;
     flex-direction: column;
     z-index: 1000;
-  
+
     .help {
       display: flex;
       flex-direction: row-reverse;
@@ -199,14 +208,17 @@
 
     }
 
-   
+
   }
-  .footer{
-    margin:0 10px;
+
+  .footer {
+    margin: 0 10px;
     padding: 10px 0;
-    .border-radius{
+
+    .border-radius {
       border-radius: 4px;
     }
+
     .box {
       display: flex;
 

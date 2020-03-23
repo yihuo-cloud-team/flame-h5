@@ -74,6 +74,22 @@
               <div class="info">
                 <div class="name">{{item.name}}</div>
                 <div class="time">{{item.add_time}}报名</div>
+                <div v-if="userinfo.id == info.user_id">
+                  <div class="enlist-label">性别：</div>
+                  <span>{{item.gender | sex}}</span>
+                </div>
+                <div v-if="userinfo.id == info.user_id">
+                  <div class="enlist-label">联系方式：</div>
+                  <span>{{item.phone}}</span>
+                </div>
+                <div v-if="userinfo.id == info.user_id">
+                  <div class="enlist-label">出生日期：</div>
+                  <span>{{item.birthday}}</span>
+                </div>
+                <div v-if="userinfo.id == info.user_id">
+                  <div class="enlist-label">专业技能：</div>
+                  <span>{{item.skill}}</span>
+                </div>
                 <div class="text">{{item.text}}</div>
               </div>
               <div class="btn-box">
@@ -96,8 +112,8 @@
     <van-divider dashed v-if="list.length<=0">暂无申请人</van-divider>
     <div class="fixed">
       <div class="help">
-        <div class="help-btn"  @click="$router.push('/user/help')">
-          <van-icon size="18px"  style="margin-right: 10px;" name="question-o" />帮助
+        <div class="help-btn" @click="$router.push('/user/help')">
+          <van-icon size="18px" style="margin-right: 10px;" name="question-o" />帮助
         </div>
       </div>
 
