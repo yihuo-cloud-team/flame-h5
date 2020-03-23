@@ -7,7 +7,7 @@ export default {
       loading: false,
       finished: false,
       moveList: [],
-      info:{},
+      info:null,
 
       page: 1,
       page_size: 10

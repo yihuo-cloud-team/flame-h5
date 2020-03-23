@@ -2,7 +2,7 @@
   <div id="home">
     <div class="search-box" @click="$router.push('/search')">
       <van-icon name="search" size="18"></van-icon>
-      {{info}}
+      {{info?info:""}}
     </div>
 
     <div class="trends-box">
