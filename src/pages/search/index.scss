@@ -53,12 +53,18 @@
         
         padding: 10px 0;
         border: 1px solid rgba(255, 255, 255, 0);
+        .box-img {
+          width: 100px;
+          height: 65px;
+          margin-right: 10px;
+          .img {
+            width: 100%;
+            display: block;
+            padding-bottom: 65px;
+            background-size: cover;
+            background-position: center center;
 
-        .img {
-          width: 130px;
-          height: 70px;
-          margin-bottom: 6px;
-      
+          }
         }
 
         .panel-body {

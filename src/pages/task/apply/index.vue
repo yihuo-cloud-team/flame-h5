@@ -2,13 +2,7 @@
   <div id="apply">
     <div class="trends-box">
       <div class="trends-list erect">
-        <van-list
-          v-model="loading"
-          :finished="finished"
-          style=" width: 100%;"
- 
-          @load="update"
-        >
+        <van-list v-model="loading" :finished="finished" style=" width: 100%;" @load="update">
           <div
             class="item"
             @click="$router.push(`/task/info?task_id=${item.id}`)"
@@ -17,7 +11,9 @@
             :title="item"
           >
             <div class="panel">
-              <img :src="$getUrl(item.img)" class="img" />
+              <div class="box-img">
+                <div class="img" :style="`background-image: url(${$getUrl(item.img)});`"></div>
+              </div>
               <div class="panel-body">
                 <div class="title-box">
                   <div class="title">{{item.task_name}}</div>
@@ -46,7 +42,7 @@
           </div>
         </van-list>
       </div>
-         <van-divider  v-if="finished">没有更多了</van-divider>
+      <van-divider v-if="finished">没有更多了</van-divider>
     </div>
   </div>
 </template>

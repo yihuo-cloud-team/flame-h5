@@ -11,7 +11,9 @@
             :title="item"
           >
             <div class="panel">
-              <img :src="$getUrl(item.img)" class="img" />
+             <div class="box-img">
+                <div class="img" :style="`background-image: url(${$getUrl(item.img)});`"></div>
+              </div>
               <div class="panel-body">
                 <div class="title-box">
                   <div class="title">{{item.task_name}}</div>
