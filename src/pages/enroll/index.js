@@ -3,7 +3,10 @@ export default {
   layout: 'sub',
   data() {
     return {
-      message: ''
+      form:{
+        display:0,
+        message: ''
+      }
     };
   },
   methods: {

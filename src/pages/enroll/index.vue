@@ -3,7 +3,7 @@
     <div class="panel">
       <div class="title">简述你能胜任项目的原因（详细的说明能增加你的入选率）</div>
       <van-field
-        v-model="message"
+        v-model="form.message"
         style="border: 1px solid rgba(187, 187, 187, 1); padding: 10px;"
         rows="4"
         autosize
@@ -13,6 +13,9 @@
         show-word-limit
       />
     </div>
+    <van-cell-group>
+      <van-switch-cell v-model="form.display" :active-value="1" :inactive-value="0" title="是否匿名" />
+    </van-cell-group>
     <div class="btn" @click="submit()">提交</div>
   </div>
 </template>

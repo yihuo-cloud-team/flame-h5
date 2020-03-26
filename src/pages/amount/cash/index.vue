@@ -46,8 +46,8 @@
       <van-cell-group>
         <van-field v-model="query.money" type="number" placeholder="可提现金额" />
       </van-cell-group>
-      <div class="baocun" @click="submit">发起提现</div>
-     
+   
+           <van-button @click="submit" color="#4289DB" style="margin-top:20px" block :disabled="disabled">发起提现</van-button>
     </div>
   </div>
 </template>

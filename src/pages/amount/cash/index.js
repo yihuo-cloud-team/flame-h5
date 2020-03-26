@@ -13,7 +13,8 @@ export default {
         account: "",
         real_name: "",
         money: ""
-      }
+      },
+      disabled: false,
     };
   },
   methods: {
@@ -43,6 +44,12 @@ export default {
         this.$toast("请输入金额")
         return false
       }
+      this.disabled = true;
+      
+      let toast = this.$toast.loading({
+        overlay: true,
+        message: '申请中'
+      });
       const res = await this.$http.post('/order/getMoney', this.query);
       if (res.code >= 0) {
         this.$toast('操作成功')
@@ -50,9 +57,12 @@ export default {
         this.query.real_name = '';
         this.query.money = '';
         this.update();
+        toast.clear();
       } else {
+        toast.clear();
         this.$toast(res.msg)
       }
+      this.disabled = false;
     },
     tixian() {
         this.$router.push('/amount/record?type=2')

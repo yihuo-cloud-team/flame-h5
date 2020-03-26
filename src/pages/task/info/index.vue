@@ -64,31 +64,31 @@
         <div class="phone">{{info.name}}:{{info.contact}}</div>
       </div>
     </div>
-    <div class="enlist-body">
+    <div class="enlist-body" v-if="info.is_owner==1">
       <div class="title">申请列表</div>
       <div class="enlist-list">
         <van-list v-model="loading" :finished="finished" style=" width: 100%;" @load="apply">
           <div class="item" v-for="(item,index) in list" :key="index" :title="item">
             <div class="head">
-              <img class="img" :src="item.head_img" alt />
+              <img class="img"  :src="item.display==1?img:item.head_img" alt />
               <div class="info">
-                <div class="name">{{item.name}}</div>
+                <div class="name">{{item.display==1?'匿名':item.name}}</div>
                 <div class="time">{{item.add_time}}报名</div>
-                <div v-if="userinfo.id == info.user_id">
+                <div v-if="item.display==0"> 
                   <div class="enlist-label">性别：</div>
-                  <span>{{item.gender | sex}}</span>
+                  <span>{{item.gender | sex }}</span>
                 </div>
-                <div v-if="userinfo.id == info.user_id">
+                <div v-if="item.display==0">
                   <div class="enlist-label">联系方式：</div>
-                  <span>{{item.phone}}</span>
+                  <span>{{item.phone?item.phone:"--"}}</span>
                 </div>
-                <div v-if="userinfo.id == info.user_id">
+                <div v-if="item.display==0">
                   <div class="enlist-label">出生日期：</div>
-                  <span>{{item.birthday}}</span>
+                  <span>{{item.birthday?item.birthday:"--"}}</span>
                 </div>
-                <div v-if="userinfo.id == info.user_id">
+                <div v-if="item.display==0">
                   <div class="enlist-label">专业技能：</div>
-                  <span>{{item.skill}}</span>
+                  <span>{{item.skill?item.skill:"--"}}</span>
                 </div>
                 <div class="text">{{item.text}}</div>
               </div>
@@ -108,8 +108,9 @@
           </div>
         </van-list>
       </div>
+          <van-divider dashed v-if="list.length<=0">暂无申请人</van-divider>
     </div>
-    <van-divider dashed v-if="list.length<=0">暂无申请人</van-divider>
+
     <div class="fixed">
       <div class="help">
         <div class="help-btn" @click="$router.push('/user/help')">

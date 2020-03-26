@@ -11,7 +11,8 @@ export default {
       info: {},
       list: [],
       page: 0,
-      page_size: 10
+      page_size: 10,
+      img:"https://api.yihuo-cloud.com/public/files/20200326/202003260703295347.jfif"
     };
   },
   methods: {
@@ -22,7 +23,8 @@ export default {
     },
     // 用于更新一些数据
     async update() {
-      this.userinfo = JSON.parse(localStorage.userInfo)
+
+      console.log(this.userInfo)
       const res = await this.$http.post('/task/info/ai', {
         task_id: this.$route.query.task_id
       });
@@ -175,7 +177,7 @@ export default {
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {
     sex(value) {
-      if (value == null) return ''
+      if (value == null) return '--'
       return value == 1 ? '男' : '女'
     }
   },
