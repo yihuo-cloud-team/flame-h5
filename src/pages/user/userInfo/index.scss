@@ -1,0 +1,105 @@
+@import "@/styles/variable.scss";
+
+#userInfo {
+  background: #fff;
+  height: 100vh;
+
+  .img {
+    height: 240px;
+    width: 100%;
+  }
+
+  .custom-indicator {
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    padding: 2px 5px;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.1);
+    color: #f6f6f6;
+  }
+
+  .info {
+    display: flex;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+
+    .head-portrait {
+      margin-right: 15px;
+    }
+
+    .text {
+      flex: 1;
+      padding: 5px 0;
+
+      .name {
+        color: #101010;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .edit {
+      padding: 5px 0;
+      font-size: 14px;
+      color: #666666;
+
+      .edit-body {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .tag-box {
+    padding: 0 16px;
+    margin-bottom: 20px;
+    .icon {
+      margin-right: 10px;
+    }
+  }
+
+  .user-info {
+    .title {
+      padding: 10px 16px;
+      background-color: #f6f6f6;
+      display: flex;
+      justify-content: space-between;
+
+      .edit-body {
+        color: #666666;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .body {
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .gender {
+      margin-bottom: 10px;
+    }
+
+    .phone {
+      margin-bottom: 10px;
+    }
+
+    .birthday {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+#userInfo /deep/ {
+  .portrait {
+    .van-uploader__upload {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+  }
+}

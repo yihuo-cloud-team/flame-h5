@@ -55,14 +55,39 @@
         </div>
       </div>
     </div>
+    <div class="body" style="margin-bottom:10px;">
+      <div class="title" style="margin-bottom: 15px;">发布者信息</div>
+      <div class="user-contact">
+        <van-image
+          class="img"
+          width="50"
+          height="50"
+          :src="$getUrl(info.head_img)"
+          @click="$router.push(`/user/userInfo?id=${info.user_id}`)"
+        />
+        <div class="contact">
+          <div class="phone">{{info.name}}</div>
+          <!-- <div class="phone">联系方式：{{info.contact}}</div> -->
+        </div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="title" style="margin-bottom: 6px;">发布日期：</div>
+      <div class="text">{{info.add_time}}</div>
+    </div>
+    <div class="body">
+      <div class="title" style="margin-bottom: 6px;">地址：</div>
+      <div class="text">{{info.address}}</div>
+    </div>
+    <div class="body">
+      <div class="title" style="margin-bottom: 6px;">联系方式</div>
+      <div class="text">{{info.contact}}</div>
+    </div>
     <div class="body">
       <div class="title" style="margin-bottom: 6px;">任务信息</div>
-      <div class="text">{{info.info}}</div>
-
-      <div class="title" style="margin-bottom: 6px;">联系方式</div>
-      <div class="contact">
-        <div class="phone">{{info.name}}:{{info.contact}}</div>
-      </div>
+      <div class="text" style="padding-bottom: 10px;">{{info.info}}</div>
+      <!-- <div class="text" style="margin-bottom: 0;">发布日期：{{info.add_time}}</div> -->
+      <!-- <div class="text" style="margin-bottom: 5px;">备注：{{info.info}}</div> -->
     </div>
     <div class="enlist-body" v-if="info.is_owner==1">
       <div class="title">申请列表</div>
@@ -70,11 +95,16 @@
         <van-list v-model="loading" :finished="finished" style=" width: 100%;" @load="apply">
           <div class="item" v-for="(item,index) in list" :key="index" :title="item">
             <div class="head">
-              <img class="img"  :src="item.display==1?img:item.head_img" alt />
+              <img
+                class="img"
+                @click="$router.push(`/user/userInfo?id=${item.user_id}`)"
+                :src="item.display==1?img:item.head_img"
+                alt
+              />
               <div class="info">
                 <div class="name">{{item.display==1?'匿名':item.name}}</div>
                 <div class="time">{{item.add_time}}报名</div>
-                <div v-if="item.display==0"> 
+                <div v-if="item.display==0">
                   <div class="enlist-label">性别：</div>
                   <span>{{item.gender | sex }}</span>
                 </div>
@@ -108,7 +138,7 @@
           </div>
         </van-list>
       </div>
-          <van-divider dashed v-if="list.length<=0">暂无申请人</van-divider>
+      <van-divider dashed v-if="list.length<=0">暂无申请人</van-divider>
     </div>
 
     <div class="fixed">

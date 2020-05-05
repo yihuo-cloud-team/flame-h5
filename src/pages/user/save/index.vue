@@ -1,120 +1,83 @@
 <template>
   <div id="save">
-    <div class="user">
-      <div class="name-info">
-        <div class="name">姓名*</div>
-        <div class="hide">
-          <van-switch
-            v-model="form.name_show"
-            size="15px"
-            style="margin-right: 5px;"
-            active-color="#07c160"
-            inactive-color="#ee0a24"
-            :active-value="1"
-            :inactive-value="0"
-          />
-          <span class="hide-text">是否显示</span>
-        </div>
-      </div>
-      <div class="input">
-        <van-field style="padding: 3px 10px;" v-model="form.name" placeholder="请输入您的姓名" />
-      </div>
+    <div class="head">
+      <ol-upload class="portrait" v-model="form.head_img">
+        <van-image width="80" class="img" fit="cover" height="80" :src="$getUrl(form.head_img)" />
+      </ol-upload>
     </div>
-    <div class="user">
-      <div class="name-info">
-        <div class="name">出生日期*</div>
-        <div class="hide">
-          <van-switch
-            v-model="form.birthday_show"
-            size="15px"
-            style="margin-right: 5px;"
-            active-color="#07c160"
-            inactive-color="#ee0a24"
-            :active-value="1"
-            :inactive-value="0"
+    <div class="user-info">
+      <div class="title">基本信息</div>
+      <van-cell-group>
+        <van-field v-model="form.name" label="昵称" placeholder="请输入您的昵称" />
+        <van-field name="switch" label="昵称展示">
+          <template #input>
+            <van-switch v-model="form.name_show" :active-value="1" :inactive-value="0" size="20" />
+            <span class="switch-text">{{form.name_show?'展示':'隐藏'}}</span>
+          </template>
+        </van-field>
+        <van-field v-model="form.phone" label="联系方式" placeholder="请输入联系方式" />
+        <van-field name="switch" label="联系方式展示">
+          <template #input>
+            <van-switch v-model="form.phone_show" :active-value="1" :inactive-value="0" size="20" />
+            <span class="switch-text">{{form.phone_show?'展示':'隐藏'}}</span>
+          </template>
+        </van-field>
+        <van-field
+          readonly
+          clickable
+          name="datetimePicker"
+          :value="tiemtext"
+          label="生日"
+          placeholder="请选择您的生日"
+          @click="showPicker = true"
+        />
+        <van-field name="switch" label="生日展示">
+          <template #input>
+            <van-switch
+              v-model="form.birthday_show"
+              :active-value="1"
+              :inactive-value="0"
+              size="20"
+            />
+            <span class="switch-text">{{form.birthday_show?'展示':'隐藏'}}</span>
+          </template>
+        </van-field>
+        <van-popup v-model="showPicker" position="bottom">
+          <van-datetime-picker
+            :formatter="formatter"
+            :min-date="minDate"
+            :max-date="maxDate"
+            type="datetime"
+            @confirm="getTiem"
+            @cancel="showPicker = false"
           />
-          <span class="hide-text">是否显示</span>
-        </div>
-      </div>
-      <div
-        class="input"
-        style="padding: 6px 10px 5px 10px; background-color: #fff;"
-        @click="show = true"
-      >{{tiemtext}}</div>
+        </van-popup>
+        <van-field name="checkboxGroup" label="性别">
+          <template #input>
+            <van-radio-group v-model="form.gender" direction="horizontal">
+              <van-radio :name="1">男生</van-radio>
+              <van-radio :name="2">女生</van-radio>
+            </van-radio-group>
+          </template>
+        </van-field>
+        <van-field name="switch" label="性别展示">
+          <template #input>
+            <van-switch v-model="form.gender_show" :active-value="1" :inactive-value="0" size="20" />
+            <span class="switch-text">{{form.gender_show?'展示':'隐藏'}}</span>
+          </template>
+        </van-field>
+        <van-field v-model="form.skill" label="专业技能" placeholder="请输入专业技能" />
+        <van-field name="switch" label="技能展示">
+          <template #input>
+            <van-switch v-model="form.skill_show" :active-value="1" :inactive-value="0" size="20" />
+            <span class="switch-text">{{form.skill_show?'展示':'隐藏'}}</span>
+          </template>
+        </van-field>
+      </van-cell-group>
     </div>
-    <div class="user">
-      <div class="name-info">
-        <div class="name">专业技能*</div>
-        <div class="hide">
-          <van-switch
-            v-model="form.skill_show"
-            size="15px"
-            style="margin-right: 5px;"
-            active-color="#07c160"
-            inactive-color="#ee0a24"
-            :active-value="1"
-            :inactive-value="0"
-          />
-          <span class="hide-text">是否显示</span>
-        </div>
-      </div>
-      <div class="input">
-        <van-field style="padding: 3px 10px;" v-model="form.skill" placeholder="请输入您的专业技能" />
-      </div>
+    <div class="footbtn">
+      <van-button color="#4289DB" @click="submit" block>保存</van-button>
     </div>
-    <div class="user">
-      <div class="name-info">
-        <div class="name">联系方式*</div>
-        <div class="hide">
-          <van-switch
-            v-model="form.phone_show"
-            size="15px"
-            style="margin-right: 5px;"
-            active-color="#07c160"
-            inactive-color="#ee0a24"
-            :active-value="1"
-            :inactive-value="0"
-          />
-          <span class="hide-text">是否显示</span>
-        </div>
-      </div>
-      <div class="input">
-        <van-field style="padding: 3px 10px;" v-model="form.phone" placeholder="请输入您的联系方式" />
-      </div>
-    </div>
-    <div class="user">
-      <div class="name-info">
-        <div class="name">性别*</div>
-        <div class="hide">
-          <van-switch
-            v-model="form.gender_show"
-            size="15px"
-            style="margin-right: 5px;"
-            active-color="#07c160"
-            inactive-color="#ee0a24"
-            :active-value="1"
-            :inactive-value="0"
-          />
-          <span class="hide-text">是否显示</span>
-        </div>
-      </div>
-      <div class="button-holder">
-        <div :class="['sex',{'activ': form.gender == 1}]" @click="form.gender = 1">男</div>
-        <div :class="['sex',{'activ': form.gender == 0}]" @click="form.gender = 0">女</div>
-      </div>
-    </div>
-    <div class="sub" @click="submit">保存</div>
-    <van-popup v-model="show" position="bottom">
-      <van-datetime-picker
-
-        type="date"
-        :min-date="minDate"
-        :max-date="maxDate"
-        :formatter="formatter"
-        @cancel="show = !show"
-        @confirm="getTiem"
-      />
-    </van-popup>
   </div>
 </template>
 <script src="./index.js"></script>

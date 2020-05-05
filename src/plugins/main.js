@@ -13,11 +13,14 @@ import './Origin.js';
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import '@/styles/vant.scss';
+import { ImagePreview } from 'vant';
 
 import '@/styles/styles.scss';
 
 Vue.use(Vant);
+
 Vue.prototype.$http = Http;
+Vue.prototype.$imagePreview = ImagePreview;
 
 
 

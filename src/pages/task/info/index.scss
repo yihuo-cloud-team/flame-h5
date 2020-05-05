@@ -3,7 +3,6 @@
 #info {
   .head {
     padding: 10px;
-    border-bottom: 1px solid rgba(221, 221, 221, 1);
 
     .head-body {
       background-color: #fff;
@@ -72,7 +71,8 @@
 
   .body {
     background-color: #fff;
-    padding: 30px;
+    padding: 10px 20px;
+
 
     .title {
       color: #020202;
@@ -82,20 +82,31 @@
     .text {
       color: #696969;
       font-size: 14px;
-      margin-bottom: 15px;
+      // margin-bottom: 15px;
     }
 
-    .contact {
-      font-size: 14px;
+    .user-contact {
       display: flex;
-      align-items: center;
 
-      .phone {
-        color: rgba(70, 75, 82, 1);
+      .img {
         margin-right: 10px;
+        border-radius: 5px;
+        overflow: hidden;
       }
 
+      .contact {
+        font-size: 14px;
+
+        .phone {
+          margin-bottom: 5px;
+          color: rgba(70, 75, 82, 1);
+          margin-right: 10px;
+        }
+
+      }
     }
+
+
   }
 
   .enlist-body {

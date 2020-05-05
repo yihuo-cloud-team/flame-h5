@@ -1,15 +1,15 @@
 <template>
   <div id="user">
-    <div class="user-info">
+    <div class="user-info" @click="$router.push(`/user/userInfo`)">
       <div class="info-image">
-        <img class="img" :src="userInfo.head_img" />
+        <img class="img" :src="$getUrl(userInfo.head_img)" />
       </div>
       <div class="user-name">{{userInfo.name}}</div>
     </div>
 
     <div>
       <van-cell-group>
-        <van-cell title="用户信息" to="/user/save" is-link />
+        <van-cell title="用户信息" to="/user/userInfo" is-link />
         <!-- <van-cell title="会员充值中心" to="/amount/recharge" is-link /> -->
         <!-- <van-cell title="我的订单" to="/order/record" is-link /> -->
         <van-cell title="发布任务" to="/task/add" is-link />
