@@ -11,22 +11,6 @@ export default {
       option1: [{
           text: '全部类别',
           value: ''
-        },
-        {
-          text: '翻译',
-          value: 1
-        },
-        {
-          text: '软件',
-          value: 2
-        },
-        {
-          text: '设计',
-          value: 3
-        },
-        {
-          text: '其他',
-          value: 4
         }
       ],
       option2: [{
@@ -68,6 +52,7 @@ export default {
   methods: {
     // 用于初始化一些数据
     init() {
+      this.httpClass();
       this.getAddress();
       this.httpConfig();
     },
@@ -76,7 +61,7 @@ export default {
       let res = await this.$http.post('/config/list', this.query);
       if(res.code>=0){
           res.data.map((el)=>{
-     
+            console.log(res)
             if(el.key.indexOf('searchInfo')!=-1 ){
                 this.info = el.value     
             }
@@ -99,6 +84,25 @@ export default {
           this.finished = true;
         }
       } catch (error) {}
+    },
+    async httpClass(){
+      const res = await this.$http.post('/class/list');
+      console.log(res)
+      if (res.code >= 0) {
+        // this.classList = res.data;
+        console.log(this.option1)
+
+
+        res.data.forEach(res=>{
+          res.text=res.name;
+          res.value=res.id;
+          delete res["icon"]
+        })
+
+
+        
+        this.option1=[...this.option1,...res.data];
+      }
     },
     search() {
       this.query.page = 1

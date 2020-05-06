@@ -1,0 +1,31 @@
+@import "@/styles/variable.scss";
+
+.ol-icon-nav {
+    background-color: #FFF;
+}
+
+.ol-icon-nav /deep/ {
+
+    .van-swipe__indicators {
+        bottom: 12px !important;
+
+        .van-swipe__indicator {
+            width: 20px !important;
+            border-radius: 0;
+            height: 3px;
+        }
+    }
+
+    .paddingBottom30 {
+        padding-bottom: 30px;
+    }
+    .van-grid-item__text{
+        white-space: nowrap;
+        text-overflow:ellipsis;
+
+     
+    }
+    .van-grid-item__icon+.van-grid-item__text {
+        margin-top: 4px;
+    }
+}

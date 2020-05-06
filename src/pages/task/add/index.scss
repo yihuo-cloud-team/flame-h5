@@ -64,9 +64,10 @@
     .option {
       display: flex;
       margin-bottom: 10px;
-
+      flex-wrap: wrap;
       .item {
         margin-right: 10px;
+        margin-bottom: 5px;
         line-height: 20px;
         color: rgba(16, 16, 16, 1);
         font-size: 14px;
@@ -84,7 +85,12 @@
 
   .price {
     margin-bottom: 30px;
-
+    .price-box{
+      margin-bottom: 10px;
+      .van-tag+.van-tag{
+        margin-left: 5px;
+      }
+    }
     .title {
       color: rgba(16, 16, 16, 1);
       font-size: 16px;

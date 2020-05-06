@@ -5,6 +5,8 @@
       {{info?info:""}}
     </div>
 
+    <ol-icon-nav class="icon-nav" @fnc='routers' :list='classList'></ol-icon-nav>
+    
     <div class="trends-box">
       <div class="title1" v-if="moveList.length>0">项目动态</div>
       <div class="trends-list">

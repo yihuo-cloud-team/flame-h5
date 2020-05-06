@@ -10,7 +10,8 @@ export default {
       info:null,
 
       page: 1,
-      page_size: 10
+      page_size: 10,
+      classList:[],
 
     };
   },
@@ -19,17 +20,23 @@ export default {
      init() {
       this.dongtai();
       this.httpConfig();
+      this.httpClass();
     },
     async httpConfig() {
       let res = await this.$http.post('/config/list', this.query);
       if(res.code>=0){
           res.data.map((el)=>{
-        
             if(el.key.indexOf('searchInfo')!=-1 ){
                 this.info = el.value;     
             }
-      
           })
+      }
+    },
+    async httpClass() {
+      const res = await this.$http.post('/class/list');
+      console.log(res)
+      if (res.code >= 0) {
+        this.classList = res.data;
       }
     },
     async dongtai() {
@@ -59,8 +66,10 @@ export default {
       }
       this.loading = false;
       this.page++;
-
     },
+    routers(data){
+      this.$router.push(`/search?id=${data.id}`)
+    }
     //动态列表
   
 

@@ -19,14 +19,14 @@
     <div class="task-type">
       <div class="title">任务类别</div>
       <div class="option">
-        <div :class="['item',{'activ': form.task_type == 1}]" @click="form.task_type=1">翻译</div>
-        <div :class="['item',{'activ': form.task_type == 2}]" @click="form.task_type=2">软件</div>
-        <div :class="['item',{'activ': form.task_type == 3}]" @click="form.task_type=3">设计</div>
-        <div :class="['item',{'activ': form.task_type == 4}]" @click="form.task_type=4">其他</div>
+        <div v-for="(item,i) in classList" :key='i' :class="['item',{'activ': form.task_type == item.id}]" @click="form.task_type= item.id">{{item.name}}</div>
       </div>
     </div>
     <div class="price">
       <div class="title">任务价格</div>
+      <div class="price-box" v-if="priceList">
+        <van-tag @click="price(todo)" v-for="(todo,i) in priceList" :key='i' type="danger" size="large">{{todo}}</van-tag>
+      </div>
       <div class="input">
         <van-field maxlength="30" type="number" v-model.number="form.price" placeholder="请输入数字" />
       </div>

@@ -33,10 +33,7 @@
         </div>
         <div class="num">
           <div class="left">NO.{{info.task_num}}</div>
-          <div class="type" v-if="info.task_type==0">翻译</div>
-          <div class="type" v-if="info.task_type==2">软件</div>
-          <div class="type" v-if="info.task_type==3">设计</div>
-          <div class="type" v-if="info.task_type==4">其他</div>
+          <div class="type">{{info.class_name}}</div>
         </div>
 
         <div class="cost">周期 {{info.cycle}} 天 | 金额 ￥{{info.price}}</div>
