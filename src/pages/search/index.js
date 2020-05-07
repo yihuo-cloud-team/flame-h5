@@ -54,10 +54,14 @@ export default {
     init() {
       this.httpClass();
       this.getAddress();
+      this.$nextTick(res=>{
+        if(this.$route.query.id){
+          this.query.task_type=Number(this.$route.query.id);
+        }
+      })
       this.httpConfig();
     },
     async httpConfig() {
-
       let res = await this.$http.post('/config/list', this.query);
       if(res.code>=0){
           res.data.map((el)=>{
@@ -89,22 +93,18 @@ export default {
       const res = await this.$http.post('/class/list');
       console.log(res)
       if (res.code >= 0) {
-        // this.classList = res.data;
         console.log(this.option1)
-
-
         res.data.forEach(res=>{
           res.text=res.name;
           res.value=res.id;
           delete res["icon"]
         })
-
-
-        
         this.option1=[...this.option1,...res.data];
+        console.log(this.option1)
       }
     },
     search() {
+      console.log('search')
       this.query.page = 1
       this.list = []
       this.update()
@@ -129,6 +129,7 @@ export default {
         });
       })
     },
+    
     confirm(e) {
       this.AreaArr = e;
       this.district = e[2].name;
