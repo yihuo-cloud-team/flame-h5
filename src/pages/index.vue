@@ -1,8 +1,10 @@
 <template>
   <div id="home">
-    <div class="search-box" @click="$router.push('/search')">
-      <van-icon name="search" size="18"></van-icon>
-      {{info?info:""}}
+    <div id="top-search-box">
+      <div class="search-box" @click="$router.push('/search')">
+        <van-icon name="search" size="18"></van-icon>
+        {{info?info:""}}
+      </div>
     </div>
 
     <ol-icon-nav class="icon-nav" @fnc='routers' :list='classList'></ol-icon-nav>
