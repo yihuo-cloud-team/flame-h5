@@ -99,7 +99,7 @@
                 alt
               />
               <div class="info">
-                <div class="name">{{item.display==1?irem.user_id:item.name}}</div>
+                <div class="name">{{item.display==1?item.user_id:item.name}}</div>
                 <div class="time">{{item.add_time}}报名</div>
                 <div v-if="item.display==0">
                   <div class="enlist-label">性别：</div>
