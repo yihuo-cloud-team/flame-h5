@@ -8,6 +8,8 @@ export default {
                 wx_name: ""
             },
             msg: '',
+            checked:false,
+            isShow:false,
         };
     },
     methods: {
@@ -33,12 +35,12 @@ export default {
 
             } else {
                 // 登陆
-                const code = this.$route.query.code;
-                this.login(code);
+                this.code = this.$route.query.code;
             }
         },
         // 用于更新一些数据
-        async login(code) {
+        async login() {
+            const code = this.code;
             const res1 = await this.$http.post('/auth/openid', {
                 code: code
               });
@@ -54,6 +56,15 @@ export default {
                 // this.$router.push(`/goodsList${localStorage.location}`);
                 this.$router.push('/');
               }
+ 
+        },
+        async isShow() {
+            
+            if(this.isShow = true) {
+
+                this.isShow = false;
+
+            }
  
         },
         // async submit() {
