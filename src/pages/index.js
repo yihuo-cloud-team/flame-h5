@@ -7,29 +7,29 @@ export default {
       loading: false,
       finished: false,
       moveList: [],
-      info:null,
+      info: null,
 
       page: 1,
       page_size: 10,
-      classList:[],
+      classList: [],
 
     };
   },
   methods: {
     // 用于初始化一些数据
-     init() {
+    init() {
       this.dongtai();
       this.httpConfig();
       this.httpClass();
     },
     async httpConfig() {
       let res = await this.$http.post('/config/list', this.query);
-      if(res.code>=0){
-          res.data.map((el)=>{
-            if(el.key.indexOf('searchInfo')!=-1 ){
-                this.info = el.value;     
-            }
-          })
+      if (res.code >= 0) {
+        res.data.map((el) => {
+          if (el.key.indexOf('searchInfo') != -1) {
+            this.info = el.value;
+          }
+        })
       }
     },
     async httpClass() {
@@ -45,7 +45,7 @@ export default {
         page_size: 3,
       });
       if (res.code >= 0) {
-        
+
         this.moveList = res.data
       }
     },
@@ -67,11 +67,12 @@ export default {
       this.loading = false;
       this.page++;
     },
-    routers(data){
-      this.$router.push(`/search?id=${data.id}`)
+    routers(data) {
+      // this.$router.push(`/search?id=${data.id}`)
+      this.$router.push(`/task/add?type=${data.id}`)
     }
     //动态列表
-  
+
 
     // dateDiff(hisTime, nowTime) {
     //   var now = nowTime ? nowTime : new Date().getTime(),
@@ -109,26 +110,26 @@ export default {
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {},
   // 在实例创建完成后被立即调用
-  created() {},
+  created() { },
   // 在挂载开始之前被调用：相关的 render 函数首次被调用。
-  beforeMount() {},
+  beforeMount() { },
   // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
   mounted() {
     this.init();
-    this.$nextTick(() => {});
+    this.$nextTick(() => { });
   },
   // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
-  beforeUpdate() {},
+  beforeUpdate() { },
   // keep-alive 组件激活时调用。
-  activated() {},
+  activated() { },
   // keep-alive 组件停用时调用。
-  deactivated() {},
+  deactivated() { },
   // 实例销毁之前调用。在这一步，实例仍然完全可用。
-  beforeDestroy() {},
+  beforeDestroy() { },
   //Vue 实例销毁后调用。
-  destroyed() {},
+  destroyed() { },
   // 当捕获一个来自子孙组件的错误时被调用。
-  errorCaptured() {},
+  errorCaptured() { },
   // 包含 Vue 实例可用指令的哈希表。
   directives: {},
   // 一个对象，键是需要观察的表达式，值是对应回调函数。

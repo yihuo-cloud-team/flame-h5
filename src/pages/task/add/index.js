@@ -33,11 +33,12 @@ export default {
     // 用于更新一些数据
     async update() {
       const res = await this.$http.post('/class/list');
-      console.log(res)
       if (res.code >= 0) {
         this.classList = res.data;
         this.form.task_type = this.classList[0].id;
-        console.log(this.form.task_type)
+      }
+      if (!this.isApp) {
+        this.form.task_type = parseInt(this.$route.query.type)
       }
     },
     select(e) {
@@ -118,13 +119,15 @@ export default {
         }
       })
     },
-    price(num){
-      this.form.price=num;
+    price(num) {
+      this.form.price = num;
     }
   },
   // 计算属性
   computed: {
-
+    isApp() {
+      return typeof this.$route.query.type == 'undefined'
+    }
   },
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {},
