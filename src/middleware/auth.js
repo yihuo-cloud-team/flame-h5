@@ -2,26 +2,17 @@ import Http from '../plugins/Http'
 import jwt from './jwt'
 
 export default function (context) {
-    localStorage.jwt = jwt.jwt;
+    // localStorage.jwt = jwt.jwt;
     // localStorage.userInfo = JSON.stringify(jwt.userInfo);
 
-    if (typeof localStorage.version_nb == 'undefined') {
+    let v = '5';
 
-        localStorage.version_nb = "2";
+    if (localStorage.version_nb != v) {
+        localStorage.version_nb = v;
         if (context.route.name != 'login') {
             context.app.router.replace('/login');
         }
-
         return;
-
-    } else {
-        if (localStorage.version_nb != '2') {
-            localStorage.version_nb = "2";
-            if (context.route.name != 'login') {
-                context.app.router.replace('/login');
-            }
-            return;
-        }
     }
 
 
