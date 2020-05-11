@@ -175,6 +175,14 @@
                   @click="save1(info)"
                 >上架</van-button>
               </template>
+              <template v-if="info.is_up==0">
+                <van-button
+                  class="border-radius tui"
+                  color="#4289DB"
+                  size="large"
+                  @click="$router.push(`/task/refund?id=${info.id}`)"
+                >退款</van-button>
+              </template>
               <template v-if="info.is_up==1">
                 <van-button
                   class="border-radius"
