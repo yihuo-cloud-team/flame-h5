@@ -19,13 +19,14 @@ export default {
 
     },
     async submit() {
-      if (this.message == '') {
+
+      if (this.form.reason == '') {
           this.$toast('请简述原因');
         return false
       }
       const res = await this.$http.post('/task/refund', {
-        reason: this.reason,
-        task_id: this.$route.query.id
+        reason: this.form.reason,
+        id: this.$route.query.id
       });
       if (res.code >= 0) {
         this.$toast('操作成功');
