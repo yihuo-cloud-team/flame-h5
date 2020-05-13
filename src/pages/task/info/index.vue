@@ -95,7 +95,7 @@
               <img
                 class="img"
                 @click="$router.push(`/user/userInfo?id=${item.user_id}`)"
-                :src="item.display==1?img:item.head_img"
+                :src="item.display==1?img:$getUrl(item.head_img)"
                 alt
               />
               <div class="info">
