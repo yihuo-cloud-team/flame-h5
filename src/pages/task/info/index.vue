@@ -176,12 +176,16 @@
                 >上架</van-button>
               </template>
               <template v-if="info.is_up==0">
-                <van-button
+                <!-- <van-button
                   class="border-radius tui"
                   color="#4289DB"
                   size="large"
                   @click="$router.push(`/task/refund?id=${info.id}`)"
-                >退款</van-button>
+                >退款</van-button> -->
+                <div class="box">
+                  <span class="left"></span>
+                  <span class="right" @click="$router.push(`/task/refund?id=${info.id}`)">终止任务</span>
+                </div>
               </template>
               <template v-if="info.is_up==1">
                 <van-button
