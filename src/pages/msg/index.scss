@@ -1,5 +1,99 @@
 @import "@/styles/variable.scss";
 
-#msg {}
+#msg {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .msg-list-panel {
+        flex: 1;
+        overflow: auto;
+
+        .msg-card {
+
+            .msg-card-body {
+                display: flex;
+                padding: 10px;
+                flex-wrap: nowrap;
+
+                &.right {
+                    justify-content: flex-end;
+                    padding-left: 70px;
+
+                    .user-info-box {
+                        margin-left: 10px;
+
+                        .user-head {}
+                    }
+
+                    .message-box {
+                        text-align: right;
+                    }
+                }
+
+
+
+                &.left {
+                    padding-right: 70px;
+                }
+
+
+
+            }
+
+            .user-info-box {
+                margin-right: 10px;
+
+                .user-head {}
+            }
+
+            .message-box {
+                flex: 1;
+
+                .user-title {
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                }
+
+                .content-box {
+                    font-size: 14px;
+                    background-color: #4289db;
+                    padding: 10px;
+                    color: #fff;
+                    border-radius: 5px;
+                    display: inline-block;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    .tool-panel {
+        padding: 10px;
+        background-color: #ffffff;
+        display: flex;
+
+        align-items: center;
+
+        .input-box {
+            flex: 1;
+            padding-right: 10px;
+
+            input {
+                display: block;
+                background-color: #f1f1f1;
+                border: none;
+                width: 100%;
+                padding: 5px 15px;
+                border-radius: 25px;
+                font-size: 14px;
+            }
+        }
+
+        .btn-box {}
+    }
+
+}
 
 #msg /deep/ {}

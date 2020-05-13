@@ -8,8 +8,8 @@ export default {
                 wx_name: ""
             },
             msg: '',
-            checked:false,
-            isShow:false,
+            checked: false,
+            isShow: false,
         };
     },
     methods: {
@@ -43,29 +43,30 @@ export default {
             const code = this.code;
             const res1 = await this.$http.post('/auth/openid', {
                 code: code
-              });
-              const res = await this.$http.post('/auth/login',
+            });
+            const res = await this.$http.post('/auth/login',
                 res1.data
-              );
-              if (res.code >= 1) {
+            );
+            if (res.code >= 1) {
                 localStorage.jwt = res.jwt;
                 localStorage.userInfo = JSON.stringify(res.data);
+                localStorage.user_id = res.data.id;
 
-                this.userInfo = res.data; 
+                this.userInfo = res.data;
                 console.log(localStorage.location);
                 // this.$router.push(`/goodsList${localStorage.location}`);
                 this.$router.push('/');
-              }
- 
+            }
+
         },
         async isShow() {
-            
-            if(this.isShow = true) {
+
+            if (this.isShow = true) {
 
                 this.isShow = false;
 
             }
- 
+
         },
         // async submit() {
         //     this.$router.push('/')

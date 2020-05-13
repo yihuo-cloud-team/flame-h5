@@ -24,13 +24,25 @@ export default function (context) {
     } else {
 
         return new Promise(async (next) => {
-            try {
+
+
+            if (typeof localStorage.userInfo == 'undefined') {
+                try {
+                    const res = await Http.post('/user/save_info', {});
+                    localStorage.userInfo = JSON.stringify(res.data);
+                    localStorage.user_id = res.data.id;
+
+                } catch (e) {
+                    console.error(e);
+                    console.error('验证失败！');
+                    context.app.router.replace('/login');
+                    return;
+                }
                 next();
-            } catch (e) {
-                console.warn(e);
-                console.warn('验证失败！');
-                // context.app.router.replace('/login');
+            } else {
+                next();
             }
+
         });
     }
 }

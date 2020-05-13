@@ -4,9 +4,12 @@ export default {
     data() {
         return {
             form: {
-                send_id: 45,//发件人
-                from_id: 44,//收件人
-            }
+                send_id: localStorage.user_id,//发件人
+                from_id: this.$route.query.form_id,//收件人
+            },
+            user_id: localStorage.user_id,
+            msgList: [],
+            msg: 'test',
         };
     },
     methods: {
@@ -17,8 +20,19 @@ export default {
         // 用于更新一些数据
         async update() {
             const res = await this.$http.post('/msg/list', this.form);
-            console.warn(res);
+            this.msgList = res.data;
         },
+        async sendText() {
+            const res = await this.$http.post('/msg/send', {
+                send_id: this.form.send_id,
+                from_id: this.form.from_id,
+                content: this.msg,
+                content_type: 1//文字类型，2为图片类型
+            });
+            this.msg = '';
+            this.update();
+            console.warn(res);
+        }
     },
     // 计算属性
     computed: {},
