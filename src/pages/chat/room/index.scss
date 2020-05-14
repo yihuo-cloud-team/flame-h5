@@ -1,0 +1,61 @@
+@import "@/styles/variable.scss";
+
+#room {
+
+    .card {
+        display: flex;
+        align-items: center;
+
+        background-color: #ffffff;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .left {
+            position: relative;
+            margin-right: 10px;
+
+            .no {
+                right: -5px;
+                top: -5px;
+                position: absolute;
+                font-size: 11px;
+                background-color: #ff0000;
+                color: #fff;
+                padding: 2px 7px;
+                line-height: normal;
+                border-radius: 100%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+            }
+        }
+
+        .center {
+            flex: 1;
+
+            .title {
+                font-size: 16px;
+                margin-bottom: 5px;
+
+            }
+
+            .content {
+                font-size: 14px;
+                color: #aaa;
+            }
+        }
+
+        .right {
+            align-self: flex-start;
+        }
+    }
+}
+
+#room /deep/ {}

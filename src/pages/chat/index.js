@@ -3,14 +3,17 @@ export default {
     layout: 'sub',
     data() {
         return {
-            form: {
+            query: {
                 room_id: this.$route.query.room_id,//收件人
+                page: 1,
+                page_size: 10
             },
             user_id: localStorage.user_id,
             list: [],
             total: 0,
             msg: '',
             time: null,
+            loadingOld: false,
         };
     },
     methods: {
@@ -21,22 +24,51 @@ export default {
                 this.update();
             }, 3000);
 
+
+            this.$refs['msg-box'].addEventListener("scroll", (e) => {
+                this.updateTO(e)
+            });
+
             this.update();
+        },
+        updateTO(e) {
+            let top = this.$refs['msg-box'].scrollTop;
+            if (top <= 0) {
+                this.query.page++;
+                this.updateOld();
+            }
+        },
+
+        async updateOld() {
+            this.loadingOld = true;
+            const res = await this.$http.post('/chat/room/content/list', this.query);
+            this.loadingOld = false;
+            await this.$nextTick(() => { });
+            this.list = [...res.data, ...this.list];
+
         },
         // 用于更新一些数据
         async update() {
-            const res = await this.$http.post('/chat/room/content/list', this.form);
-            this.list = res.data;
+            const res = await this.$http.post('/chat/room/content/list', this.query);
             await this.$nextTick(() => { });
-            console.warn(res.data.filter(el => el.userInfo == null));
             if (this.total != res.total) {
+                this.list = res.data;
                 this.updateUI()
             }
             this.total = res.total;
         },
+        updateInit() {
+            this.query = {
+                room_id: this.$route.query.room_id,//收件人
+                page: 1,
+                page_size: 5
+            };
+        },
         updateUI() {
-            let ele = this.$refs['msg-box']
-            ele.scrollTop = ele.scrollHeight;
+            let ele = this.$refs['msg-box'];
+            if (ele) {
+                ele.scrollTop = ele.scrollHeight;
+            }
         },
         async sendText() {
             if (this.msg.length <= 0) {
@@ -45,7 +77,7 @@ export default {
 
             }
             const res = await this.$http.post('/chat/send', {
-                room_id: this.form.room_id,
+                room_id: this.query.room_id,
                 msg: this.msg,
                 msg_type: 1//文字类型，2为图片类型
             });

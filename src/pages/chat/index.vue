@@ -1,6 +1,9 @@
 <template>
   <div id="msg">
     <div class="msg-list-panel" ref="msg-box">
+      <div class="text-center" style="padding:10px">
+        <van-loading size="24px" v-if="loadingOld">加载中...</van-loading>
+      </div>
       <div class="msg-card" v-for="item in list" :key="item.id">
         <div class="msg-card-body right" v-if="item.user_id==user_id">
           <div class="message-box">

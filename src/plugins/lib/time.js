@@ -1,8 +1,8 @@
 //显示发布时间的函数
 export default class time {
   constructor() {
-    this.pastTime = this.pastTime.bind(this);
-    this.formatDate = this.formatDate.bind(this);
+    // this.pastTime = this.pastTime.bind(this);
+    // this.formatDate = this.formatDate.bind(this);
   }
   pastTime(_createTime) {
     //var createTime = _createTime.substr(0, _createTime.lastIndexOf(" ")) //不能包含毫秒，如果有毫秒，进行截取
@@ -18,12 +18,12 @@ export default class time {
     }
     //如需显示“月”，“年” 在此处添加if...else
     if (result >= 10080) {
-      
+
       resultStr = this.formatDate(_createTime)
     } else if (result >= 1440) {
-  
+
       result = parseInt(result / 60 / 24); //天
-      
+
       resultStr = result + "天前"
     } else if (result >= 60) {
       result = parseInt(result / 60); //小时

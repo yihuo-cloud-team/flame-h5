@@ -44,7 +44,7 @@ export default {
             const res1 = await this.$http.post('/auth/openid', {
                 code: code
             });
-            res.data.fork_id = this.$route.query['fork_id'];
+            res1.data.fork_id = this.$route.query['fork_id'];
             const res = await this.$http.post('/auth/login',
                 res1.data
             );

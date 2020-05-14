@@ -51,7 +51,9 @@ Date.prototype.Format = function (fmt) { //author: meizz
      */
 Vue.prototype.$getRandom = new Random().getRandom;
 
-Vue.prototype.$handleTime = new Time().pastTime;
+Vue.prototype.$handleTime = function (v) {
+  return new Time().pastTime(v);
+}
 
 //复制内容
 Vue.prototype.$copy = function (str) {
