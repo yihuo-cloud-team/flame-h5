@@ -2,7 +2,7 @@ import Http from '../plugins/Http'
 import jwt from './jwt'
 
 export default function (context) {
-    localStorage.jwt = jwt.jwt;
+    // localStorage.jwt = jwt.jwt;
 
     let v = '8';
 

@@ -14,6 +14,8 @@ export default {
             msg: '',
             time: null,
             loadingOld: false,
+            isSendLoading: false,
+            url: '',
         };
     },
     methods: {
@@ -83,13 +85,28 @@ export default {
                 this.$toast('消息不能为空～');
                 return;
             }
+            this.isSendLoading = true;
             const res = await this.$http.post('/chat/send', {
                 room_id: this.query.room_id,
                 msg: this.msg,
                 msg_type: 1//文字类型，2为图片类型
             });
+            this.isSendLoading = false;
             this.updateInit()
             this.msg = '';
+            this.update();
+        },
+        async sendImage(url) {
+
+            this.isSendLoading = true;
+            const res = await this.$http.post('/chat/send', {
+                room_id: this.query.room_id,
+                msg: url,
+                msg_type: 2//文字类型，2为图片类型
+            });
+            this.isSendLoading = false;
+            this.updateInit()
+            this.url = '';
             this.update();
         }
     },

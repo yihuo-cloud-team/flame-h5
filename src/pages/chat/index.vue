@@ -9,6 +9,9 @@
           <div class="message-box">
             <div class="user-title">{{item.userInfo.name}}</div>
             <div class="content-box" v-if="item.msg_type==1">{{item.msg}}</div>
+            <div class="content-box image" v-if="item.msg_type==2">
+              <van-image radius="5" :src="$getUrl(item.msg)"></van-image>
+            </div>
           </div>
           <div class="user-info-box">
             <div class="user-head">
@@ -34,7 +37,16 @@
         <input type="text" v-model="msg" />
       </div>
       <div class="btn-box">
-        <van-button size="normal" round @click="sendText">发送</van-button>
+        <van-button
+          size="normal"
+          :disabled="isSendLoading"
+          v-if="msg.length>0"
+          round
+          @click="sendText"
+        >发送</van-button>
+        <ol-upload v-if="msg.length<=0" v-model="url" @success="sendImage">
+          <van-button size="normal" :disabled="isSendLoading" round icon="photo-o"></van-button>
+        </ol-upload>
       </div>
     </div>
   </div>
