@@ -1,12 +1,6 @@
 <template>
   <div id="room">
-    <div
-      class="card"
-      v-if="loading == false &&total>0"
-      v-for="item in list"
-      :key="item.id"
-      @click="go(item.room_id)"
-    >
+    <div class="card" v-for="item in list" :key="item.id" @click="go(item.room_id)">
       <div class="left">
         <van-image radius="5" width="50" height="50" :src="$getUrl(item.userInfo.head_img)" />
         <div class="no" v-if="getNoCount(item.room_id)>0">{{getNoCount(item.room_id)}}</div>
@@ -19,7 +13,7 @@
         <div class="time">{{item.lastContent.add_time | timeToRe}}</div>
       </div>
     </div>
-    <div v-if="loading == false && total<=0">
+    <div v-if="total==0">
       <van-empty description="您还没有消息" />
     </div>
   </div>

@@ -3,7 +3,7 @@ export default {
     data() {
         return {
             list: [],
-            total: 0,
+            total: -1,
             time: null,
             loading: false,
             readRoomIdList: [],
@@ -50,6 +50,7 @@ export default {
 
 
             this.list = res.data;
+            this.total = res.total;
 
         },
         isNoCount(room_id) {
