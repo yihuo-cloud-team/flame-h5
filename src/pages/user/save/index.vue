@@ -16,12 +16,12 @@
           </template>
         </van-field>
         <van-field v-model="form.phone" label="联系方式" placeholder="请输入联系方式" />
-        <van-field name="switch" label="联系方式展示">
+        <!-- <van-field name="switch" label="联系方式展示">
           <template #input>
             <van-switch v-model="form.phone_show" :active-value="1" :inactive-value="0" size="20" />
             <span class="switch-text">{{form.phone_show?'展示':'隐藏'}}</span>
           </template>
-        </van-field>
+        </van-field> -->
         <van-field
           readonly
           clickable

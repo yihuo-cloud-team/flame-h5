@@ -105,7 +105,7 @@
                   <div class="enlist-label">性别：</div>
                   <span>{{item.gender | sex }}</span>
                 </div>
-                <div v-if="item.display==0">
+                <div>
                   <div class="enlist-label">联系方式：</div>
                   <span>{{item.phone?item.phone:"--"}}</span>
                 </div>
