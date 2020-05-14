@@ -1,27 +1,27 @@
 <template>
   <div id="msg">
-    <div class="msg-list-panel">
-      <div class="msg-card" v-for="item in msgList" :key="item.id">
-        <div class="msg-card-body right" v-if="item.send_id==user_id">
+    <div class="msg-list-panel" ref="msg-box">
+      <div class="msg-card" v-for="item in list" :key="item.id">
+        <div class="msg-card-body right" v-if="item.user_id==user_id">
           <div class="message-box">
-            <div class="user-title">{{item.sendUserInfo.name}}</div>
-            <div class="content-box">{{item.content}}</div>
+            <div class="user-title">{{item.userInfo.name}}</div>
+            <div class="content-box" v-if="item.msg_type==1">{{item.msg}}</div>
           </div>
           <div class="user-info-box">
             <div class="user-head">
-              <van-image round width="50" height="50" :src="$getUrl(item.sendUserInfo.head_img)" />
+              <van-image round width="50" height="50" :src="$getUrl(item.userInfo.head_img)" />
             </div>
           </div>
         </div>
-        <div class="msg-card-body left" v-if="item.send_id!=user_id">
+        <div class="msg-card-body left" v-if="item.user_id!=user_id">
           <div class="user-info-box">
             <div class="user-head">
-              <van-image round width="50" height="50" :src="$getUrl(item.sendUserInfo.head_img)" />
+              <van-image round width="50" height="50" :src="$getUrl(item.userInfo.head_img)" />
             </div>
           </div>
           <div class="message-box">
-            <div class="user-title">{{item.sendUserInfo.name}}</div>
-            <div class="content-box">{{item.content}}</div>
+            <div class="user-title">{{item.userInfo.name}}</div>
+            <div class="content-box" v-if="item.msg_type==1">{{item.msg}}</div>
           </div>
         </div>
       </div>

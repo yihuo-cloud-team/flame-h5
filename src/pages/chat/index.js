@@ -4,12 +4,11 @@ export default {
     data() {
         return {
             form: {
-                send_id: localStorage.user_id,//发件人
-                from_id: this.$route.query.form_id,//收件人
+                room_id: this.$route.query.room_id,//收件人
             },
             user_id: localStorage.user_id,
-            msgList: [],
-            msg: 'test',
+            list: [],
+            msg: '',
         };
     },
     methods: {
@@ -19,15 +18,25 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            const res = await this.$http.post('/msg/list', this.form);
-            this.msgList = res.data;
+            const res = await this.$http.post('/chat/room/content/list', this.form);
+            this.list = res.data;
+            await this.$nextTick(() => { });
+            this.updateUI()
+        },
+        updateUI() {
+            let ele = this.$refs['msg-box']
+            ele.scrollTop = ele.scrollHeight;
         },
         async sendText() {
-            const res = await this.$http.post('/msg/send', {
-                send_id: this.form.send_id,
-                from_id: this.form.from_id,
-                content: this.msg,
-                content_type: 1//文字类型，2为图片类型
+            if (this.msg.length <= 0) {
+                this.$toast('消息不能为空～');
+                return;
+
+            }
+            const res = await this.$http.post('/chat/send', {
+                room_id: this.form.room_id,
+                msg: this.msg,
+                msg_type: 1//文字类型，2为图片类型
             });
             this.msg = '';
             this.update();
