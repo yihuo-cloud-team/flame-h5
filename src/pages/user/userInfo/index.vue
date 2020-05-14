@@ -11,13 +11,7 @@
     <div class="info">
       <div class="head-portrait">
         <!-- <ol-upload v-if="!userInfo.img" class="portrait" v-model="userInfo.img"></ol-upload> -->
-        <van-image
-          width="60"
-          round
-          fit="cover"
-          height="60"
-          :src="$getUrl(userInfo.head_img)"
-        />
+        <van-image width="60" round fit="cover" height="60" :src="$getUrl(userInfo.head_img)" />
       </div>
       <div class="text">
         <div class="name">{{userInfo.name}}</div>
@@ -55,19 +49,14 @@
         </div>
       </div>
       <div class="body">
-        <div
-          class="gender"
-        >性别：{{userInfo.gender == 1 ? '男生' : '女士'}}</div>
-        <div
-          class="phone"
-        >联系方式：{{userInfo.phone}}</div>
-        <div
-          class="birthday"
-        >出生日期：{{userInfo.birthday}}</div>
-        <div
-          class="skill"
-        >专业技能：{{userInfo.skill}}</div>
+        <div class="gender">性别：{{userInfo.gender == 1 ? '男生' : '女士'}}</div>
+        <div class="phone">联系方式：{{userInfo.phone}}</div>
+        <div class="birthday">出生日期：{{userInfo.birthday}}</div>
+        <div class="skill">专业技能：{{userInfo.skill}}</div>
       </div>
+    </div>
+    <div class="fb">
+      <van-button block color="#4289db" @click="message" v-if="userInfo_id != userInfo.id">发消息</van-button>
     </div>
   </div>
 </template>

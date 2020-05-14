@@ -2,10 +2,10 @@
 
 #userInfo {
   background: #fff;
-  height: 100vh;
+  padding-bottom: 100px;
 
   .img {
-    height: 240px;
+    height: 300px;
     width: 100%;
   }
 
@@ -54,6 +54,7 @@
   .tag-box {
     padding: 0 16px;
     margin-bottom: 20px;
+
     .icon {
       margin-right: 10px;
     }
@@ -91,6 +92,14 @@
     .birthday {
       margin-bottom: 10px;
     }
+  }
+
+  .fb {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px;
   }
 }
 

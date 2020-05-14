@@ -42,6 +42,12 @@ export default {
                 startPosition: this.current,
                 // closeable: true,
             });
+        },
+        async message() {
+            const res = await this.$http.post('/chat/link', {
+                target_id: this.$route.query.id
+            });
+            this.$router.push(`/chat?room_id=${res.data}`)
         }
     },
     // 计算属性
