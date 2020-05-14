@@ -204,9 +204,9 @@
                 <span class="right" @click="quxiao(info)">终止任务</span>
               </div>
             </template>
-            <!--  任务状态为3 任务中止-->
+            <!--  任务状态为3 任务终止-->
             <template v-if="info.task_state==3">
-              <van-button class="border-radius" color="#4289DB" size="large" disabled>任务中止</van-button>
+              <van-button class="border-radius" color="#4289DB" size="large" disabled>任务终止</van-button>
             </template>
             <template v-if="info.task_state==4">
               <van-button class="border-radius" color="#4289DB" size="large" disabled>任务完成</van-button>
