@@ -31,7 +31,7 @@
         <input type="text" v-model="msg" />
       </div>
       <div class="btn-box">
-        <van-button size="small" round @click="sendText">发送</van-button>
+        <van-button size="normal" round @click="sendText">发送</van-button>
       </div>
     </div>
   </div>
