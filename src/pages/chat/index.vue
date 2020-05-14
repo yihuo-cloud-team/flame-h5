@@ -28,6 +28,9 @@
           <div class="message-box">
             <div class="user-title">{{item.userInfo.name}}</div>
             <div class="content-box" v-if="item.msg_type==1">{{item.msg}}</div>
+            <div class="content-box image" v-if="item.msg_type==2">
+              <van-image radius="5" :src="$getUrl(item.msg)"></van-image>
+            </div>
           </div>
         </div>
       </div>

@@ -7,7 +7,12 @@
       </div>
       <div class="center">
         <div class="title">{{item.userInfo.name}}</div>
-        <div class="content">{{item.lastContent?item.lastContent.msg:'暂无消息'}}</div>
+        <div class="content">
+          <span v-if="item.lastContent">
+            <span v-if="item.lastContent.msg_type==1">{{item.lastContent.msg}}</span>
+            <span v-if="item.lastContent.msg_type==2">图片</span>
+          </span>
+        </div>
       </div>
       <div class="right">
         <div class="time" v-if="item.lastContent">{{item.lastContent.add_time | timeToRe}}</div>
