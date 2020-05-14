@@ -17,11 +17,22 @@ export default {
         // 用于更新一些数据
         update() { },
         tiaozhuang(data){
+            console.log(data)
             this.$emit('fnc',data)
         }
     },
     // 计算属性
-    computed: {},
+    computed: {
+        showList:function(){
+            let thisList=[];
+            console.log(this.list);
+            for(let i=0;i<this.list.length/10;i++){
+                thisList[i]=this.list.slice(i*10,(i+1)*10)
+            }
+            console.log(thisList)
+            return thisList
+        }
+    },
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用
