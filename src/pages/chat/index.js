@@ -28,6 +28,7 @@ export default {
             const res = await this.$http.post('/chat/room/content/list', this.form);
             this.list = res.data;
             await this.$nextTick(() => { });
+            console.warn(res.data.filter(el => el.userInfo == null));
             if (this.total != res.total) {
                 this.updateUI()
             }

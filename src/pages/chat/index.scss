@@ -27,6 +27,8 @@
                         .user-head {}
                     }
 
+
+
                     .message-box {
                         text-align: right;
                     }
@@ -36,6 +38,11 @@
 
                 &.left {
                     padding-right: 70px;
+
+                    .content-box {
+                        background-color: #fff;
+                        color: #333;
+                    }
                 }
 
 
