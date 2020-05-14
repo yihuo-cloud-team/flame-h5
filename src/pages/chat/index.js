@@ -5,7 +5,7 @@ export default {
         return {
             query: {
                 room_id: this.$route.query.room_id,//收件人
-                page: 1,
+                page: 2,
                 page_size: 10
             },
             user_id: localStorage.user_id,
@@ -34,7 +34,6 @@ export default {
         updateTO(e) {
             let top = this.$refs['msg-box'].scrollTop;
             if (top <= 0) {
-                this.query.page++;
                 this.updateOld();
             }
         },
@@ -44,15 +43,24 @@ export default {
             const res = await this.$http.post('/chat/room/content/list', this.query);
             this.loadingOld = false;
             await this.$nextTick(() => { });
-            this.list = [...res.data, ...this.list];
+            if (res.code > 0) {
+                this.query.page++;
+                this.list = [...res.data, ...this.list];
+            }
 
         },
         // 用于更新一些数据
         async update() {
-            const res = await this.$http.post('/chat/room/content/list', this.query);
+            const res = await this.$http.post('/chat/room/content/list', {
+                room_id: this.$route.query.room_id,//收件人
+                page: 1,
+                page_size: 10
+            });
             await this.$nextTick(() => { });
             if (this.total != res.total) {
+                this.updateInit()
                 this.list = res.data;
+                await this.$nextTick(() => { });
                 this.updateUI()
             }
             this.total = res.total;
@@ -60,8 +68,8 @@ export default {
         updateInit() {
             this.query = {
                 room_id: this.$route.query.room_id,//收件人
-                page: 1,
-                page_size: 5
+                page: 2,
+                page_size: 10
             };
         },
         updateUI() {
@@ -74,16 +82,15 @@ export default {
             if (this.msg.length <= 0) {
                 this.$toast('消息不能为空～');
                 return;
-
             }
             const res = await this.$http.post('/chat/send', {
                 room_id: this.query.room_id,
                 msg: this.msg,
                 msg_type: 1//文字类型，2为图片类型
             });
+            this.updateInit()
             this.msg = '';
             this.update();
-            console.warn(res);
         }
     },
     // 计算属性

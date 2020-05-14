@@ -15,7 +15,7 @@ export default {
 
             this.time = setInterval(() => {
                 this.update();
-            }, 1000);
+            }, 3000);
 
             this.update();
         },
@@ -48,6 +48,7 @@ export default {
 
             });
 
+            localStorage.readRoomIdList = JSON.stringify(this.readRoomIdList);
 
             this.list = res.data;
             this.total = res.total;
@@ -70,7 +71,6 @@ export default {
 
         },
         go(room_id) {
-            console.warn();
             this.readRoomIdList = this.readRoomIdList.filter(el => el.room_id != room_id);
             this.$router.push(`/chat?room_id=${room_id}`);
         }

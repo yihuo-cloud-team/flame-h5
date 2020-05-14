@@ -7,10 +7,11 @@
       </div>
       <div class="center">
         <div class="title">{{item.userInfo.name}}</div>
-        <div class="content">{{item.lastContent.msg}}</div>
+        <div class="content">{{item.lastContent?item.lastContent.msg:'暂无消息'}}</div>
       </div>
       <div class="right">
-        <div class="time">{{item.lastContent.add_time | timeToRe}}</div>
+        <div class="time" v-if="item.lastContent">{{item.lastContent.add_time | timeToRe}}</div>
+        <div class="time" v-else>{{' '}}</div>
       </div>
     </div>
     <div v-if="total==0">
