@@ -1,7 +1,67 @@
 @import "@/styles/variable.scss";
 
+
+
 #add {
   padding: 10px 15px;
+
+
+  .title-input {
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  .price-input {
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .card {
+
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .img {
+      position: relative;
+    }
+
+
+    .form-box {
+      padding: 10px;
+
+
+    }
+
+    .default-text {
+      position: absolute;
+      text-align: right;
+      text-decoration: underline;
+      font-size: 11px;
+      color: #fdfdfd;
+      float: right;
+      bottom: 10px;
+      right: 5px;
+      background-color: rgba($color: #000000, $alpha: 0.3);
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+  }
+
+
+  .title {
+    color: rgba(16, 16, 16, 1);
+    font-size: 21px;
+    margin-bottom: 13px;
+  }
 
   .input {
     border-radius: 5px;
@@ -10,112 +70,110 @@
     border: 1px solid rgba(187, 187, 187, 1);
     overflow: hidden;
   }
-  .tupian{
-    .store-image {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-   
-     
-      .img {
-        display: block;
-        width: 120px;
-        height: 60px;
-        background-color: #dddddd;
-      }
-      .img1{
-        display: block;
-        width: 120px;
-        
-        background-color: #dddddd;
-      }
-      .tag{
-        margin-left: 10px;
-      }
-  
-  
-    }
-  
-    .title {
-      color: rgba(16, 16, 16, 1);
-      font-size: 21px;
-      margin-bottom: 13px;
-    }
-  }
-  .name {
-    margin-bottom: 30px;
 
-    .title {
-      color: rgba(16, 16, 16, 1);
-      font-size: 21px;
-      margin-bottom: 13px;
-    }
-  }
 
   .task-type {
     margin-bottom: 28px;
+    max-width: 100%;
+    position: relative;
 
-    .title {
-      color: rgba(16, 16, 16, 1);
-      font-size: 21px;
-      margin-bottom: 13px;
-    }
 
     .option {
       display: flex;
       margin-bottom: 10px;
       flex-wrap: wrap;
+
       .item {
-        margin-right: 10px;
+        position: relative;
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
         margin-bottom: 5px;
-        line-height: 20px;
-        color: rgba(16, 16, 16, 1);
-        font-size: 14px;
-        padding: 8px 15px;
-        background-color: #fff;
-        border: 1px solid rgba(187, 187, 187, 1);
+
+        padding: 5px;
+
+        .icon {
+          border-radius: 100%;
+          width: 40px;
+          height: 40px;
+          margin-bottom: 10px;
+        }
+
+        span {
+          border-radius: 5px;
+          text-align: center;
+          width: 100%;
+          background-color: #fff;
+          color: rgba(16, 16, 16, 1);
+          font-size: 16px;
+          padding: 10px 0;
+          border: 1px solid rgba(66, 137, 220, 0);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+        }
 
         &.activ {
-          color: rgba(66, 137, 220, 1);
-          border: 1px solid rgba(66, 137, 220, 1);
+          span {
+            color: rgba(66, 137, 220, 1);
+            border: 1px solid rgba(66, 137, 220, 1);
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+          }
         }
       }
     }
   }
 
+
   .price {
     margin-bottom: 30px;
-    .price-box{
-      .van-tag+.van-tag{
-        margin-left: 5px;
-        margin-bottom: 10px;
+
+    .price-box {
+      display: flex;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      margin: 0 -5px;
+
+      .price-card {
+        position: relative;
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+
+        padding: 5px;
+
+        div {
+          border-radius: 5px;
+          text-align: center;
+          width: 100%;
+          background-color: #fff;
+          color: rgba(16, 16, 16, 1);
+          font-size: 16px;
+          padding: 15px 0;
+          border: 1px solid rgba(66, 137, 220, 0);
+          transition: all .3s;
+
+          &:hover {
+            background-color: #f1f1f1;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+          }
+        }
       }
     }
-    .title {
-      color: rgba(16, 16, 16, 1);
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
+
   }
 
-  .info {
-    margin-bottom: 20px;
-
-    .title {
-      color: rgba(16, 16, 16, 1);
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-  }
 
   .region {
     margin-bottom: 30px;
 
-    .title {
-      margin-bottom: 20px;
-      color: rgba(16, 16, 16, 1);
-      font-size: 16px;
-    }
 
     .input {
       padding: 10px;
@@ -126,15 +184,10 @@
   .address {
     margin-bottom: 40px;
 
-    .title {
-      color: rgba(16, 16, 16, 1);
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
+
   }
 
   .btn {
-
     height: 46px;
     border-radius: 4px;
     margin: 0 auto;
@@ -146,6 +199,7 @@
     align-items: center;
     border: 1px solid rgba(255, 255, 255, 0);
     margin-bottom: 30px;
+    margin-top: 30px;
   }
 }
 

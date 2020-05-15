@@ -84,3 +84,8 @@ Vue.filter('timeToRe', function (v) {
 
 
 })
+
+
+Vue.filter('money', function (v) {
+    return (v.toFixed(2) + '').replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,');
+})

@@ -1,9 +1,7 @@
 <template>
   <div class="ol-upload">
     <van-uploader :after-read="onRead" :success="updateInput">
-      <slot>
-  
-      </slot>
+      <slot></slot>
     </van-uploader>
   </div>
 </template>

@@ -116,6 +116,7 @@ export default {
 
     },
     change() {
+
       this.classList.forEach(res => {
         if (this.form.task_type === res.id) {
           this.form.img = this.$getUrl(res.icon);

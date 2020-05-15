@@ -1,6 +1,28 @@
 @import "@/styles/variable.scss";
+
 .ol-upload {
-    display: inline-block;
+    position: relative;
+    display: flex;
+
 }
 
-.ol-upload /deep/ {}
+.ol-upload /deep/ {
+    position: relative;
+
+    .van-uploader {
+        display: flex;
+        flex: 1;
+        position: relative;
+    }
+
+    .van-uploader__wrapper {
+        display: flex;
+        position: relative;
+        flex: 1;
+    }
+
+    .van-uploader__input-wrapper {
+        position: relative;
+        flex: 1;
+    }
+}
