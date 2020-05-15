@@ -63,9 +63,13 @@ export default {
       };
 
       if (this.form.price == '') {
-
         this.$toast('请填写任务价格');
         return false;
+      } else {
+        if (this.form.price < 50) {
+          this.$toast('任务价格不得低于50元');
+          return false;
+        }
       };
       if (typeof this.form.price == 'string') {
         this.$toast('请输入数字');
