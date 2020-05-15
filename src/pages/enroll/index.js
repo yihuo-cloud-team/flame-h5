@@ -25,7 +25,8 @@ export default {
       }
       const res = await this.$http.post('/task/apply', {
         text: this.form.message,
-        task_id: this.$route.query.id
+        task_id: this.$route.query.id,
+        display: this.form.display
       });
       if (res.code >= 0) {
         this.$toast('操作成功');
