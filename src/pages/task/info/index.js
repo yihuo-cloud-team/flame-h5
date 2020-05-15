@@ -12,7 +12,7 @@ export default {
       list: [],
       page: 0,
       page_size: 10,
-      img:"https://api.yihuo-cloud.com/public/files/20200326/202003260703295347.jfif"
+      img: "https://api.yihuo-cloud.com/public/files/20200326/202003260703295347.jfif"
     };
   },
   methods: {
@@ -34,7 +34,7 @@ export default {
     },
 
     async apply() {
-      if (this.finished) return;
+      // if (this.finished) return;
       this.loading = true;
       const res = await this.$http.post('/task/applyList', {
         task_id: this.$route.query.task_id,
@@ -44,11 +44,12 @@ export default {
       if (res.code > 0) {
         this.loading = false;
         this.list = [...this.list, ...res.data];
+        if (this.list.length >= res.total) {
+          this.finished = true;
+        }
+      } else {
+        this.loading = false;
       }
-      if (this.list.length >= res.total) {
-        this.finished = true;
-      }
-      this.loading = false;
       this.page++;
     },
 
