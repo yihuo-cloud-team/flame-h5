@@ -21,7 +21,8 @@ export default {
       areaList: [],
       classList: [],
       priceList: [],
-      show: false
+      show: false,
+      min_price: ''
     };
   },
   methods: {
@@ -29,6 +30,7 @@ export default {
     init() {
       this.areaList = AreaList
       this.update();
+      this.http_min()
     },
     // 用于更新一些数据
     async update() {
@@ -39,6 +41,14 @@ export default {
       }
       if (!this.isApp) {
         this.form.task_type = parseInt(this.$route.query.type)
+      }
+    },
+    async http_min() {
+      const res = await this.$http.post('/config/info', {
+        key: 'buy_money'
+      })
+      if (res.code > 0) {
+        this.min_price = res.data.value
       }
     },
     select(e) {
@@ -66,8 +76,8 @@ export default {
         this.$toast('请填写任务价格');
         return false;
       } else {
-        if (this.form.price < 50) {
-          this.$toast('任务价格不得低于50元');
+        if (this.form.price < this.min_price) {
+          this.$toast(`任务价格不得低于${this.min_price}元`);
           return false;
         }
       };

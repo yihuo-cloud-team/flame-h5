@@ -61,6 +61,7 @@ export default {
             let colorarr = ['#409EFF', '#67C23A', '#E6A23C', '#F56C6C', '#909399', '#DE93F3']
             let r = Math.round(Math.random() * 5);
             return colorarr[r];
+
         },
         async submit(text) {
             try {
