@@ -31,7 +31,7 @@ export default {
         return false
       }
       if (this.form.phone == '') {
-        this.$toast('请输入手机号');
+        this.$toast('请输入联系方式');
         this.error = true
         return false
       }
