@@ -5,8 +5,11 @@ export default {
     return {
       form: {
         display: 0,
-        message: ''
-      }
+        message: '',
+        phone: ''
+      },
+      error: false,
+      userinfo: null
     };
   },
   methods: {
@@ -16,18 +19,30 @@ export default {
     },
     // 用于更新一些数据
     async update() {
-
+      let res = await this.$http.post('/user/save_info', {});
+      if (res.code > 0) {
+        this.userinfo = res.data
+        this.form.phone = res.data.phone;
+      }
     },
     async submit() {
       if (this.form.message == '') {
         this.$toast('请简述原因');
         return false
       }
+      if (this.form.phone == '') {
+        this.$toast('请输入手机号');
+        this.error = true
+        return false
+      }
       const res = await this.$http.post('/task/apply', {
         text: this.form.message,
         task_id: this.$route.query.id,
-        display: this.form.display
+        display: this.form.display,
+        phone: this.form.phone
       });
+      this.userinfo.phone = this.form.phone
+      const res1 = await this.$http.post('/user/save', this.userinfo);
       if (res.code >= 0) {
         this.$toast('操作成功');
         this.$router.go(-1)
