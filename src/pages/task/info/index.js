@@ -31,7 +31,6 @@ export default {
     },
 
     async apply() {
-      // if (this.finished) return;
       this.loading = true;
       const res = await this.$http.post('/task/applyList', {
         task_id: this.$route.query.task_id,
@@ -41,10 +40,11 @@ export default {
       if (res.code > 0) {
         this.loading = false;
         this.list = [...this.list, ...res.data];
-        if (this.list.length >= res.total) {
+        if (res.total < this.page_size) {
           this.finished = true;
         }
       } else {
+        this.finished = true;
         this.loading = false;
       }
       this.page++;

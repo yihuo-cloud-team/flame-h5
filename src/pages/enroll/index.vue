@@ -15,6 +15,13 @@
     </div>
     <van-cell-group>
       <van-switch-cell v-model="form.display" :active-value="1" :inactive-value="0" title="是否匿名" />
+      <van-field
+        required
+        v-model="form.phone"
+        label="联系方式"
+        :error="error"
+        placeholder="请输入您的联系方式"
+      />
     </van-cell-group>
     <div class="btn" @click="submit()">抢单</div>
   </div>
