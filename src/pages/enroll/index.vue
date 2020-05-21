@@ -16,7 +16,7 @@
     <van-cell-group>
       <van-switch-cell v-model="form.display" :active-value="1" :inactive-value="0" title="是否匿名" />
     </van-cell-group>
-    <div class="btn" @click="submit()">提交</div>
+    <div class="btn" @click="submit()">抢单</div>
   </div>
 </template>
 <script src="./index.js"></script>
