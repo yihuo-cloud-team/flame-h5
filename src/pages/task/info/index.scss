@@ -229,22 +229,6 @@
     .border-radius {
       border-radius: 4px;
     }
-
-    .box {
-      display: flex;
-
-      .left {
-        flex: 1;
-      }
-
-      .right {
-        margin-top: 5px;
-        color: grey;
-        margin-right: 10px;
-        font-size: 14px;
-      }
-    }
-
   }
 }
 
