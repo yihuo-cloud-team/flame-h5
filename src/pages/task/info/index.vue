@@ -147,6 +147,9 @@
 
       <!-- 等于1是自己发布的 -->
     </div>
+
+
+    
     <div class="footer">
       <template v-if="info.is_owner==1">
         <!-- 审核状态 -->
@@ -184,7 +187,10 @@
                 >退款</van-button> -->
                 <div class="box">
                   <span class="left"></span>
-                  <span class="right" @click="$router.push(`/task/refund?id=${info.id}`)">终止任务</span>
+                  <!-- <span class="right" @click="$router.push(`/task/refund?id=${info.id}`)">终止任务</span> -->
+                  <span class="right" @click="$router.push(`/task/refund?id=${info.id}`)">
+                    <van-button class="border-radius" type="danger" size="large">终止任务</van-button>
+                  </span>
                 </div>
               </template>
               <template v-if="info.is_up==1">
@@ -201,7 +207,10 @@
               <van-button class="border-radius" color="#4289DB" size="large" disabled>任务进行中</van-button>
               <div class="box">
                 <span class="left"></span>
-                <span class="right" @click="quxiao(info)">终止任务</span>
+                <!-- <span class="right" @click="quxiao(info)">终止任务</span> -->
+                <span class="right" @click="quxiao(info)">
+                  <van-button class="border-radius" type="danger" size="large">终止任务</van-button>
+                </span>
               </div>
             </template>
             <!--  任务状态为3 任务终止-->
