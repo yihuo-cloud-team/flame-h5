@@ -185,10 +185,8 @@
                   size="large"
                   @click="$router.push(`/task/refund?id=${info.id}`)"
                 >退款</van-button> -->
-                <div class="box">
                   <!-- <span class="right" @click="$router.push(`/task/refund?id=${info.id}`)">终止任务</span> -->
-                  <van-button @click="$router.push(`/task/refund?id=${info.id}`)" class="border-radius" type="danger" size="large">终止任务</van-button>
-                </div>
+                  <van-button style="margin-top:5px" @click="$router.push(`/task/refund?id=${info.id}`)" class="border-radius" type="danger" size="large">终止任务</van-button>
               </template>
               <template v-if="info.is_up==1">
                 <van-button
