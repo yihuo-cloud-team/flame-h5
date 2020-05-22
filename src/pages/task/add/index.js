@@ -22,7 +22,7 @@ export default {
       classList: [],
       priceList: [],
       show: false,
-      min_price: ''
+      min_price: 0,
     };
   },
   methods: {
@@ -48,7 +48,7 @@ export default {
         key: 'buy_money'
       })
       if (res.code > 0) {
-        this.min_price = res.data.value
+        // this.min_price = res.data.value
       }
     },
     select(e) {

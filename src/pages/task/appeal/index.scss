@@ -1,0 +1,21 @@
+@import "@/styles/variable.scss";
+
+#appeal {
+  padding: 10px;
+
+  .btn {
+    height: 46px;
+    border-radius: 4px;
+    margin: 0 auto;
+    background-color: rgba(66, 137, 219, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0);
+    margin-bottom: 30px;
+  }
+}
+
+#appeal /deep/ {}

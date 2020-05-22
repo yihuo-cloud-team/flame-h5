@@ -19,34 +19,7 @@
     <div class="trends-box">
       <div class="trends-list erect">
         <van-list v-model="loading" :finished="finished" style=" width: 100%;" @load="update">
-          <div
-            class="item"
-            @click="$router.push(`/task/info?task_id=${item.id}`)"
-            v-for="(item,index) in list"
-            :key="index"
-            :title="item"
-          >
-            <div class="panel">
-              <div class="box-img">
-                <div class="img" :style="`background-image: url(${$getUrl(item.img)});`"></div>
-              </div>
-              <div class="panel-body">
-                <div class="title-box">
-                  <div class="title">{{item.task_name}}</div>
-                  <div class="state">
-                    <van-tag plain type="success" size="medium" v-if="item.task_state==0">招募中</van-tag>
-                    <van-tag plain type="success" size="medium" v-if="item.task_state==2">进行中</van-tag>
-                    <van-tag plain type="success" size="medium" v-if="item.task_state==3">中止</van-tag>
-                    <van-tag plain type="success" size="medium" v-if="item.task_state==4">完成</van-tag>
-                  </div>
-                </div>
-                <div class="text">
-                  <div class="money">￥{{item.price}}</div>
-                </div>
-                <div class="subtitle">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</div>
-              </div>
-            </div>
-          </div>
+          <task-card :info='item' class="item" @click="$router.push(`/task/info?task_id=${item.id}`)" v-for="(item,index) in list" :key="index" :title="item"></task-card>
         </van-list>
       </div>
       <van-divider v-if="finished">没有更多了</van-divider>

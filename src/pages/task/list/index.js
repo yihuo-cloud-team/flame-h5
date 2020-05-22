@@ -6,8 +6,7 @@ export default {
       loading: false,
       finished: false,
       page: 1,
-      page_size: 10
-
+      page_size: 10,
     };
   },
   methods: {

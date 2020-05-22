@@ -11,7 +11,14 @@ export default {
       list: [],
       page: 0,
       page_size: 10,
-      img: "https://api.yihuo-cloud.com/public/files/20200326/202003260703295347.jfif"
+      img: "https://api.yihuo-cloud.com/public/files/20200326/202003260703295347.jfif",
+      task_stateList:[
+        {title:'待支付',task_state:1},
+        {title:'招募中',task_state:2},
+        {title:'进行中',task_state:3},
+        {title:'完成',task_state:4},
+        {title:'申诉',task_state:5},
+      ]
     };
   },
   methods: {
@@ -48,27 +55,6 @@ export default {
         this.loading = false;
       }
       this.page++;
-    },
-
-    //开发者确认完成
-    confirm1(e) {
-      this.$dialog.confirm({
-        message: '确认完成',
-      }).then(async () => {
-        const res = await this.$http.post('/task/updateState', {
-          id: e.id,
-          task_state: 5
-        });
-        if (res.code >= 0) {
-          this.$toast("操作成功");
-          this.update();
-        } else {
-          this.$toast(res.msg);
-        }
-      }).catch(() => {
-
-      })
-
     },
     //发布者确认
     confirm2(e) {
@@ -168,7 +154,7 @@ export default {
 
       })
 
-    }
+    },
   },
   // 计算属性
   computed: {},
