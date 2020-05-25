@@ -53,8 +53,7 @@ Vue.filter('timeToRe', function (v) {
         }
         //如需显示“月”，“年” 在此处添加if...else
         if (result >= 10080) {
-
-            resultStr = formatDate(_createTime)
+            return v;
         } else if (result >= 1440) {
 
             result = parseInt(result / 60 / 24); //天
