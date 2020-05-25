@@ -4,25 +4,8 @@
 
   padding: 10px;
 
-  .trends-list {
 
-    margin-bottom: 25px;
-
-    .item {
-      
-    }
-    .item:nth-last-child(2) .panel{
-      border: none;
-    } 
-    &.erect {
-      border-radius: 5px;
-      border: 1px solid rgba(255, 255, 255, 0);
-      background-color: #fff;
-      padding:  0 10px;
-    }
-
-  }
-  .btn{
+  .btn {
     font-size: 14px;
     color: #4289DB;
     padding: 10px;

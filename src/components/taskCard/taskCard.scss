@@ -1,71 +1,74 @@
 @import "@/styles/variable.scss";
-#card {
-  
-    background-color: #fff;
-    padding:  10px 0;
-    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
-    .panel {
-        .box-img {
-          width: 100px;
-          height: 65px;
-          margin-right: 10px;
-          .img {
-            width: 100%;
-            display: block;
-            padding-bottom: 65px;
-            background-size: cover;
-            background-position: center center;
 
-          }
-        }
-        .panel-body {
-          .title {
-            color: rgba(16, 16, 16, 1);
-            font-size: 14px;
-            margin-bottom: 3px;
-          }
+.task-card {
 
-          .text {
-            display: flex;
-            justify-content: space-between;
+  // background-color: #fff;
+  border-bottom: 1px solid #f1f1f1;
+  background-color: #ffffff;
+  padding: 10px;
 
-            .money {
-              color: rgba(255, 0, 0, 1);
-              font-size: 14px;
-            }
-          }
 
-          .subtitle {
-            color: rgba(135, 150, 168, 1);
-            font-size: 12px;
-          }
+
+  .panel {
+    .box-img {
+      display: block;
+
+      .van-image {
+        display: block;
+      }
+    }
+
+    .panel-body {
+      padding: 5px;
+
+      .title {
+        color: rgba(16, 16, 16, 1);
+        font-size: 14px;
+        margin-bottom: 3px;
+      }
+
+      .text {
+        display: flex;
+        justify-content: space-between;
+
+        .money {
+          color: rgba(255, 0, 0, 1);
+          font-size: 14px;
         }
       }
-      
-      .panel {
+
+      .subtitle {
+        color: rgba(135, 150, 168, 1);
+        font-size: 12px;
+      }
+    }
+  }
+
+  .panel {
+    display: flex;
+
+    .img {
+      margin-right: 10px;
+      height: 65px;
+      width: 100px;
+    }
+
+    .panel-body {
+      flex: 1;
+
+      .title-box {
         display: flex;
 
-        .img {
-          margin-right: 10px;
-          height: 65px;
-          width: 100px;
-        }
-
-        .panel-body {
+        .title {
           flex: 1;
-          .title-box {
-            display: flex;
-
-            .title {
-              flex: 1;
-              margin-right: 3px;
-            }
-          }
+          margin-right: 3px;
         }
       }
-      .panel-bottom{
-        display: flex;
-        flex-direction: row-reverse;
-      }
+    }
+  }
+
+  .panel-bottom {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 }
-#card /deep/ {}
