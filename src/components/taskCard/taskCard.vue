@@ -8,14 +8,11 @@
             <div class="title-box">
                 <div class="title">{{info.task_name}}</div>
                 <div class="state">
-                    <template v-if="info.state==1">
-                        <template v-if="info.is_up==0">
-                            <van-tag plain type="success" size="medium">已下架</van-tag>
-                        </template>
-                        <template v-if="info.is_up==1">
-                            <van-tag v-for="(todo,i) in task_stateList" :key='i' plain type="success" size="medium" v-show="todo.task_state==info.task_state">{{todo.title}}</van-tag>
-                        </template>
-                    </template>
+                    <van-tag plain type="success" size="medium" v-if="info.task_state==1">待支付</van-tag>
+                    <van-tag plain type="success" size="medium" v-if="info.task_state==2">招募中</van-tag>
+                    <van-tag plain type="success" size="medium" v-if="info.task_state==3">进行中</van-tag>
+                    <van-tag plain type="success" size="medium" v-if="info.task_state==4">完成</van-tag>
+                    <van-tag plain type="success" size="medium" v-if="info.task_state==5">申诉</van-tag>
                 </div>
             </div>
             <div class="text">

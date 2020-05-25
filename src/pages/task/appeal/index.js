@@ -23,7 +23,7 @@ export default {
             }
             const res = await this.$http.post('/task/updateState', {stop_remark:this.message,task_state:5,task_id:this.$route.query.id});
                 if(res.code>=0){
-                    this.$toast('发表成功');
+                    this.$toast('申诉成功');
                     this.$router.go(-1);
                 }else{
                     this.$toast(res.msg);
