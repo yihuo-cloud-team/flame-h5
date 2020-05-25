@@ -74,25 +74,6 @@ export default {
 
       })
     },
-    //发布者中止任务
-    quxiao(e) {
-      this.$dialog.confirm({
-        message: '确认中止',
-      }).then(async () => {
-        const res = await this.$http.post('/task/updateState', {
-          id: e.id,
-          task_state: 3,
-        });
-        if (res.code >= 0) {
-          this.$toast("操作成功");
-          this.update();
-        } else {
-          this.$toast(res.msg);
-        }
-      }).catch(() => {
-
-      })
-    },
     //选择开发者
     async select(item) {
       this.$dialog.confirm({
@@ -122,7 +103,7 @@ export default {
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
           is_up: 1,
-          id: e.id
+          task_id: e.id
         });
         if (res.code >= 0) {
           this.$toast('操作成功');
@@ -142,7 +123,7 @@ export default {
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
           is_up: 0,
-          id: e.id
+          task_id: e.id
         });
         if (res.code >= 0) {
           this.$toast('操作成功');
