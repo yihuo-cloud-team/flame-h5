@@ -54,11 +54,11 @@ export default {
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
           is_up: 1,
-          id: e.id
+          task_id: e.id
         });
         if (res.code >= 0) {
           this.$toast('操作成功');
-
+          this.show=false;
           this.update();
         } else {
           this.$toast(res.msg);
@@ -74,10 +74,11 @@ export default {
       }).then(async () => {
         const res = await this.$http.post('/task/updateState', {
           is_up: 0,
-          id: e.id
+          task_id: e.id
         });
         if (res.code >= 0) {
           this.$toast('操作成功');
+          this.show=false;
           this.update();
         } else {
           this.$toast(res.msg);
