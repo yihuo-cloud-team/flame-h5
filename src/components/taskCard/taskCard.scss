@@ -1,8 +1,7 @@
 @import "@/styles/variable.scss";
-#card {
-  
+.card {
     background-color: #fff;
-    padding:  10px 0;
+    padding:  10px;
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
     .panel {
         .box-img {

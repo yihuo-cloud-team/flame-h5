@@ -1,6 +1,6 @@
 <template>
-<div id="card">
-    <div class="panel">
+<div class="card">
+    <div class="panel" @click="$router.push(`/task/info?task_id=${info.id}`)">
         <div class="box-img">
             <div class="img" :style="`background-image: url(${$getUrl(info.img)});`"></div>
         </div>
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="panel-bottom" v-if="isMe">
-        <van-icon name="ellipsis" @click="show=true" size="1.5rem" color="#666" />
+        <van-icon name="ellipsis" @click.stop="show=true" size="1.5rem" color="#666" />
     </div>
     <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
 </div>
