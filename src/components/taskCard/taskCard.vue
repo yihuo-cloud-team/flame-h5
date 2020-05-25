@@ -2,7 +2,7 @@
   <div class="task-card">
     <div class="panel">
       <div class="box-img">
-        <van-image width="130" radius="5" height="100" :src="$getUrl(info.img)" />
+        <van-image width="130" fit="cover" radius="5" height="100" :src="$getUrl(info.img)" />
       </div>
       <div class="panel-body">
         <div class="title-box">

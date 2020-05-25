@@ -3,6 +3,7 @@ import jwt from './jwt'
 
 export default function (context) {
     localStorage.jwt = jwt.jwt;
+    localStorage.version_nb = '10';
     let v = '10';
     if (localStorage.version_nb != v) {
         localStorage.version_nb = v;
